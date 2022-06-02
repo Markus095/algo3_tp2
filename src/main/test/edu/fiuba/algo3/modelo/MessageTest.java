@@ -14,7 +14,6 @@ public class MessageTest {
     @Test
     public void messageGreetingDefaultLanguage() {
         Message message = new Message("Hola Mundo!", "Hello world!");
-
         assertEquals("Hola Mundo!", message.greet());
     }
 }
