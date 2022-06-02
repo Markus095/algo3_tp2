@@ -9,6 +9,8 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 *  - [Azul Fuentes](https://github.com/azu26)
 *  - [Martin Scazzola](https://github.com/MartinScazzola)
 *  - [Ramiro Fernandez](https://github.com/ramafernandez)
+*  - [Julieta Bloise](https://github.com/bloisejuli)
+
 * **Integrante 4** - [integrante4](https://github.com/integrante4)
 
 Corrector: **{Corrector}**
