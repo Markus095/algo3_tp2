@@ -6,11 +6,11 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 ## Grupo {N}
 
-*  - [Azul Fuentes](https://github.com/azu26)
-*  - [Martin Scazzola](https://github.com/MartinScazzola)
-*  - [Ramiro Fernandez](https://github.com/ramafernandez)
-*  - [Julieta Bloise](https://github.com/bloisejuli)
-*  - [Marco Natalini](https://github.com/Markus095)
+*   [Azul Fuentes](https://github.com/azu26)
+*   [Martin Scazzola](https://github.com/MartinScazzola)
+*   [Ramiro Fernandez](https://github.com/ramafernandez)
+*   [Julieta Bloise](https://github.com/bloisejuli)
+*   [Marco Natalini](https://github.com/Markus095)
 
 
 Corrector: **{Corrector}**
