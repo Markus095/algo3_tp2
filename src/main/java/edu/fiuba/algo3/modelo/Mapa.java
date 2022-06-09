@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.List;
 
-public class Mapa {
+/* public class Mapa {
     Posicion [][] mapa = new Posicion[10][10];
     private Posicion posDestino;
 
@@ -31,4 +31,24 @@ public class Mapa {
     public boolean gano() {
         return this.posDestino.getContenido().gano();
     }
+} */
+
+public class Mapa {
+    private int dimension;
+    public Mapa(int unaDimension) {
+        this.dimension = unaDimension;
+        Posicion[][] mapa = new Posicion[this.dimension][this.dimension];
+        for(int i = 0; i < dimension; i++) {
+            for(int j = 0; j < dimension; j++) {
+                if (i%2 == 0 && j%2 == 0) {
+                    mapa[i][j] = new posicionNoTransitable(i, j);
+                }
+                else {
+                    mapa[i][j] = new posicionTransitable(i, j);
+                }
+            }
+        }
+        
+    }
+
 }

@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.Arrays;
 import java.util.List;
 
-public class Posicion {
+/* public class Posicion {
     private int fila;
     private int columna;
     private Contenido contenido;
@@ -46,4 +46,15 @@ public class Posicion {
     public Contenido getContenido() {
         return this.contenido;
     }
+}
+ */
+
+public abstract class Posicion {
+    private int fila;
+    private int columna;
+    public Posicion(int unaFila, int unaColumna) {
+        this.fila = unaFila;
+        this.columna = unaColumna;
+    }
+
 }
