@@ -3,9 +3,9 @@ package edu.fiuba.algo3.modelo;
 import java.util.List;
 import java.util.ArrayList;
 
-public class posicionTransitable extends Posicion{
+public class Calle extends Posicion{
     List<ObjetoCalle> ObjetosCalle      = new ArrayList<>();
-    public posicionTransitable(int unaFila, int unaColumna) {
+    public Calle(int unaFila, int unaColumna) {
         super(unaFila, unaColumna);
     }
 }
