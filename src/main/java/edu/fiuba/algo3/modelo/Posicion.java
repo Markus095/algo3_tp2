@@ -14,5 +14,8 @@ public abstract class Posicion {
     public int obtenerColumna() {
         return this.columna;
     }
+    public boolean equals(Posicion unaPosicion) {
+        return (unaPosicion.obtenerFila() == this.fila && unaPosicion.obtenerColumna() == this.columna);
+    }
 
 }

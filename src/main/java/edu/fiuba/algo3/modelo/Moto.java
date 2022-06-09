@@ -9,5 +9,8 @@ public class Moto {
     public Posicion obtenerPosicion() {
         return this.posicionVehiculo;
     }
+    public void moverA(Posicion unaPosicion) {
+        this.posicionVehiculo = unaPosicion;
+    }
 
 }
