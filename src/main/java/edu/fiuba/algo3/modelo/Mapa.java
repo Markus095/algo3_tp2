@@ -41,9 +41,10 @@ public class Mapa {
         this.mapa[unaFila][unaColumna].guardarObjeto(unObjeto);
     }
 
-    public void verificarCalleDerecha(Moto unaMoto) {
-        Posicion posicionVehiculo = unaMoto.obtenerPosicionMoto();
+    public void verificarCalleDerecha(Vehiculo unVehiculo) {
+        Posicion posicionVehiculo = unVehiculo.obtenerPosicionMoto();
         Objeto unObjeto = this.mapa[posicionVehiculo.obtenerFila()][posicionVehiculo.obtenerColumna()+1].obtenerObjeto();
-        unaMoto.reaccionarAObjeto(unObjeto);
+        unVehiculo.reaccionarAObjeto(unObjeto);
     }
+
 }

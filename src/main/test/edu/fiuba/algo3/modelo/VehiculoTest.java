@@ -46,4 +46,89 @@ public class VehiculoTest {
         assertEquals(unaMoto.obtenerCantidadMovimientos(), 6);
 
     }
+
+    @Test
+    //ENTREGA 1:
+    //Una moto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada en tres movimientos.
+    public void unAutoCruzaLaCiudaYAlEncuentrarceConUnPozoEsPenalizada() {
+        Mapa mapa = new Mapa(10, 10);
+        Auto unAuto = new Auto(1, 1);
+
+        Pozo unPozo = new Pozo();
+        mapa.posicionarObjeto(unPozo, 1, 6);
+
+        //Calle vacia
+        mapa.verificarCalleDerecha(unAuto);
+        unAuto.moverDerecha();
+
+        //Calle vacia
+        mapa.verificarCalleDerecha(unAuto);
+        unAuto.moverDerecha();
+
+        //Calle con Pozo
+        mapa.verificarCalleDerecha(unAuto);
+        unAuto.moverDerecha();
+
+        assertEquals(unAuto.obtenerCantidadMovimientos(), 6);
+
+    }
+
+    @Test
+    //ENTREGA 1:
+    //Una 4x4 atraviesa la ciudad y se encuentra con un Pozo. No es penalizada.
+    public void unCuatroPorCuatroCruzaLaCiudaYAlEncuentrarceConUnPozoNoEsPenalizada() {
+        Mapa mapa = new Mapa(10, 10);
+        CuatroPorCuatro una4x4 = new CuatroPorCuatro(1, 1);
+
+        Pozo unPozo = new Pozo();
+        mapa.posicionarObjeto(unPozo, 1, 6);
+
+        //Calle vacia
+        mapa.verificarCalleDerecha(una4x4);
+        una4x4.moverDerecha();
+
+        //Calle vacia
+        mapa.verificarCalleDerecha(una4x4);
+        una4x4.moverDerecha();
+
+        //Calle con Pozo
+        mapa.verificarCalleDerecha(una4x4);
+        una4x4.moverDerecha();
+
+        assertEquals(una4x4.obtenerCantidadMovimientos(), 3);
+
+    }
+
+    @Test
+    //ENTREGA 1:
+    //Una 4x4 atraviesa la ciudad y se encuentra con un Pozo. No es penalizada.
+    public void unCuatroPorCuatroCruzaLaCiudaYAlEncuentrarceConTresPozoEsPenalizada() {
+        Mapa mapa = new Mapa(10, 10);
+        CuatroPorCuatro una4x4 = new CuatroPorCuatro(1, 1);
+
+        Pozo primerPozo = new Pozo();
+        mapa.posicionarObjeto(primerPozo, 1, 2);
+
+        Pozo segundoPozo = new Pozo();
+        mapa.posicionarObjeto(segundoPozo, 1, 4);
+
+        Pozo tercerPozo = new Pozo();
+        mapa.posicionarObjeto(tercerPozo, 1, 6);
+
+        //Calle vacia
+        mapa.verificarCalleDerecha(una4x4);
+        una4x4.moverDerecha();
+
+        //Calle vacia
+        mapa.verificarCalleDerecha(una4x4);
+        una4x4.moverDerecha();
+
+        //Calle con Pozo
+        mapa.verificarCalleDerecha(una4x4);
+        una4x4.moverDerecha();
+
+        assertEquals(una4x4.obtenerCantidadMovimientos(), 5);
+
+    }
 }
+
