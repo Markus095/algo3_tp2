@@ -169,7 +169,7 @@ public class VehiculoTest {
     @Test
     //ENTREGA 2:
     //Un vehículo atraviesa la ciudad y encuentra una sorpresa favorable.
-    public void UnVehiculoAtraviesaLaCiudadSeEncuentraConSorpresa() {
+    public void UnVehiculoAtraviesaLaCiudadSeEncuentraConSorpresaFavorable() {
         Mapa mapa = new Mapa(14, 14);
         Auto vehiculo = new Auto(1, 1);
         SorpresaFavorable sorpresa = new SorpresaFavorable(); //12, 9
@@ -179,12 +179,33 @@ public class VehiculoTest {
             mapa.verificarCalleDerecha(vehiculo);
             vehiculo.moverDerecha();
         }
-        for (int i  = 0; i < 6; i++) {
+        for (int j  = 0; j < 6; j++) {
             mapa.verificarCalleAbajo(vehiculo);
             vehiculo.moverAbajo();
         }
 
         assertEquals(vehiculo.obtenerCantidadMovimientos(), 8);
+    }
+
+    @Test
+    //ENTREGA 2:
+    //Un vehículo atraviesa la ciudad y encuentra una sorpresa desfavorable.
+    public void UnVehiculoAtraviesaLaCiudadSeEncuentraConSorpresaDesfavorable() {
+        Mapa mapa = new Mapa(14, 14);
+        Auto vehiculo = new Auto(1, 1);
+        SorpresaDesfavorable sorpresa = new SorpresaDesfavorable();
+        mapa.posicionarObjeto(sorpresa, 8, 9);
+
+        for (int i = 0; i < 4; i++) {
+            mapa.verificarCalleDerecha(vehiculo);
+            vehiculo.moverDerecha();
+        }
+        for (int j  = 0; j < 4; j++) {
+            mapa.verificarCalleAbajo(vehiculo);
+            vehiculo.moverAbajo();
+        }
+
+        assertEquals(vehiculo.obtenerCantidadMovimientos(), 10);
     }
 }
 

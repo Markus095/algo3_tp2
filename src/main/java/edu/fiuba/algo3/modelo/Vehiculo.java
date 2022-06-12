@@ -17,8 +17,6 @@ public abstract class Vehiculo {
     public void moverDerecha() {
         this.posicionVehiculo.moverDerecha();
         this.cantidadDeMovimientos++;
-        System.out.print("En el vehiculo: ");
-        System.out.print(this.cantidadDeMovimientos);
     }
 
     public void reaccionarAObjeto(Objeto unObjeto) {
