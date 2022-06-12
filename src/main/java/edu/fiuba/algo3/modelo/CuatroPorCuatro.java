@@ -9,7 +9,8 @@ public class CuatroPorCuatro extends Vehiculo {
 
     @Override
     public void  reaccionarAObjeto(Objeto unObjeto) {
-        if (unObjeto.getClass().getName() == "Pozo") {
+        if (unObjeto.getClass().getSimpleName().equals("Pozo")) {
+            System.out.print(unObjeto.getClass().getSimpleName());
             this.cantidadPozos++;
         }
         if (this.cantidadPozos >=  3) {

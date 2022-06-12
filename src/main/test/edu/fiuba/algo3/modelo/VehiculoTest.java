@@ -130,5 +130,37 @@ public class VehiculoTest {
         assertEquals(una4x4.obtenerCantidadMovimientos(), 5);
 
     }
+
+    @Test
+    //ENTREGA 1:
+    //Una moto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada en tres movimientos.
+    public void unAutoCruzaLaCiudaYAlEncontrarceConVariosPozosEsPenalizadaEnTodosEncuentros() {
+        Mapa mapa = new Mapa(10, 10);
+        Auto unAuto = new Auto(1, 1);
+
+        Pozo primerPozo = new Pozo();
+        mapa.posicionarObjeto(primerPozo, 1, 2);
+
+        Pozo segundoPozo = new Pozo();
+        mapa.posicionarObjeto(segundoPozo, 1, 4);
+
+        Pozo tercerPozo = new Pozo();
+        mapa.posicionarObjeto(tercerPozo, 1, 6);
+
+        //Calle vacia
+        mapa.verificarCalleDerecha(unAuto);
+        unAuto.moverDerecha();
+
+        //Calle vacia
+        mapa.verificarCalleDerecha(unAuto);
+        unAuto.moverDerecha();
+
+        //Calle con Pozo
+        mapa.verificarCalleDerecha(unAuto);
+        unAuto.moverDerecha();
+
+        assertEquals(unAuto.obtenerCantidadMovimientos(), 12);
+
+    }
 }
 
