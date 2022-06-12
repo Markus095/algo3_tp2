@@ -31,4 +31,8 @@ public class Posicion {
     public Objeto obtenerObjeto() {
         return this.objeto;
     }
+
+    public void moverAbajo() {
+        this.x = this.x + 2;
+    }
 }

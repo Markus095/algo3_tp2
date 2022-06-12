@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.MalformedParameterizedTypeException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VehiculoTest {
@@ -162,5 +164,28 @@ public class VehiculoTest {
         assertEquals(unAuto.obtenerCantidadMovimientos(), 12);
 
     }
+
+    @Test
+    //ENTREGA 2:
+    //Un vehículo atraviesa la ciudad y encuentra una sorpresa favorable.
+    public void UnVehiculoAtraviesaLaCiudadSeEncuentraConSorpresa() {
+        Mapa mapa = new Mapa(14, 14);
+        Auto vehiculo = new Auto(1, 1);
+        SorpresaFavorable sorpresa = new SorpresaFavorable(); //12, 9
+        mapa.posicionarObjeto(sorpresa, 12, 9);
+
+        for (int i = 0; i < 4; i++) {
+            mapa.verificarCalleDerecha(vehiculo);
+            vehiculo.moverDerecha();
+        }
+        for (int i  = 0; i < 6; i++) {
+            mapa.verificarCalleAbajo(vehiculo);
+            vehiculo.moverAbajo();
+        }
+
+        assertEquals(vehiculo.obtenerCantidadMovimientos(), 8);
+    }
 }
+
+
 

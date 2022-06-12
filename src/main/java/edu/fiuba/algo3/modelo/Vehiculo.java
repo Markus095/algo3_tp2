@@ -26,4 +26,9 @@ public abstract class Vehiculo {
     public int obtenerCantidadMovimientos() {
         return this.cantidadDeMovimientos;
     }
+
+    public void moverAbajo() {
+        this.posicionVehiculo.moverAbajo();
+        this.cantidadDeMovimientos++;
+    }
 }

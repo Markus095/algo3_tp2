@@ -47,4 +47,10 @@ public class Mapa {
         unVehiculo.reaccionarAObjeto(unObjeto);
     }
 
+    public void verificarCalleAbajo(Auto unVehiculo) {
+        Posicion posicionVehiculo = unVehiculo.obtenerPosicionMoto();
+        Objeto unObjeto = this.mapa[posicionVehiculo.obtenerFila()+1][posicionVehiculo.obtenerColumna()].obtenerObjeto();
+        unVehiculo.reaccionarAObjeto(unObjeto);
+    }
+
 }
