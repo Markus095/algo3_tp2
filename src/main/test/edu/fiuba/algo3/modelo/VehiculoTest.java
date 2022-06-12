@@ -8,7 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VehiculoTest {
     @Test
-    //ENTREGA 0: Una moto atraviesa la grilla sin obstáculos y la cantidad de movimientos es X = 3
+    //ENTREGA 0:
+    // Una moto atraviesa la grilla sin obstáculos y la cantidad de movimientos es X = 3
     public void unaMotoCruzaLaCiudadYLlegaADestino() {
         Mapa mapa = new Mapa(10, 10);
         Moto unaMoto = new Moto(1, 1);
@@ -26,7 +27,7 @@ public class VehiculoTest {
     @Test
     //ENTREGA 1:
     //Una moto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada en tres movimientos.
-    public void unaMotoCruzaLaCiudaYAlEncuentrarceConUnPozoEsPenalizada() {
+    public void unaMotoCruzaLaCiudaYAlEncontrarceConUnPozoEsPenalizada() {
         Mapa mapa = new Mapa(10, 10);
         Moto unaMoto = new Moto(1, 1);
 
@@ -51,8 +52,8 @@ public class VehiculoTest {
 
     @Test
     //ENTREGA 1:
-    //Una moto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada en tres movimientos.
-    public void unAutoCruzaLaCiudaYAlEncuentrarceConUnPozoEsPenalizada() {
+    //Una Auto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada en tres movimientos.
+    public void unAutoCruzaLaCiudaYAlEncontrarceConUnPozoEsPenalizada() {
         Mapa mapa = new Mapa(10, 10);
         Auto unAuto = new Auto(1, 1);
 
@@ -78,7 +79,7 @@ public class VehiculoTest {
     @Test
     //ENTREGA 1:
     //Una 4x4 atraviesa la ciudad y se encuentra con un Pozo. No es penalizada.
-    public void unCuatroPorCuatroCruzaLaCiudaYAlEncuentrarceConUnPozoNoEsPenalizada() {
+    public void unCuatroPorCuatroCruzaLaCiudaYAlEncontrarceConUnPozoNoEsPenalizada() {
         Mapa mapa = new Mapa(10, 10);
         CuatroPorCuatro una4x4 = new CuatroPorCuatro(1, 1);
 
@@ -103,8 +104,8 @@ public class VehiculoTest {
 
     @Test
     //ENTREGA 1:
-    //Una 4x4 atraviesa la ciudad y se encuentra con un Pozo. No es penalizada.
-    public void unCuatroPorCuatroCruzaLaCiudaYAlEncuentrarceConTresPozoEsPenalizada() {
+    //Una 4x4 atraviesa la ciudad y se encuentra con tres pozos, es penalizada.
+    public void unCuatroPorCuatroCruzaLaCiudaYAlEncontrarceConTresPozoEsPenalizada() {
         Mapa mapa = new Mapa(10, 10);
         CuatroPorCuatro una4x4 = new CuatroPorCuatro(1, 1);
 
@@ -135,7 +136,7 @@ public class VehiculoTest {
 
     @Test
     //ENTREGA 1:
-    //Una moto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada en tres movimientos.
+    //Un Auto atraviesa la ciudad y se encuentra con tres Pozos. Es penalizada con tres movimientos en cada pozo.
     public void unAutoCruzaLaCiudaYAlEncontrarceConVariosPozosEsPenalizadaEnTodosEncuentros() {
         Mapa mapa = new Mapa(10, 10);
         Auto unAuto = new Auto(1, 1);

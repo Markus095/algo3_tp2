@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
 public abstract class Objeto {
-    public int obtenerPenalizacion() {
-        return 0;
+    public int obtenerPenalizacion(int cantidadDeMovimientos) {
+
+
+        return cantidadDeMovimientos;
     }
 }

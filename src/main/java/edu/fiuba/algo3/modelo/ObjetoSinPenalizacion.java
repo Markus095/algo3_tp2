@@ -7,7 +7,8 @@ public class ObjetoSinPenalizacion extends Objeto{
         this.penalizacion = 0;
     }
 
-    public int obtenerPenalizacion() {
-        return this.penalizacion;
+    public int obtenerPenalizacion(int cantidadDeMovimientos) {
+        cantidadDeMovimientos += this.penalizacion;
+        return cantidadDeMovimientos;
     }
 }

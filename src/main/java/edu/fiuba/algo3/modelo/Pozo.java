@@ -6,7 +6,9 @@ public class Pozo extends Objeto {
     public Pozo() {
         this.penalizacion = 3;
     }
-    public int obtenerPenalizacion() {
-        return this.penalizacion;
+    @Override
+    public int obtenerPenalizacion(int movimientos) {
+        movimientos += this.penalizacion;
+        return movimientos;
     }
 }
