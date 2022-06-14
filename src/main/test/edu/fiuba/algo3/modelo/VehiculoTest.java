@@ -12,7 +12,7 @@ public class VehiculoTest {
     // Una moto atraviesa la grilla sin obstáculos y la cantidad de movimientos es X = 3
     public void unaMotoCruzaLaCiudadYLlegaADestino() {
         Mapa mapa = new Mapa(10, 10);
-        Moto unaMoto = new Moto(1, 1);
+        Moto unaMoto = new Moto(1, 0);
 
         mapa.asignarDestinoFinal(1, 7);
         Posicion posicionllegada = mapa.obtenerPosicionLlegada();
