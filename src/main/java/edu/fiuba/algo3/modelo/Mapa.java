@@ -36,8 +36,8 @@ public class Mapa {
     }
 
 
-    public boolean verificarFinDeJuego(Moto unaMoto, Posicion posicionLlegada) {
-        return(unaMoto.obtenerPosicionMoto().obtenerFila() == posicionLlegada.obtenerFila() && unaMoto.obtenerPosicionMoto().obtenerColumna() == posicionLlegada.obtenerColumna());
+    public boolean verificarFinDeJuego(Vehiculo unVehiculo, Posicion posicionLlegada) {
+        return(unVehiculo.obtenerPosicion().obtenerFila() == posicionLlegada.obtenerFila() && unVehiculo.obtenerPosicion().obtenerColumna() == posicionLlegada.obtenerColumna());
     }
 
     public void posicionarObjeto(Objeto unObjeto, Posicion pos1, Posicion pos2) {
@@ -54,15 +54,26 @@ public class Mapa {
     }
 
     public void verificarCalleDerecha(Vehiculo unVehiculo) {
-        Posicion posicionVehiculo = unVehiculo.obtenerPosicionMoto();
+        Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
         Posicion posicionDestino = this.mapa[posicionVehiculo.obtenerFila()][posicionVehiculo.obtenerColumna()+1];
         buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
     }
 
-    public void verificarCalleAbajo(Auto unVehiculo) {
-        Posicion posicionVehiculo = unVehiculo.obtenerPosicionMoto();
+    public void verificarCalleAbajo(Vehiculo unVehiculo) {
+        Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
         Posicion posicionDestino = this.mapa[posicionVehiculo.obtenerFila()+1][posicionVehiculo.obtenerColumna()];
         buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
     }
 
+    public void verificarCalleIzquierda(Vehiculo unVehiculo) {
+        Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
+        Posicion posicionDestino = this.mapa[posicionVehiculo.obtenerFila()][posicionVehiculo.obtenerColumna()-1];
+        buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
+    }
+
+    public void verificarCalleArriba(Vehiculo unVehiculo) {
+        Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
+        Posicion posicionDestino = this.mapa[posicionVehiculo.obtenerFila()-1][posicionVehiculo.obtenerColumna()];
+        buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
+    }
 }

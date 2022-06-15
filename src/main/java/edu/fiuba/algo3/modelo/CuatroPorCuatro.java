@@ -1,21 +1,21 @@
 package edu.fiuba.algo3.modelo;
 
-public class CuatroPorCuatro extends Vehiculo {
+public class CuatroPorCuatro extends TipoVehiculo {
     private int cantidadPozos;
-    public CuatroPorCuatro(int unaFila, int unaColumna) {
-        super(unaFila, unaColumna);
+    public CuatroPorCuatro() {
         this.cantidadPozos = 0;
     }
 
     @Override
-    public void  reaccionarAObjeto(Objeto unObjeto) {
-        if (unObjeto.getClass().getSimpleName().equals("Pozo")) {
-            //System.out.print(unObjeto.getClass().getSimpleName());
-            this.cantidadPozos++;
-        }
+    public float reaccionarAPozo(float cantidadDeMovimientos) {
+        this.cantidadPozos ++;
         if (this.cantidadPozos >=  3) {
-            int movimientosActuales = this.cantidadDeMovimientos;
-            this.cantidadDeMovimientos = unObjeto.obtenerPenalizacion(movimientosActuales -1);
+            return cantidadDeMovimientos + 2;
         }
+        return cantidadDeMovimientos;
+    }
+    @Override
+    public TipoVehiculo cambioVehiculo(){
+        return new Moto();
     }
 }

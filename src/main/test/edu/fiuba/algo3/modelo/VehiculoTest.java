@@ -12,7 +12,7 @@ public class VehiculoTest {
     // Una moto atraviesa la grilla sin obstáculos y la cantidad de movimientos es X = 3
     public void unaMotoCruzaLaCiudadYLlegaADestino() {
         Mapa mapa = new Mapa(10, 10);
-        Moto unaMoto = new Moto(1, 0);
+        Vehiculo unaMoto = new Vehiculo( new Moto(),1, 0);
 
         mapa.asignarDestinoFinal(1, 3);
         Posicion posicionllegada = mapa.obtenerPosicionLlegada();
@@ -21,7 +21,7 @@ public class VehiculoTest {
         unaMoto.moverDerecha();
         unaMoto.moverDerecha();
 
-        assertEquals(mapa.verificarFinDeJuego(unaMoto, posicionllegada), true);
+        assert(mapa.verificarFinDeJuego(unaMoto, posicionllegada));
     }
 
     @Test
@@ -29,7 +29,7 @@ public class VehiculoTest {
     //Una moto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada en tres movimientos.
     public void unaMotoCruzaLaCiudaYAlEncontrarseConUnPozoEsPenalizada() {
         Mapa mapa = new Mapa(10, 10);
-        Moto unaMoto = new Moto(1, 0);
+        Vehiculo unaMoto = new Vehiculo(new Moto(), 1, 0);
 
         Pozo unPozo = new Pozo();
         Posicion pos1 = new Posicion(1,1);
@@ -58,7 +58,7 @@ public class VehiculoTest {
     //Una Auto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada en tres movimientos.
     public void unAutoCruzaLaCiudaYAlEncontrarseConUnPozoEsPenalizado() {
         Mapa mapa = new Mapa(10, 10);
-        Auto unAuto = new Auto(1, 0);
+        Vehiculo unAuto = new Vehiculo(new Auto(), 1, 0);
 
         Pozo unPozo = new Pozo();
         Posicion pos1 = new Posicion(1,1);
@@ -87,7 +87,7 @@ public class VehiculoTest {
     //Una 4x4 atraviesa la ciudad y se encuentra con un Pozo. No es penalizada.
     public void unaCuatroPorCuatroCruzaLaCiudaYAlEncontrarseConUnPozoNoEsPenalizada() {
         Mapa mapa = new Mapa(10, 10);
-        CuatroPorCuatro una4x4 = new CuatroPorCuatro(1, 1);
+        Vehiculo una4x4 = new Vehiculo(new CuatroPorCuatro(), 1, 0);
 
         Pozo unPozo = new Pozo();
         Posicion pos1 = new Posicion(1,1);
@@ -116,7 +116,7 @@ public class VehiculoTest {
     //Una 4x4 atraviesa la ciudad y se encuentra con tres pozos, es penalizada.
     public void unCuatroPorCuatroCruzaLaCiudaYAlEncontrarceConTresPozoEsPenalizada() {
         Mapa mapa = new Mapa(10, 10);
-        CuatroPorCuatro una4x4 = new CuatroPorCuatro(1, 1);
+        Vehiculo una4x4 = new Vehiculo(new CuatroPorCuatro(), 1, 1);
 
         Pozo unPozo = new Pozo();
         Posicion pos1 = new Posicion(1,1);
@@ -155,7 +155,7 @@ public class VehiculoTest {
     //Un Auto atraviesa la ciudad y se encuentra con tres Pozos. Es penalizada con tres movimientos en cada pozo.
     public void unAutoCruzaLaCiudaYAlEncontrarseConVariosPozosEsPenalizadaEnTodosLosEncuentros() {
         Mapa mapa = new Mapa(10, 10);
-        Auto unAuto = new Auto(1, 1);
+        Vehiculo unAuto = new Vehiculo(new Auto(), 1, 1);
 
         Pozo unPozo = new Pozo();
         Posicion pos1 = new Posicion(1,1);
@@ -194,8 +194,9 @@ public class VehiculoTest {
     //Un vehículo atraviesa la ciudad y encuentra una sorpresa favorable.
     public void UnVehiculoAtraviesaLaCiudadSeEncuentraConSorpresaFavorable() {
         Mapa mapa = new Mapa(14, 14);
-        Auto vehiculo = new Auto(1, 0);
-        SorpresaFavorable sorpresa = new SorpresaFavorable(); //12, 9
+        Vehiculo vehiculo = new Vehiculo(new Auto(), 1, 0);
+
+        SorpresaFavorable sorpresa = new SorpresaFavorable();
 
         Posicion pos1 = new Posicion(6,4);
         Posicion pos2 = new Posicion(7, 4);
@@ -211,7 +212,7 @@ public class VehiculoTest {
             vehiculo.moverAbajo();
         }
 
-        assertEquals(vehiculo.obtenerCantidadMovimientos(), 8);
+        assertEquals(vehiculo.obtenerCantidadMovimientos(), 8.200001, 0.01);
     }
 
     @Test
@@ -219,7 +220,7 @@ public class VehiculoTest {
     //Un vehículo atraviesa la ciudad y encuentra una sorpresa desfavorable.
     public void UnVehiculoAtraviesaLaCiudadSeEncuentraConSorpresaDesfavorable() {
         Mapa mapa = new Mapa(14, 14);
-        Auto vehiculo = new Auto(1, 0);
+        Vehiculo vehiculo = new Vehiculo(new Auto(), 1, 0);
 
         SorpresaDesfavorable sorpresa = new SorpresaDesfavorable();
 
@@ -237,9 +238,33 @@ public class VehiculoTest {
             vehiculo.moverAbajo();
         }
 
-        assertEquals(vehiculo.obtenerCantidadMovimientos(), 10);
+        assertEquals(vehiculo.obtenerCantidadMovimientos(), 9.75, 0.01);
+    }
+
+    //Un vehículo atraviesa la ciudad y encuentra una sorpresa cambio de vehículo.
+    @Test
+    public void unMotoAtraviesaLaCiudadYSeEncuentraConUnaSorpresaCambioDeVehiculo(){
+        Mapa mapa = new Mapa(14, 14);
+        Vehiculo unVehiculo = new Vehiculo(new Moto(), 9, 9);
+
+        SorpresaCambioVehiculo unaSorpresa = new SorpresaCambioVehiculo();
+
+        Posicion pos1 = new Posicion(6,5);
+        Posicion pos2 = new Posicion(5, 5);
+
+        mapa.posicionarObjeto(unaSorpresa, pos1, pos2);
+
+        for (int i = 0; i < 4; i++) {
+            mapa.verificarCalleIzquierda(unVehiculo);
+            unVehiculo.moverIzquierda();
+        }
+        for (int j  = 0; j < 4; j++) {
+            mapa.verificarCalleArriba(unVehiculo);
+            unVehiculo.moverArriba();
+        }
+        assert(unVehiculo.obtenerTipo().getClass().getSimpleName().equals("Auto"));
+
     }
 }
-
 
 
