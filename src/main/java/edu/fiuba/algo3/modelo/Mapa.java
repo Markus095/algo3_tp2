@@ -3,18 +3,18 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 
 public class Mapa {
-    private int fila;
-    private  int columna;
+    private int cantidadFilas;
+    private  int cantidadColumnas;
     private Posicion posicionDestino;
     private Posicion [][] mapa;
     private ArrayList<Calle> calles = new ArrayList<>();
 
-    public Mapa(int unaFila, int unaColumna) {
-        this.fila = unaFila;
-        this.columna = unaColumna;
-        this.mapa = new Posicion[unaFila][unaColumna];
-        for (int i = 0; i < unaFila; i ++) {
-            for (int j = 0; j < unaColumna; j++) {
+    public Mapa(int unaCantidadFilas, int unaCantidadColumnas) {
+        this.cantidadFilas = unaCantidadFilas;
+        this.cantidadColumnas = unaCantidadColumnas;
+        this.mapa = new Posicion[unaCantidadFilas][unaCantidadColumnas];
+        for (int i = 0; i < unaCantidadFilas; i ++) {
+            for (int j = 0; j < unaCantidadColumnas; j++) {
                 this.mapa[i][j] = new Posicion(i, j);
                 if(j != 0){ calles.add( new Calle(this.mapa[i][j-1], this.mapa[i][j])); }
                 if(i != 0){ calles.add( new Calle(this.mapa[i-1][j], this.mapa[i][j])); }
