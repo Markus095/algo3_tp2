@@ -20,13 +20,13 @@ public class Posicion {
         return this.y;
     }
 
-    public void guardarObjeto(Objeto unObjeto) {
+    /* public void guardarObjeto(Objeto unObjeto) {
         this.objeto = unObjeto;
     }
 
     public Objeto obtenerObjeto() {
         return this.objeto;
-    }
+    }*/
 
     public void moverAbajo() {
         this.x ++;
