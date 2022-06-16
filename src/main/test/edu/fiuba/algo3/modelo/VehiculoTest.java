@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.MalformedParameterizedTypeException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class VehiculoTest {
     @Test
@@ -38,16 +38,19 @@ public class VehiculoTest {
         mapa.posicionarObjeto(unPozo, pos1, pos2);
 
         //Calle vacia
-        mapa.verificarCalleDerecha(unaMoto);
-        unaMoto.moverDerecha();
+        if (mapa.verificarCalleDerecha(unaMoto)) {
+            unaMoto.moverDerecha();
+        }
 
         //Calle vacia
-        mapa.verificarCalleDerecha(unaMoto);
-        unaMoto.moverDerecha();
+        if (mapa.verificarCalleDerecha(unaMoto)) {
+            unaMoto.moverDerecha();
+        }
 
         //Calle con Pozo
-        mapa.verificarCalleDerecha(unaMoto);
-        unaMoto.moverDerecha();
+        if (mapa.verificarCalleDerecha(unaMoto)) {
+            unaMoto.moverDerecha();
+        }
 
         assertEquals(unaMoto.obtenerCantidadMovimientos(), 6);
 
@@ -67,16 +70,19 @@ public class VehiculoTest {
         mapa.posicionarObjeto(unPozo, pos1, pos2);
 
         //Calle vacia
-        mapa.verificarCalleDerecha(unAuto);
-        unAuto.moverDerecha();
+        if (mapa.verificarCalleDerecha(unAuto)) {
+            unAuto.moverDerecha();
+        }
 
         //Calle vacia
-        mapa.verificarCalleDerecha(unAuto);
-        unAuto.moverDerecha();
+        if (mapa.verificarCalleDerecha(unAuto)) {
+            unAuto.moverDerecha();
+        }
 
         //Calle con Pozo
-        mapa.verificarCalleDerecha(unAuto);
-        unAuto.moverDerecha();
+        if (mapa.verificarCalleDerecha(unAuto)) {
+            unAuto.moverDerecha();
+        }
 
         assertEquals(unAuto.obtenerCantidadMovimientos(), 6);
 
@@ -96,16 +102,19 @@ public class VehiculoTest {
         mapa.posicionarObjeto(unPozo, pos1, pos2);
 
         //Calle vacia
-        mapa.verificarCalleDerecha(una4x4);
-        una4x4.moverDerecha();
+        if (mapa.verificarCalleDerecha(una4x4)) {
+            una4x4.moverDerecha();
+        }
 
         //Calle vacia
-        mapa.verificarCalleDerecha(una4x4);
-        una4x4.moverDerecha();
+        if (mapa.verificarCalleDerecha(una4x4)) {
+            una4x4.moverDerecha();
+        }
 
         //Calle con Pozo
-        mapa.verificarCalleDerecha(una4x4);
-        una4x4.moverDerecha();
+        if (mapa.verificarCalleDerecha(una4x4)) {
+            una4x4.moverDerecha();
+        }
 
         assertEquals(una4x4.obtenerCantidadMovimientos(), 3);
 
@@ -135,16 +144,19 @@ public class VehiculoTest {
         mapa.posicionarObjeto(unPozo, pos5, pos6);
 
         //Calle vacia
-        mapa.verificarCalleDerecha(una4x4);
-        una4x4.moverDerecha();
+        if (mapa.verificarCalleDerecha(una4x4)) {
+            una4x4.moverDerecha();
+        }
 
         //Calle vacia
-        mapa.verificarCalleDerecha(una4x4);
-        una4x4.moverDerecha();
+        if (mapa.verificarCalleDerecha(una4x4)) {
+            una4x4.moverDerecha();
+        }
 
         //Calle con Pozo
-        mapa.verificarCalleDerecha(una4x4);
-        una4x4.moverDerecha();
+        if (mapa.verificarCalleDerecha(una4x4)) {
+            una4x4.moverDerecha();
+        }
 
         assertEquals(una4x4.obtenerCantidadMovimientos(), 5);
 
@@ -174,16 +186,19 @@ public class VehiculoTest {
         mapa.posicionarObjeto(unPozo, pos5, pos6);
 
         //Calle vacia
-        mapa.verificarCalleDerecha(unAuto);
-        unAuto.moverDerecha();
+        if (mapa.verificarCalleDerecha(unAuto)) {
+            unAuto.moverDerecha();
+        }
 
         //Calle vacia
-        mapa.verificarCalleDerecha(unAuto);
-        unAuto.moverDerecha();
+        if (mapa.verificarCalleDerecha(unAuto)) {
+            unAuto.moverDerecha();
+        }
 
         //Calle con Pozo
-        mapa.verificarCalleDerecha(unAuto);
-        unAuto.moverDerecha();
+        if (mapa.verificarCalleDerecha(unAuto)) {
+            unAuto.moverDerecha();
+        }
 
         assertEquals(unAuto.obtenerCantidadMovimientos(), 12);
 
@@ -204,12 +219,14 @@ public class VehiculoTest {
         mapa.posicionarObjeto(sorpresa,pos1, pos2);
 
         for (int i = 0; i < 4; i++) {
-            mapa.verificarCalleDerecha(vehiculo);
-            vehiculo.moverDerecha();
+            if (mapa.verificarCalleDerecha(vehiculo)) {
+                vehiculo.moverDerecha();
+            }
         }
         for (int j  = 0; j < 6; j++) {
-            mapa.verificarCalleAbajo(vehiculo);
-            vehiculo.moverAbajo();
+            if (mapa.verificarCalleAbajo(vehiculo)) {
+                vehiculo.moverAbajo();
+            }
         }
 
         assertEquals(vehiculo.obtenerCantidadMovimientos(), 8.200001, 0.01);
@@ -230,12 +247,14 @@ public class VehiculoTest {
         mapa.posicionarObjeto(sorpresa, pos1, pos2);
 
         for (int i = 0; i < 4; i++) {
-            mapa.verificarCalleDerecha(vehiculo);
-            vehiculo.moverDerecha();
+            if (mapa.verificarCalleDerecha(vehiculo)) {
+                vehiculo.moverDerecha();
+            }
         }
         for (int j  = 0; j < 4; j++) {
-            mapa.verificarCalleAbajo(vehiculo);
-            vehiculo.moverAbajo();
+            if (mapa.verificarCalleAbajo(vehiculo)) {
+                vehiculo.moverAbajo();
+            }
         }
 
         assertEquals(vehiculo.obtenerCantidadMovimientos(), 9.75, 0.01);
@@ -255,16 +274,95 @@ public class VehiculoTest {
         mapa.posicionarObjeto(unaSorpresa, pos1, pos2);
 
         for (int i = 0; i < 4; i++) {
-            mapa.verificarCalleIzquierda(unVehiculo);
-            unVehiculo.moverIzquierda();
+            if (mapa.verificarCalleIzquierda(unVehiculo)) {
+                unVehiculo.moverIzquierda();
+            }
         }
         for (int j  = 0; j < 4; j++) {
-            mapa.verificarCalleArriba(unVehiculo);
-            unVehiculo.moverArriba();
+            if (mapa.verificarCalleArriba(unVehiculo)) {
+                unVehiculo.moverArriba();
+            }
         }
         assert(unVehiculo.obtenerTipo().getClass().getSimpleName().equals("Auto"));
 
     }
+
+    @Test
+    public void AutoAtraviesaLaCiudadYSeEncuentraUnPiquete() {
+        Mapa mapa = new Mapa(14, 14);
+        Vehiculo unVehiculo = new Vehiculo(new Auto(), 9, 9);
+
+        Piquete unPiquete = new Piquete();
+
+        Posicion pos1 = new Posicion(6,5);
+        Posicion pos2 = new Posicion(5, 5);
+
+        mapa.posicionarObjeto(unPiquete, pos1, pos2);
+
+        for (int i = 0; i < 4; i++) {
+            if (mapa.verificarCalleIzquierda(unVehiculo)) {
+                unVehiculo.moverIzquierda();
+            }
+        }
+        for (int j  = 0; j < 3; j++) {
+            if (mapa.verificarCalleArriba(unVehiculo)) {
+                unVehiculo.moverArriba();
+            }
+        }
+        assertFalse(mapa.verificarCalleArriba(unVehiculo));
+    }
+
+    @Test
+    public void CuatroPorCuatroAtraviesaLaCiudadYSeEncuentraUnPiquete() {
+        Mapa mapa = new Mapa(14, 14);
+        Vehiculo unVehiculo = new Vehiculo(new CuatroPorCuatro(), 9, 9);
+
+        Piquete unPiquete = new Piquete();
+
+        Posicion pos1 = new Posicion(6,5);
+        Posicion pos2 = new Posicion(5, 5);
+
+        mapa.posicionarObjeto(unPiquete, pos1, pos2);
+
+        for (int i = 0; i < 4; i++) {
+            if (mapa.verificarCalleIzquierda(unVehiculo)) {
+                unVehiculo.moverIzquierda();
+            }
+        }
+        for (int j  = 0; j < 3; j++) {
+            if (mapa.verificarCalleArriba(unVehiculo)) {
+                unVehiculo.moverArriba();
+            }
+        }
+        assertFalse(mapa.verificarCalleArriba(unVehiculo));
+    }
+
+    @Test
+    public void MotoAtraviesaLaCiudadYSeEncuentraUnPiquete() {
+        Mapa mapa = new Mapa(14, 14);
+        Vehiculo unVehiculo = new Vehiculo(new Moto(), 9, 9);
+
+        Piquete unPiquete = new Piquete();
+
+        Posicion pos1 = new Posicion(6,5);
+        Posicion pos2 = new Posicion(5, 5);
+
+        mapa.posicionarObjeto(unPiquete, pos1, pos2);
+
+        for (int i = 0; i < 4; i++) {
+            if (mapa.verificarCalleIzquierda(unVehiculo)) {
+                unVehiculo.moverIzquierda();
+            }
+        }
+        for (int j  = 0; j < 3; j++) {
+            if (mapa.verificarCalleArriba(unVehiculo)) {
+                unVehiculo.moverArriba();
+            }
+        }
+        assert(mapa.verificarCalleArriba(unVehiculo));
+    }
 }
+
+
 
 

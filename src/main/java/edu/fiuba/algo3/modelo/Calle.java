@@ -20,9 +20,12 @@ public class Calle {
         objetos.add(unObjeto);
     }
 
-    public void aplicarPenalizacion(Vehiculo unVehiculo) {
+    public boolean aplicarPenalizacion(Vehiculo unVehiculo) {
         for(Objeto unObjeto: objetos){
-            unVehiculo.reaccionarAObjeto(unObjeto);
+            if(!unVehiculo.reaccionarAObjeto(unObjeto)) {
+                return false;
+            }
         }
+        return true;
     }
 }

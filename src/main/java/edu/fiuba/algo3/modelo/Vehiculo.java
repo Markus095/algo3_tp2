@@ -15,9 +15,13 @@ public class Vehiculo {
         return this.posicionVehiculo;
     }
 
-    public void reaccionarAObjeto(Objeto unObjeto) {
+    public boolean reaccionarAObjeto(Objeto unObjeto) {
         if (unObjeto.getClass().getSimpleName().equals("Pozo")){
             this.cantidadDeMovimientos = this.tipo.reaccionarAPozo( this.cantidadDeMovimientos);
+        }
+        else if (unObjeto.getClass().getSimpleName().equals("Piquete")){
+            this.cantidadDeMovimientos = this.tipo.reaccionarAPiquete( this.cantidadDeMovimientos);
+            return this.tipo.getClass().getSimpleName().equals("Moto");
         }
         else if(unObjeto.getClass().getSimpleName().equals("SorpresaFavorable")){
             this.cantidadDeMovimientos = this.tipo.reaccionarASorpresaFavorable(this.cantidadDeMovimientos);
@@ -26,10 +30,9 @@ public class Vehiculo {
             this.cantidadDeMovimientos = this.tipo.reaccionarASorpresaDesfavorable(this.cantidadDeMovimientos);
         }
         else if (unObjeto.getClass().getSimpleName().equals("SorpresaCambioVehiculo")){
-            System.out.print("entro");
             this.tipo = this.tipo.cambioVehiculo();
         }
-
+        return true;
     }
 
     public float obtenerCantidadMovimientos() {

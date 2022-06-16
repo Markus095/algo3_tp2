@@ -13,4 +13,9 @@ public class Auto extends TipoVehiculo{
     public TipoVehiculo cambioVehiculo(){
         return new CuatroPorCuatro();
     }
+
+    @Override
+    public float reaccionarAPiquete(float cantidadDeMovimientos) {
+        return cantidadDeMovimientos;
+    }
 }

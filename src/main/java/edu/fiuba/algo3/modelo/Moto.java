@@ -11,5 +11,10 @@ public class Moto extends TipoVehiculo{
     public TipoVehiculo cambioVehiculo(){
         return new Auto();
     }
+
+    @Override
+    public float reaccionarAPiquete(float cantidadDeMovimientos) {
+        return cantidadDeMovimientos + 2;
+    }
 }
 

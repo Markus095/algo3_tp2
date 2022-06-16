@@ -53,27 +53,27 @@ public class Mapa {
         return new Calle(pos1,pos2);//a corregir
     }
 
-    public void verificarCalleDerecha(Vehiculo unVehiculo) {
+    public boolean verificarCalleDerecha(Vehiculo unVehiculo) {
         Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
         Posicion posicionDestino = this.mapa[posicionVehiculo.obtenerFila()][posicionVehiculo.obtenerColumna()+1];
-        buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
+        return buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
     }
 
-    public void verificarCalleAbajo(Vehiculo unVehiculo) {
+    public boolean verificarCalleAbajo(Vehiculo unVehiculo) {
         Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
         Posicion posicionDestino = this.mapa[posicionVehiculo.obtenerFila()+1][posicionVehiculo.obtenerColumna()];
-        buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
+        return buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
     }
 
-    public void verificarCalleIzquierda(Vehiculo unVehiculo) {
+    public boolean verificarCalleIzquierda(Vehiculo unVehiculo) {
         Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
         Posicion posicionDestino = this.mapa[posicionVehiculo.obtenerFila()][posicionVehiculo.obtenerColumna()-1];
-        buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
+        return buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
     }
 
-    public void verificarCalleArriba(Vehiculo unVehiculo) {
+    public boolean verificarCalleArriba(Vehiculo unVehiculo) {
         Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
         Posicion posicionDestino = this.mapa[posicionVehiculo.obtenerFila()-1][posicionVehiculo.obtenerColumna()];
-        buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
+        return buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
     }
 }

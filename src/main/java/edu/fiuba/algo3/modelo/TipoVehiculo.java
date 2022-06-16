@@ -13,4 +13,6 @@ public abstract class TipoVehiculo {
     };
 
     public abstract TipoVehiculo cambioVehiculo();
+
+    public abstract float reaccionarAPiquete(float cantidadDeMovimientos);
 }

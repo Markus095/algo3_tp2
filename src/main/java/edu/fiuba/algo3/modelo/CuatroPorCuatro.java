@@ -18,4 +18,9 @@ public class CuatroPorCuatro extends TipoVehiculo {
     public TipoVehiculo cambioVehiculo(){
         return new Moto();
     }
+
+    @Override
+    public float reaccionarAPiquete(float cantidadDeMovimientos) {
+        return cantidadDeMovimientos;
+    }
 }
