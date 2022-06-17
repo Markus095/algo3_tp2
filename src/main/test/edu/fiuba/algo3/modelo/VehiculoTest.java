@@ -38,6 +38,7 @@ public class VehiculoTest {
         mapa.posicionarObjeto(unPozo, pos1, pos2);
 
         //Calle vacia
+        // TODO: mapa.moverDerecha(unaMoto)
         if (mapa.verificarCalleDerecha(unaMoto)) {
             unaMoto.moverDerecha();
         }
