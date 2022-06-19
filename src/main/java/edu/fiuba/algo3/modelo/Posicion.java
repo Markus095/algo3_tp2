@@ -4,30 +4,37 @@ public class Posicion {
     private int x;
     private int y;
 
-    private Objeto objeto;
-
     public Posicion(int unaFila, int unaColumna) {
         this.x = unaFila;
         this.y = unaColumna;
-        this.objeto = null;
+    }
+
+    public Posicion obtenerPosicionArriba() {
+        return new Posicion(this.x + 1, this.y);
+    }
+    public Posicion obtenerPosicionDerecha() {
+        return new Posicion(this.x, this.y + 1);
+    }
+    public Posicion obtenerPosicionIzquierda() {
+        return new Posicion(this.x, this.y - 1);
+    }
+    public Posicion obtenerPosicionAbajo() {
+        return new Posicion(this.x - 1, this.y);
+    }
+
+
+
+    public boolean esIgual(Posicion otraPosicion){
+        return (otraPosicion.obtenerFila() == this.x && otraPosicion.obtenerColumna() == this.y);
     }
 
     public int obtenerFila() {
         return this.x;
-    }
+    }// y esto lo teniamos que sacar no?
 
     public int obtenerColumna() {
         return this.y;
     }
-
-    /* public void guardarObjeto(Objeto unObjeto) {
-        this.objeto = unObjeto;
-    }
-
-    public Objeto obtenerObjeto() {
-        return this.objeto;
-    }*/
-
     public void moverAbajo() {
         this.x ++;
     }
@@ -42,7 +49,5 @@ public class Posicion {
 
     public void moverDerecha() { this.y ++; }
 
-    public boolean esIgual(Posicion otraPosicion){
-        return (otraPosicion.obtenerFila() == this.x && otraPosicion.obtenerColumna() == this.y);
-    }
+
 }

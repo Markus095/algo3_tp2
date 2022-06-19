@@ -7,3 +7,4 @@ public class Jugador {
         this.vehiculo = unVehiculo;
     }
 }
+// por ahora no lo usamos

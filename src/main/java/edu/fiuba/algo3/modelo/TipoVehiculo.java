@@ -5,10 +5,12 @@ public abstract class TipoVehiculo {
     public abstract float reaccionarAPozo( float cantidadDeMovimientos);
 
     public float reaccionarASorpresaFavorable(float cantidadDeMovimientos){
+
         return cantidadDeMovimientos * 0.8f;
     };
 
     public float reaccionarASorpresaDesfavorable(float cantidadDeMovimientos){
+        System.out.print("entra");
         return cantidadDeMovimientos * 1.25f;
     };
 

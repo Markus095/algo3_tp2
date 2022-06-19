@@ -20,12 +20,11 @@ public class Calle {
         objetos.add(unObjeto);
     }
 
-    public boolean aplicarPenalizacion(Vehiculo unVehiculo) {
-        for(Objeto unObjeto: objetos){
-            if(!unVehiculo.reaccionarAObjeto(unObjeto)) {
-                return false;
-            }
+   // es que tenemos que tener el buscador de calles
+
+    public void aplicarPenalizacion(Vehiculo unVehiculo) {
+        for(Objeto unObjeto: objetos) {
+            unVehiculo.reaccionarAObjeto(unObjeto);
         }
-        return true;
     }
 }

@@ -1,12 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+
 public class Vehiculo {
     private Posicion posicionVehiculo;
+    private Posicion posicionDestino;
     protected float cantidadDeMovimientos;
     private TipoVehiculo tipo;
 
-    public Vehiculo(TipoVehiculo unTipo, int unaFila, int unaColumna) {
-        this.posicionVehiculo = new Posicion(unaFila, unaColumna);
+    public Vehiculo(TipoVehiculo unTipo, Posicion unaPosicion) {
+        this.posicionVehiculo = unaPosicion;
         this.cantidadDeMovimientos = 0;
         this.tipo = unTipo;
     }
@@ -14,6 +17,7 @@ public class Vehiculo {
     public Posicion obtenerPosicion() {
         return this.posicionVehiculo;
     }
+
 
     public boolean reaccionarAObjeto(Objeto unObjeto) {
         if (unObjeto.getClass().getSimpleName().equals("Pozo")){
@@ -38,6 +42,7 @@ public class Vehiculo {
     public float obtenerCantidadMovimientos() {
         return this.cantidadDeMovimientos;
     }
+
 
     public void moverAbajo() {
         this.posicionVehiculo.moverAbajo();
