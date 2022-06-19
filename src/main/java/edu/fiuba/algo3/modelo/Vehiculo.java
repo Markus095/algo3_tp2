@@ -34,7 +34,7 @@ public class Vehiculo {
             this.cantidadDeMovimientos = this.tipo.reaccionarASorpresaDesfavorable(this.cantidadDeMovimientos);
         }
         else if (unObjeto.getClass().getSimpleName().equals("SorpresaCambioVehiculo")){
-            this.tipo = this.tipo.cambioVehiculo();
+            this.tipo = this.tipo.cambioVehiculo();// STRATEGY O STATE, PASAR A INFORME
         }
         return true;
     }

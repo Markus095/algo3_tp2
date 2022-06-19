@@ -7,7 +7,7 @@ public class Calle {
     Posicion pos2;
 
     public Calle(Posicion pos1, Posicion pos2) {
-        this.objetos.add(new ObjetoSinPenalizacion());
+        this.objetos.add(new ObjetoSinPenalizacion());// NULL PATERN
         this.pos1 = pos1;
         this.pos2 = pos2;
     }

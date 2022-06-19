@@ -93,6 +93,7 @@ public class Mapa {
     }
 
     public boolean verificarCalleAbajo(Vehiculo unVehiculo) {
+        // TODO: unVehiculo.moverAbajo(listaDeCalles);
         Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
         Posicion posicionDestino = this.mapa[posicionVehiculo.obtenerFila()+1][posicionVehiculo.obtenerColumna()];
         return buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
