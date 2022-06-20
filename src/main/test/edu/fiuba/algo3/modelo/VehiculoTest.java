@@ -16,9 +16,11 @@ public class VehiculoTest {
         mapa.posicionarVehiculo(unaMoto);
         mapa.asignarDestinoFinal(new Posicion(1, 3));
 
-        mapa.moverDerecha();
-        mapa.moverDerecha();
-        mapa.moverDerecha();
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        System.out.println(unaMoto.obtenerPosicion().obtenerColumna());
+
         assert(mapa.verificarFinDeJuego());
     }
 
@@ -36,9 +38,9 @@ public class VehiculoTest {
         Posicion pos2 = new Posicion(1, 2);
 
         mapa.posicionarObjeto(unPozo, pos1, pos2);
-        mapa.moverDerecha();
-        mapa.moverDerecha();
-        mapa.moverDerecha();
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
 
         assertEquals(unaMoto.obtenerCantidadMovimientos(), 6);
 
@@ -58,9 +60,10 @@ public class VehiculoTest {
 
         mapa.posicionarObjeto(unPozo, pos1, pos2);
 
-        mapa.moverDerecha();
-        mapa.moverDerecha();
-        mapa.moverDerecha();
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+
         assertEquals(unAuto.obtenerCantidadMovimientos(), 6);
 
     }
@@ -79,9 +82,9 @@ public class VehiculoTest {
 
         mapa.posicionarObjeto(unPozo, pos1, pos2);
 
-        mapa.moverDerecha();
-        mapa.moverDerecha();
-        mapa.moverDerecha();
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
 
         assertEquals(una4x4.obtenerCantidadMovimientos(), 3);
 
@@ -111,9 +114,9 @@ public class VehiculoTest {
 
         mapa.posicionarObjeto(unPozo, pos5, pos6);
 
-        mapa.moverDerecha();
-        mapa.moverDerecha();
-        mapa.moverDerecha();
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
 
         assertEquals(una4x4.obtenerCantidadMovimientos(), 5);
 
@@ -143,9 +146,9 @@ public class VehiculoTest {
 
         mapa.posicionarObjeto(unPozo, pos5, pos6);
 
-        mapa.moverDerecha();
-        mapa.moverDerecha();
-        mapa.moverDerecha();
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
 
         assertEquals(unAuto.obtenerCantidadMovimientos(), 12);
 
@@ -167,10 +170,10 @@ public class VehiculoTest {
         mapa.posicionarObjeto(sorpresa,pos1, pos2);
 //revisar
         for (int i = 0; i < 4; i++) {
-            mapa.moverDerecha();
+            mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
         }
         for (int j  = 0; j < 6; j++) {
-            mapa.moverAbajo();
+            mapa.moverVehiculoEn(DireccionAbajo.getDireccionAbajo());
         }
 
         assertEquals(vehiculo.obtenerCantidadMovimientos(), 8);
@@ -192,10 +195,10 @@ public class VehiculoTest {
         mapa.posicionarObjeto(sorpresa, pos1, pos2);
 
         for (int i = 0; i < 4; i++) {
-            mapa.moverDerecha();
+            mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
         }
         for (int j  = 0; j < 4; j++) {
-            mapa.moverAbajo();
+            mapa.moverVehiculoEn(DireccionAbajo.getDireccionAbajo());
         }
 
         assertEquals(vehiculo.obtenerCantidadMovimientos(), 10);
@@ -217,10 +220,10 @@ public class VehiculoTest {
         mapa.posicionarObjeto(unaSorpresa, pos1, pos2);
 
         for (int i = 0; i < 4; i++) {
-            mapa.moverIzquierda();
+            mapa.moverVehiculoEn(DireccionIzquierda.getDireccionIzquierda());
         }
         for (int j  = 0; j < 4; j++) {
-            mapa.moverArriba();
+            mapa.moverVehiculoEn(DireccionArriba.getDireccionArriba());
         }
 
         assert(unVehiculo.obtenerTipo().getClass().getSimpleName().equals("Auto"));
@@ -230,29 +233,26 @@ public class VehiculoTest {
     @Test
     public void AutoAtraviesaLaCiudadYSeEncuentraUnPiquete() {
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo unVehiculo = new Vehiculo(new Auto(), new Posicion(9, 9));
+        Vehiculo unVehiculo = new Vehiculo(new Auto(), new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo); //TODO: pasarle la posicion del vehiculo y que mapa la tenga como atributo
 
         Piquete unPiquete = new Piquete();
 
-        Posicion pos1 = new Posicion(6,5);
-        Posicion pos2 = new Posicion(5, 5);
+        Posicion pos1 = new Posicion(0,2);
+        Posicion pos2 = new Posicion(0, 3);
 
         mapa.posicionarObjeto(unPiquete, pos1, pos2);
 
-        for (int i = 0; i < 4; i++) {
-            mapa.moverIzquierda();
+        for (int i = 0; i < 2; i++) {
+            mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
         }
-        for (int j  = 0; j < 2; j++) {
-            mapa.moverArriba();
-        }
+
         Posicion ultimaPosicion = new Posicion(unVehiculo.obtenerPosicion().obtenerFila(), unVehiculo.obtenerPosicion().obtenerColumna());
 
-        System.out.println();
 
-        mapa.moverArriba();
-        mapa.moverArriba();
-        mapa.moverArriba();
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
 
         assert(unVehiculo.obtenerPosicion().esIgual(ultimaPosicion));
     }

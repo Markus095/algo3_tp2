@@ -61,54 +61,8 @@ public class Mapa {
         return new Calle(pos1,pos2);//a corregir
     }
 
-
-    public void moverDerecha() {
-        buscarCalle(this.vehiculo.obtenerPosicion(), this.vehiculo.obtenerPosicion().obtenerPosicionDerecha()).aplicarPenalizacion(this.vehiculo);
-        this.vehiculo.moverDerecha();
-    }
-    public void moverIzquierda() {
-        buscarCalle(this.vehiculo.obtenerPosicion(), this.vehiculo.obtenerPosicion().obtenerPosicionIzquierda()).aplicarPenalizacion(this.vehiculo);
-        this.vehiculo.moverIzquierda();
-    }
-    public void moverArriba() {
-        buscarCalle(this.vehiculo.obtenerPosicion(), this.vehiculo.obtenerPosicion().obtenerPosicionArriba()).aplicarPenalizacion(this.vehiculo);
-        this.vehiculo.moverArriba();
-    }
-    public void moverAbajo() {
-        buscarCalle(this.vehiculo.obtenerPosicion(), this.vehiculo.obtenerPosicion().obtenerPosicionAbajo()).aplicarPenalizacion(this.vehiculo);
-        this.vehiculo.moverAbajo();
+    public void moverVehiculoEn(Direccion unaDireccion) {
+        this.vehiculo.moverseEn(this.calles, unaDireccion);
     }
 
-
-
-
-
-
-    /*
-
-    public boolean verificarCalleDerecha(Vehiculo unVehiculo) {
-        Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
-        Posicion posicionDestino = this.mapa[posicionVehiculo.obtenerFila()][posicionVehiculo.obtenerColumna()+1];
-        return buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
-    }
-
-    public boolean verificarCalleAbajo(Vehiculo unVehiculo) {
-        // TODO: unVehiculo.moverAbajo(listaDeCalles);
-        Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
-        Posicion posicionDestino = this.mapa[posicionVehiculo.obtenerFila()+1][posicionVehiculo.obtenerColumna()];
-        return buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
-    }
-
-    public boolean verificarCalleIzquierda(Vehiculo unVehiculo) {
-        Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
-        Posicion posicionDestino = this.mapa[posicionVehiculo.obtenerFila()][posicionVehiculo.obtenerColumna()-1];
-        return buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
-    }
-
-    public boolean verificarCalleArriba(Vehiculo unVehiculo) {
-        Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
-        Posicion posicionDestino = this.mapa[posicionVehiculo.obtenerFila()-1][posicionVehiculo.obtenerColumna()];
-        return buscarCalle(posicionVehiculo, posicionDestino).aplicarPenalizacion(unVehiculo);
-    }
-*/
 }

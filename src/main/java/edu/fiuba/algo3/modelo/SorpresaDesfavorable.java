@@ -8,7 +8,7 @@ public class SorpresaDesfavorable extends Objeto{
     }
 
     @Override
-    public int reaccionar(int movimientos, TipoVehiculo unTipo) {
+    public int reaccionar(int movimientos, TipoVehiculo unTipo, Posicion posicionVehiculo ,Direccion unaDireccion, Movimiento unMovimiento) {
         return unTipo.reaccionarASorpresaDesfavorable(movimientos);
     }
 }

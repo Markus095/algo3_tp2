@@ -19,20 +19,34 @@ public class Vehiculo {
     }
 
 
-    public void modificarMovimientos(Objeto unObjeto) {
-        this.cantidadDeMovimientos = unObjeto.reaccionar(this.cantidadDeMovimientos, this.tipo);
+    public void modificarMovimientos(Objeto unObjeto, Direccion unaDireccion, Movimiento movimiento) {
+        this.cantidadDeMovimientos = unObjeto.reaccionar(this.cantidadDeMovimientos, this.tipo, this.posicionVehiculo, unaDireccion, movimiento);
 
     }
 
     public float obtenerCantidadMovimientos() {
         return this.cantidadDeMovimientos;
     }
+    private Calle buscarCalle(Posicion pos1, Posicion pos2, ArrayList<Calle> calles) {
+        // este metodo se puede implementar bien con streams
+        for (Calle calle : calles) {
+            if (calle.vaDesdeHasta(pos1, pos2) || calle.vaDesdeHasta(pos2,pos1)) return calle;
+        }
+        return new Calle(pos1,pos2);//a corregir
+    }
 
-
+    public void moverseEn(ArrayList<Calle> calles, Direccion unaDireccion) {
+        Calle calle = buscarCalle(this.posicionVehiculo, unaDireccion.obtenerPosicion(this.posicionVehiculo), calles);
+        calle.aplicarPenalizacion(this, unaDireccion, this.posicionVehiculo);
+        //unaDireccion.mover(this.posicionVehiculo);
+        this.cantidadDeMovimientos++;
+    }
+ /*
     public void moverAbajo() {
         this.posicionVehiculo.moverAbajo();
         this.cantidadDeMovimientos++;
     }
+
 
     public void moverArriba() {
         this.posicionVehiculo.moverArriba();
@@ -48,7 +62,7 @@ public class Vehiculo {
         this.posicionVehiculo.moverDerecha();
         this.cantidadDeMovimientos++;
     }
-
+ */
     public TipoVehiculo obtenerTipo() {
         return this.tipo;
     }
@@ -60,4 +74,6 @@ public class Vehiculo {
     public boolean puedeAvanzar(Objeto unObjeto) {
         return unObjeto.permitePaso(this.tipo);
     }
+
+
 }

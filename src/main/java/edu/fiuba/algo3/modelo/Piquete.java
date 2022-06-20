@@ -7,14 +7,10 @@ public class Piquete extends  Objeto {
 }
 
     @Override
-    public int reaccionar(int movimientos, TipoVehiculo unTipo) {
-        return unTipo.reaccionarAPiquete(movimientos);
+    public int reaccionar(int movimientos, TipoVehiculo unTipo, Posicion posicionVehiculo ,Direccion unaDireccion, Movimiento unMovimiento) {
+        return unTipo.reaccionarAPiquete(movimientos, unMovimiento);
     }
 
-    @Override
-    public boolean permitePaso(TipoVehiculo unTipo) {
-        return unTipo.avanzo();
-    }
 }
 
 

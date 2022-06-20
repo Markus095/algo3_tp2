@@ -4,7 +4,7 @@ public class Moto extends TipoVehiculo{
     public Moto() {};
 
     @Override
-    public int reaccionarAPozo(int cantidadDeMovimientos) {
+    public int reaccionarAPozo(int cantidadDeMovimientos, Movimiento unMovimiento) {
         return cantidadDeMovimientos + 3;
     }
     @Override
@@ -13,13 +13,10 @@ public class Moto extends TipoVehiculo{
     }
 
     @Override
-    public int reaccionarAPiquete(int cantidadDeMovimientos) {
+    public int reaccionarAPiquete(int cantidadDeMovimientos, Movimiento movimiento) {
         return cantidadDeMovimientos + 2;
     }
 
-    @Override
-    public boolean avanzo() {
-        return false;
-    }
+
 }
 

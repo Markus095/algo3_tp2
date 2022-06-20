@@ -5,7 +5,7 @@ public abstract class Objeto {
         return true;
     }
 
-    public abstract int reaccionar(int cantidadDeMovimientos, TipoVehiculo unTipo);
+    public abstract int reaccionar(int movimientos, TipoVehiculo unTipo, Posicion posicionVehiculo ,Direccion unaDireccion, Movimiento unMovimiento);
 
     public void verificarTipo(Vehiculo unVehiculo) {}
 }

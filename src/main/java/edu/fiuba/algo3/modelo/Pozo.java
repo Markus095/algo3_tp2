@@ -6,8 +6,8 @@ public class Pozo extends Objeto {
     public Pozo() {
         this.penalizacion = 3;
     }
-    public int reaccionar(int movimientos, TipoVehiculo unTipo) {
-        return unTipo.reaccionarAPozo(movimientos);
+    public int reaccionar(int movimientos, TipoVehiculo unTipo, Posicion posicionVehiculo ,Direccion unaDireccion, Movimiento unMovimiento) {
+        return unTipo.reaccionarAPozo(movimientos, unMovimiento);
     }
 
 }

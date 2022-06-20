@@ -8,8 +8,8 @@ public class ObjetoSinPenalizacion extends Objeto{
     }
 
     @Override
-    public int reaccionar(int cantidadDeMovimientos, TipoVehiculo unTipo) {
-        cantidadDeMovimientos += this.penalizacion;
-        return cantidadDeMovimientos;
+    public int reaccionar(int movimientos, TipoVehiculo unTipo, Posicion posicionVehiculo ,Direccion unaDireccion, Movimiento unMovimiento) {
+        movimientos += this.penalizacion;
+        return movimientos;
     }
 }

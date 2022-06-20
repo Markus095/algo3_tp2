@@ -7,7 +7,7 @@ public class CuatroPorCuatro extends TipoVehiculo {
     }
 
     @Override
-    public int reaccionarAPozo(int cantidadDeMovimientos) {
+    public int reaccionarAPozo(int cantidadDeMovimientos, Movimiento unMovimiento) {
         this.cantidadPozos ++;
         if (this.cantidadPozos >=  3) {
             return cantidadDeMovimientos + 2;
@@ -20,7 +20,7 @@ public class CuatroPorCuatro extends TipoVehiculo {
     }
 
     @Override
-    public int reaccionarAPiquete(int cantidadDeMovimientos) {
+    public int reaccionarAPiquete(int cantidadDeMovimientos, Movimiento movimiento) {
         return cantidadDeMovimientos;
     }
 }

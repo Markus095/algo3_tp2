@@ -6,7 +6,8 @@ public class Auto extends TipoVehiculo{
 
 
     @Override
-    public int reaccionarAPozo(int cantidadDeMovimientos) {
+    public int reaccionarAPozo(int cantidadDeMovimientos, Movimiento unMovimiento) {
+        unMovimiento.puedeAvanzar();
         return cantidadDeMovimientos + 3;
     }
     @Override
@@ -15,7 +16,8 @@ public class Auto extends TipoVehiculo{
     }
 
     @Override
-    public int reaccionarAPiquete(int cantidadDeMovimientos) {
+    public int reaccionarAPiquete(int cantidadDeMovimientos, Movimiento unMovimiento) {
+        unMovimiento.noPuedeAvanzar();
         return cantidadDeMovimientos;
     }
 }

@@ -20,15 +20,17 @@ public class Calle {
         objetos.add(unObjeto);
     }
 
-    public void aplicarPenalizacion(Vehiculo unVehiculo) {
+    public void aplicarPenalizacion(Vehiculo unVehiculo, Direccion unaDireccion, Posicion posicionVehiculo) {
+        Movimiento movimiento = new Movimiento(posicionVehiculo, unaDireccion);
         for (Objeto unObjeto : this.objetos){
-            reaccionarAObjeto(unVehiculo, unObjeto);
+            reaccionarAObjeto(unVehiculo, unObjeto, unaDireccion, movimiento);
         }
+        movimiento.moverVehiculo();
     }
 
 
-    private void reaccionarAObjeto(Vehiculo unVehiculo, Objeto unObjeto) {
-        unVehiculo.modificarMovimientos(unObjeto);
+    private void reaccionarAObjeto(Vehiculo unVehiculo, Objeto unObjeto, Direccion unaDireccion, Movimiento movimiento) {
+        unVehiculo.modificarMovimientos(unObjeto, unaDireccion, movimiento);
         unObjeto.verificarTipo(unVehiculo);
     }
 
