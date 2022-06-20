@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class SorpresaFavorable extends Objeto {
+public class SorpresaFavorable extends ObjetoCalle {
     private float valor;
 
     public SorpresaFavorable() {
@@ -8,7 +8,7 @@ public class SorpresaFavorable extends Objeto {
     }
 
     @Override
-    public int reaccionar(int movimientos, TipoVehiculo unTipo, Posicion posicionVehiculo ,Direccion unaDireccion, Movimiento unMovimiento) {
+    public int reaccionar(int movimientos, TipoVehiculo unTipo, Movimiento unMovimiento) {
         return unTipo.reaccionarASorpresaFavorable(movimientos);
     }
 }

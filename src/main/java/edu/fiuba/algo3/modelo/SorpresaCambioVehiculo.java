@@ -1,11 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-public class SorpresaCambioVehiculo extends Objeto{
+public class SorpresaCambioVehiculo extends ObjetoCalle {
     public SorpresaCambioVehiculo(){
     }
 
     @Override
-    public int reaccionar(int movimientos, TipoVehiculo unTipo, Posicion posicionVehiculo ,Direccion unaDireccion, Movimiento unMovimiento) {
+    public int reaccionar(int movimientos, TipoVehiculo unTipo, Movimiento unMovimiento) {
         return movimientos;
     }
 

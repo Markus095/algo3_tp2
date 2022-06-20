@@ -9,7 +9,7 @@ public class Movimiento {
         this.direccion = unaDireccion;
     }
 
-    public void puedeAvanzar() {}
+    public void puedeAvanzar() {}//no se si es necesario
     public void noPuedeAvanzar() {
         this.sePermiteAvanzar = false;
     }

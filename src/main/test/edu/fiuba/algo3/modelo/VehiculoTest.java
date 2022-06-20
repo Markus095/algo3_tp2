@@ -256,58 +256,61 @@ public class VehiculoTest {
 
         assert(unVehiculo.obtenerPosicion().esIgual(ultimaPosicion));
     }
-/*
+
     @Test
     public void CuatroPorCuatroAtraviesaLaCiudadYSeEncuentraUnPiquete() {
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo unVehiculo = new Vehiculo(new CuatroPorCuatro(), 9, 9);
+        Vehiculo unVehiculo = new Vehiculo(new CuatroPorCuatro(), new Posicion(0, 0));
+        mapa.posicionarVehiculo(unVehiculo); //TODO: pasarle la posicion del vehiculo y que mapa la tenga como atributo
 
         Piquete unPiquete = new Piquete();
 
-        Posicion pos1 = new Posicion(6,5);
-        Posicion pos2 = new Posicion(5, 5);
+        Posicion pos1 = new Posicion(0,2);
+        Posicion pos2 = new Posicion(0, 3);
 
         mapa.posicionarObjeto(unPiquete, pos1, pos2);
 
-        for (int i = 0; i < 4; i++) {
-            if (mapa.verificarCalleIzquierda(unVehiculo)) {
-                unVehiculo.moverIzquierda();
-            }
+        for (int i = 0; i < 2; i++) {
+            mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
         }
-        for (int j  = 0; j < 3; j++) {
-            if (mapa.verificarCalleArriba(unVehiculo)) {
-                unVehiculo.moverArriba();
-            }
-        }
-        assertFalse(mapa.verificarCalleArriba(unVehiculo));
+
+        Posicion ultimaPosicion = new Posicion(unVehiculo.obtenerPosicion().obtenerFila(), unVehiculo.obtenerPosicion().obtenerColumna());
+
+
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+
+        assert(unVehiculo.obtenerPosicion().esIgual(ultimaPosicion));
     }
 
     @Test
     public void MotoAtraviesaLaCiudadYSeEncuentraUnPiquete() {
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo unVehiculo = new Vehiculo(new Moto(), 9, 9);
+        Vehiculo unVehiculo = new Vehiculo(new Moto(), new Posicion(0, 0));
+        mapa.posicionarVehiculo(unVehiculo); //TODO: pasarle la posicion del vehiculo y que mapa la tenga como atributo
 
         Piquete unPiquete = new Piquete();
 
-        Posicion pos1 = new Posicion(6,5);
-        Posicion pos2 = new Posicion(5, 5);
+        Posicion pos1 = new Posicion(0, 2);
+        Posicion pos2 = new Posicion(0, 3);
 
         mapa.posicionarObjeto(unPiquete, pos1, pos2);
 
-        for (int i = 0; i < 4; i++) {
-            if (mapa.verificarCalleIzquierda(unVehiculo)) {
-                unVehiculo.moverIzquierda();
-            }
+        for (int i = 0; i < 2; i++) {
+            mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
         }
-        for (int j  = 0; j < 3; j++) {
-            if (mapa.verificarCalleArriba(unVehiculo)) {
-                unVehiculo.moverArriba();
-            }
-        }
-        assert(mapa.verificarCalleArriba(unVehiculo));
+
+        Posicion ultimaPosicion = new Posicion(unVehiculo.obtenerPosicion().obtenerFila(), unVehiculo.obtenerPosicion().obtenerColumna());
+
+
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+
+        assert (!unVehiculo.obtenerPosicion().esIgual(ultimaPosicion) && unVehiculo.obtenerCantidadMovimientos() == 7);
     }
 
- */
 }
 
 

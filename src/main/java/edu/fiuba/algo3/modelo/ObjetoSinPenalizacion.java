@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class ObjetoSinPenalizacion extends Objeto{
+public class ObjetoSinPenalizacion extends ObjetoCalle {
     int penalizacion;
 
     public ObjetoSinPenalizacion() {
@@ -8,7 +8,7 @@ public class ObjetoSinPenalizacion extends Objeto{
     }
 
     @Override
-    public int reaccionar(int movimientos, TipoVehiculo unTipo, Posicion posicionVehiculo ,Direccion unaDireccion, Movimiento unMovimiento) {
+    public int reaccionar(int movimientos, TipoVehiculo unTipo, Movimiento unMovimiento) {
         movimientos += this.penalizacion;
         return movimientos;
     }

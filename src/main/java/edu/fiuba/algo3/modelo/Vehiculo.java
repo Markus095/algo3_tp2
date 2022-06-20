@@ -18,10 +18,8 @@ public class Vehiculo {
         return this.posicionVehiculo;
     }
 
-
-    public void modificarMovimientos(Objeto unObjeto, Direccion unaDireccion, Movimiento movimiento) {
-        this.cantidadDeMovimientos = unObjeto.reaccionar(this.cantidadDeMovimientos, this.tipo, this.posicionVehiculo, unaDireccion, movimiento);
-
+    public void modificarMovimientos(ObjetoCalle unObjetoCalle, Direccion unaDireccion, Movimiento movimiento) {
+        this.cantidadDeMovimientos = unObjetoCalle.reaccionar(this.cantidadDeMovimientos, this.tipo, movimiento);
     }
 
     public float obtenerCantidadMovimientos() {
@@ -38,31 +36,9 @@ public class Vehiculo {
     public void moverseEn(ArrayList<Calle> calles, Direccion unaDireccion) {
         Calle calle = buscarCalle(this.posicionVehiculo, unaDireccion.obtenerPosicion(this.posicionVehiculo), calles);
         calle.aplicarPenalizacion(this, unaDireccion, this.posicionVehiculo);
-        //unaDireccion.mover(this.posicionVehiculo);
-        this.cantidadDeMovimientos++;
-    }
- /*
-    public void moverAbajo() {
-        this.posicionVehiculo.moverAbajo();
         this.cantidadDeMovimientos++;
     }
 
-
-    public void moverArriba() {
-        this.posicionVehiculo.moverArriba();
-        this.cantidadDeMovimientos++;
-    }
-
-    public void moverIzquierda() {
-        this.posicionVehiculo.moverIzquierda();
-        this.cantidadDeMovimientos++;
-    }
-
-    public void moverDerecha() {
-        this.posicionVehiculo.moverDerecha();
-        this.cantidadDeMovimientos++;
-    }
- */
     public TipoVehiculo obtenerTipo() {
         return this.tipo;
     }
@@ -71,9 +47,7 @@ public class Vehiculo {
         this.tipo = this.tipo.cambioVehiculo();
     }
 
-    public boolean puedeAvanzar(Objeto unObjeto) {
-        return unObjeto.permitePaso(this.tipo);
+    public boolean verificarPosicionFinDeJuego(Posicion posicionDestino) {
+        return(this.posicionVehiculo.esIgual(posicionDestino));
     }
-
-
 }

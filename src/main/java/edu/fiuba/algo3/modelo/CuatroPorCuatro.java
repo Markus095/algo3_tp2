@@ -20,7 +20,8 @@ public class CuatroPorCuatro extends TipoVehiculo {
     }
 
     @Override
-    public int reaccionarAPiquete(int cantidadDeMovimientos, Movimiento movimiento) {
+    public int reaccionarAPiquete(int cantidadDeMovimientos, Movimiento unMovimiento) {
+        unMovimiento.noPuedeAvanzar();
         return cantidadDeMovimientos;
     }
 }

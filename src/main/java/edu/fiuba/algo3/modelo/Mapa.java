@@ -5,8 +5,6 @@ import java.util.ArrayList;
 public class Mapa {
     private int cantidadFilas;
     private  int cantidadColumnas;
-    private boolean seMovio;
-
     private  Vehiculo vehiculo;
     private Posicion posicionDestino;
     private Posicion [][] mapa;
@@ -35,22 +33,13 @@ public class Mapa {
         return 0;
     }
 
-    public Posicion obtenerPosicion(int unaFila, int unaColumna) {
-        return this.mapa[unaFila][unaColumna];
-    }
-
-    public Posicion obtenerPosicionLlegada() {
-        return this.posicionDestino;
-    }
-
-
     public boolean verificarFinDeJuego() {
-        return(this.vehiculo.obtenerPosicion().esIgual(this.posicionDestino));
+        return(this.vehiculo.verificarPosicionFinDeJuego(this.posicionDestino));
     }
 
-    public void posicionarObjeto(Objeto unObjeto, Posicion pos1, Posicion pos2) {
+    public void posicionarObjeto(ObjetoCalle unObjetoCalle, Posicion pos1, Posicion pos2) {
         Calle calle = buscarCalle(pos1, pos2);
-        calle.guardarObjeto(unObjeto);
+        calle.guardarObjeto(unObjetoCalle);
     }
 //quizas hay que hacer un objeto calles?
     private Calle buscarCalle(Posicion pos1, Posicion pos2) {
