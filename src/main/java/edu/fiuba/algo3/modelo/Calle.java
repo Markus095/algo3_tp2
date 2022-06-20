@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 
 public class Calle {
-    private ArrayList<Objeto> objetos = new ArrayList<>();
+    private ArrayList<Objeto> objetos = new ArrayList();
     Posicion pos1;
     Posicion pos2;
 
@@ -20,11 +20,29 @@ public class Calle {
         objetos.add(unObjeto);
     }
 
-   // es que tenemos que tener el buscador de calles
+    public boolean aplicarPenalizacion(Vehiculo unVehiculo) {
+        boolean permitidoAvanzar = false;
+        int i = 0;
 
-    public void aplicarPenalizacion(Vehiculo unVehiculo) {
-        for(Objeto unObjeto: objetos) {
-            unVehiculo.reaccionarAObjeto(unObjeto);
+        while(permitidoAvanzar != true || i <= objetos.size()) {
+            reaccionarAObjeto(unVehiculo, this.objetos.get(i));
+            permitidoAvanzar = puedeAvanzar(unVehiculo, this.objetos.get(i));
+            i ++;
+
         }
+
+        return permitidoAvanzar;
+
+    }
+
+
+    private void reaccionarAObjeto(Vehiculo unVehiculo, Objeto unObjeto) {
+        unVehiculo.modificarMovimientos(unObjeto);
+        unObjeto.verificarTipo(unVehiculo);
+    }
+
+    private boolean puedeAvanzar(Vehiculo unVehiculo, Objeto unObjeto) {
+        return unVehiculo.puedeAvanzar(unObjeto);
     }
 }
+

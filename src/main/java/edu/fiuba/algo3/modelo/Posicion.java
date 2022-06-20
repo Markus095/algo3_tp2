@@ -10,7 +10,7 @@ public class Posicion {
     }
 
     public Posicion obtenerPosicionArriba() {
-        return new Posicion(this.x + 1, this.y);
+        return new Posicion(this.x - 1, this.y);
     }
     public Posicion obtenerPosicionDerecha() {
         return new Posicion(this.x, this.y + 1);
@@ -19,7 +19,7 @@ public class Posicion {
         return new Posicion(this.x, this.y - 1);
     }
     public Posicion obtenerPosicionAbajo() {
-        return new Posicion(this.x - 1, this.y);
+        return new Posicion(this.x + 1, this.y);
     }
 
 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Vehiculo {
     private Posicion posicionVehiculo;
     private Posicion posicionDestino;
-    protected float cantidadDeMovimientos;
+    protected int cantidadDeMovimientos;
     private TipoVehiculo tipo;
 
     public Vehiculo(TipoVehiculo unTipo, Posicion unaPosicion) {
@@ -19,24 +19,9 @@ public class Vehiculo {
     }
 
 
-    public boolean reaccionarAObjeto(Objeto unObjeto) {
-        if (unObjeto.getClass().getSimpleName().equals("Pozo")){
-            this.cantidadDeMovimientos = this.tipo.reaccionarAPozo( this.cantidadDeMovimientos);
-        }
-        else if (unObjeto.getClass().getSimpleName().equals("Piquete")){
-            this.cantidadDeMovimientos = this.tipo.reaccionarAPiquete( this.cantidadDeMovimientos);
-            return this.tipo.getClass().getSimpleName().equals("Moto");
-        }
-        else if(unObjeto.getClass().getSimpleName().equals("SorpresaFavorable")){
-            this.cantidadDeMovimientos = this.tipo.reaccionarASorpresaFavorable(this.cantidadDeMovimientos);
-        }
-        else if (unObjeto.getClass().getSimpleName().equals("SorpresaDesfavorable")){
-            this.cantidadDeMovimientos = this.tipo.reaccionarASorpresaDesfavorable(this.cantidadDeMovimientos);
-        }
-        else if (unObjeto.getClass().getSimpleName().equals("SorpresaCambioVehiculo")){
-            this.tipo = this.tipo.cambioVehiculo();// STRATEGY O STATE, PASAR A INFORME
-        }
-        return true;
+    public void modificarMovimientos(Objeto unObjeto) {
+        this.cantidadDeMovimientos = unObjeto.reaccionar(this.cantidadDeMovimientos, this.tipo);
+
     }
 
     public float obtenerCantidadMovimientos() {
@@ -44,27 +29,43 @@ public class Vehiculo {
     }
 
 
-    public void moverAbajo() {
-        this.posicionVehiculo.moverAbajo();
-        this.cantidadDeMovimientos++;
+    public void moverAbajo(boolean estado) {
+        if (estado == true) {
+            this.posicionVehiculo.moverAbajo();
+            this.cantidadDeMovimientos++;
+        }
     }
 
-    public void moverArriba() {
-        this.posicionVehiculo.moverArriba();
-        this.cantidadDeMovimientos++;
+    public void moverArriba(boolean estado) {
+        if (estado == true) {
+            this.posicionVehiculo.moverArriba();
+            this.cantidadDeMovimientos++;
+        }
     }
 
-    public void moverIzquierda() {
-        this.posicionVehiculo.moverIzquierda();
-        this.cantidadDeMovimientos++;
+    public void moverIzquierda(boolean estado) {
+        if (estado == true) {
+            this.posicionVehiculo.moverIzquierda();
+            this.cantidadDeMovimientos++;
+        }
     }
 
-    public void moverDerecha() {
-        this.posicionVehiculo.moverDerecha();
-        this.cantidadDeMovimientos++;
+    public void moverDerecha(boolean estado) {
+        if (estado == true) {
+            this.posicionVehiculo.moverDerecha();
+            this.cantidadDeMovimientos++;
+        }
     }
 
     public TipoVehiculo obtenerTipo() {
         return this.tipo;
+    }
+
+    public void cambioTipoDeVehiculo() {
+        this.tipo = this.tipo.cambioVehiculo();
+    }
+
+    public boolean puedeAvanzar(Objeto unObjeto) {
+        return unObjeto.permitePaso(this.tipo);
     }
 }

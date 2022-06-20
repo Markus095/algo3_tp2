@@ -173,7 +173,7 @@ public class VehiculoTest {
             mapa.moverAbajo();
         }
 
-        assertEquals(vehiculo.obtenerCantidadMovimientos(), 8.200001, 0.01);
+        assertEquals(vehiculo.obtenerCantidadMovimientos(), 8);
     }
 
     @Test
@@ -198,14 +198,16 @@ public class VehiculoTest {
             mapa.moverAbajo();
         }
 
-        assertEquals(vehiculo.obtenerCantidadMovimientos(), 9.75, 0.01);
+        assertEquals(vehiculo.obtenerCantidadMovimientos(), 10);
     }
-   /*
+
+
     //Un vehículo atraviesa la ciudad y encuentra una sorpresa cambio de vehículo.
     @Test
     public void unMotoAtraviesaLaCiudadYSeEncuentraConUnaSorpresaCambioDeVehiculo(){
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo unVehiculo = new Vehiculo(new Moto(), 9, 9);
+        Vehiculo unVehiculo = new Vehiculo(new Moto(), new Posicion(9, 9));
+        mapa.posicionarVehiculo(unVehiculo);
 
         SorpresaCambioVehiculo unaSorpresa = new SorpresaCambioVehiculo();
 
@@ -215,15 +217,12 @@ public class VehiculoTest {
         mapa.posicionarObjeto(unaSorpresa, pos1, pos2);
 
         for (int i = 0; i < 4; i++) {
-            if (mapa.verificarCalleIzquierda(unVehiculo)) {
-                unVehiculo.moverIzquierda();
-            }
+            mapa.moverIzquierda();
         }
         for (int j  = 0; j < 4; j++) {
-            if (mapa.verificarCalleArriba(unVehiculo)) {
-                unVehiculo.moverArriba();
-            }
+            mapa.moverArriba();
         }
+
         assert(unVehiculo.obtenerTipo().getClass().getSimpleName().equals("Auto"));
 
     }
@@ -231,7 +230,8 @@ public class VehiculoTest {
     @Test
     public void AutoAtraviesaLaCiudadYSeEncuentraUnPiquete() {
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo unVehiculo = new Vehiculo(new Auto(), 9, 9);
+        Vehiculo unVehiculo = new Vehiculo(new Auto(), new Posicion(9, 9));
+        mapa.posicionarVehiculo(unVehiculo); //TODO: pasarle la posicion del vehiculo y que mapa la tenga como atributo
 
         Piquete unPiquete = new Piquete();
 
@@ -241,18 +241,22 @@ public class VehiculoTest {
         mapa.posicionarObjeto(unPiquete, pos1, pos2);
 
         for (int i = 0; i < 4; i++) {
-            if (mapa.verificarCalleIzquierda(unVehiculo)) {
-                unVehiculo.moverIzquierda();
-            }
+            mapa.moverIzquierda();
         }
-        for (int j  = 0; j < 3; j++) {
-            if (mapa.verificarCalleArriba(unVehiculo)) {
-                unVehiculo.moverArriba();
-            }
+        for (int j  = 0; j < 2; j++) {
+            mapa.moverArriba();
         }
-        assertFalse(mapa.verificarCalleArriba(unVehiculo));
-    }
+        Posicion ultimaPosicion = new Posicion(unVehiculo.obtenerPosicion().obtenerFila(), unVehiculo.obtenerPosicion().obtenerColumna());
 
+        System.out.println();
+
+        mapa.moverArriba();
+        mapa.moverArriba();
+        mapa.moverArriba();
+
+        assert(unVehiculo.obtenerPosicion().esIgual(ultimaPosicion));
+    }
+/*
     @Test
     public void CuatroPorCuatroAtraviesaLaCiudadYSeEncuentraUnPiquete() {
         Mapa mapa = new Mapa(14, 14);

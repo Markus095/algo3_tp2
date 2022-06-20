@@ -8,8 +8,7 @@ public class SorpresaDesfavorable extends Objeto{
     }
 
     @Override
-    public int obtenerPenalizacion(int movimientos) {
-        movimientos = (int) (movimientos * (this.valor + 1)) + 1;
-        return movimientos;
+    public int reaccionar(int movimientos, TipoVehiculo unTipo) {
+        return unTipo.reaccionarASorpresaDesfavorable(movimientos);
     }
 }

@@ -59,24 +59,24 @@ public class Mapa {
             if (calle.vaDesdeHasta(pos1, pos2) || calle.vaDesdeHasta(pos2,pos1)) return calle;
         }
         return new Calle(pos1,pos2);//a corregir
-    } //es que a donde pongo buscar calle
+    }
 
 
     public void moverDerecha() {
-        buscarCalle(this.vehiculo.obtenerPosicion(), this.vehiculo.obtenerPosicion().obtenerPosicionDerecha()).aplicarPenalizacion(this.vehiculo);
-        this.vehiculo.moverDerecha();
+        boolean estado = buscarCalle(this.vehiculo.obtenerPosicion(), this.vehiculo.obtenerPosicion().obtenerPosicionDerecha()).aplicarPenalizacion(this.vehiculo);
+        this.vehiculo.moverDerecha(estado);
     }
     public void moverIzquierda() {
-        buscarCalle(this.vehiculo.obtenerPosicion(), this.vehiculo.obtenerPosicion().obtenerPosicionIzquierda()).aplicarPenalizacion(this.vehiculo);
-        this.vehiculo.moverIzquierda();
+        boolean estado = buscarCalle(this.vehiculo.obtenerPosicion(), this.vehiculo.obtenerPosicion().obtenerPosicionIzquierda()).aplicarPenalizacion(this.vehiculo);
+        this.vehiculo.moverIzquierda(estado);
     }
     public void moverArriba() {
-        buscarCalle(this.vehiculo.obtenerPosicion(), this.vehiculo.obtenerPosicion().obtenerPosicionArriba()).aplicarPenalizacion(this.vehiculo);
-        this.vehiculo.moverArriba();
+        boolean estado = buscarCalle(this.vehiculo.obtenerPosicion(), this.vehiculo.obtenerPosicion().obtenerPosicionArriba()).aplicarPenalizacion(this.vehiculo);
+        this.vehiculo.moverArriba(estado);
     }
     public void moverAbajo() {
-        buscarCalle(this.vehiculo.obtenerPosicion(), this.vehiculo.obtenerPosicion().obtenerPosicionAbajo()).aplicarPenalizacion(this.vehiculo);
-        this.vehiculo.moverAbajo();
+        boolean estado = buscarCalle(this.vehiculo.obtenerPosicion(), this.vehiculo.obtenerPosicion().obtenerPosicionAbajo()).aplicarPenalizacion(this.vehiculo);
+        this.vehiculo.moverAbajo(estado);
     }
 
 
