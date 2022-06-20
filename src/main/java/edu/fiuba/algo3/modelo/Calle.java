@@ -24,7 +24,8 @@ public class Calle {
         boolean permitidoAvanzar = false;
         int i = 0;
 
-        while(permitidoAvanzar != true || i <= objetos.size()) {
+        while(permitidoAvanzar != true || i < objetos.size()) {
+            System.out.println(i);
             reaccionarAObjeto(unVehiculo, this.objetos.get(i));
             permitidoAvanzar = puedeAvanzar(unVehiculo, this.objetos.get(i));
             i ++;
