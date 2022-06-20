@@ -20,20 +20,10 @@ public class Calle {
         objetos.add(unObjeto);
     }
 
-    public boolean aplicarPenalizacion(Vehiculo unVehiculo) {
-        boolean permitidoAvanzar = false;
-        int i = 0;
-
-        while(permitidoAvanzar != true || i < objetos.size()) {
-            System.out.println(i);
-            reaccionarAObjeto(unVehiculo, this.objetos.get(i));
-            permitidoAvanzar = puedeAvanzar(unVehiculo, this.objetos.get(i));
-            i ++;
-
+    public void aplicarPenalizacion(Vehiculo unVehiculo) {
+        for (Objeto unObjeto : this.objetos){
+            reaccionarAObjeto(unVehiculo, unObjeto);
         }
-
-        return permitidoAvanzar;
-
     }
 
 

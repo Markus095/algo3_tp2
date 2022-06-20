@@ -29,32 +29,24 @@ public class Vehiculo {
     }
 
 
-    public void moverAbajo(boolean estado) {
-        if (estado == true) {
-            this.posicionVehiculo.moverAbajo();
-            this.cantidadDeMovimientos++;
-        }
+    public void moverAbajo() {
+        this.posicionVehiculo.moverAbajo();
+        this.cantidadDeMovimientos++;
     }
 
-    public void moverArriba(boolean estado) {
-        if (estado == true) {
-            this.posicionVehiculo.moverArriba();
-            this.cantidadDeMovimientos++;
-        }
+    public void moverArriba() {
+        this.posicionVehiculo.moverArriba();
+        this.cantidadDeMovimientos++;
     }
 
-    public void moverIzquierda(boolean estado) {
-        if (estado == true) {
-            this.posicionVehiculo.moverIzquierda();
-            this.cantidadDeMovimientos++;
-        }
+    public void moverIzquierda() {
+        this.posicionVehiculo.moverIzquierda();
+        this.cantidadDeMovimientos++;
     }
 
-    public void moverDerecha(boolean estado) {
-        if (estado == true) {
-            this.posicionVehiculo.moverDerecha();
-            this.cantidadDeMovimientos++;
-        }
+    public void moverDerecha() {
+        this.posicionVehiculo.moverDerecha();
+        this.cantidadDeMovimientos++;
     }
 
     public TipoVehiculo obtenerTipo() {
