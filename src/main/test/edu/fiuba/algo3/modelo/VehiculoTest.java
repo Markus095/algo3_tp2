@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.MalformedParameterizedTypeException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -283,12 +282,11 @@ public class VehiculoTest {
 
         assert(unVehiculo.obtenerPosicion().esIgual(ultimaPosicion));
     }
-
     @Test
     public void MotoAtraviesaLaCiudadYSeEncuentraUnPiquete() {
         Mapa mapa = new Mapa(14, 14);
         Vehiculo unVehiculo = new Vehiculo(new Moto(), new Posicion(0, 0));
-        mapa.posicionarVehiculo(unVehiculo); //TODO: pasarle la posicion del vehiculo y que mapa la tenga como atributo
+        mapa.posicionarVehiculo(unVehiculo);
 
         Piquete unPiquete = new Piquete();
 
@@ -311,6 +309,77 @@ public class VehiculoTest {
         assert (!unVehiculo.obtenerPosicion().esIgual(ultimaPosicion) && unVehiculo.obtenerCantidadMovimientos() == 7);
     }
 
+    @Test
+    public void MotoAtraviesaLaCiudadYSeEncuentraUnControlPolicial() {
+        Mapa mapa = new Mapa(14, 14);
+        Vehiculo unVehiculo = new Vehiculo(new Moto(), new Posicion(0, 0));
+        mapa.posicionarVehiculo(unVehiculo);
+
+        ControlPolicial unControl = new ControlPolicial();
+
+        Posicion pos1 = new Posicion(0, 2);
+        Posicion pos2 = new Posicion(0, 3);
+
+        mapa.posicionarObjeto(unControl, pos1, pos2);
+
+        for (int i = 0; i < 2; i++) {
+            mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        }
+
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+
+        assert (unVehiculo.obtenerCantidadMovimientos() == 5 || unVehiculo.obtenerCantidadMovimientos() == 8);
+    }
+
+    @Test
+    public void AutoAtraviesaLaCiudadYSeEncuentraUnControlPolicial() {
+        Mapa mapa = new Mapa(14, 14);
+        Vehiculo unVehiculo = new Vehiculo(new Auto(), new Posicion(0, 0));
+        mapa.posicionarVehiculo(unVehiculo);
+
+        ControlPolicial unControl = new ControlPolicial();
+
+        Posicion pos1 = new Posicion(0, 2);
+        Posicion pos2 = new Posicion(0, 3);
+
+        mapa.posicionarObjeto(unControl, pos1, pos2);
+
+        for (int i = 0; i < 2; i++) {
+            mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        }
+
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+
+        assert (unVehiculo.obtenerCantidadMovimientos() == 5 || unVehiculo.obtenerCantidadMovimientos() == 8);
+    }
+
+    @Test
+    public void CuatroPorCuatroAtraviesaLaCiudadYSeEncuentraUnControlPolicial() {
+        Mapa mapa = new Mapa(14, 14);
+        Vehiculo unVehiculo = new Vehiculo(new CuatroPorCuatro(), new Posicion(0, 0));
+        mapa.posicionarVehiculo(unVehiculo);
+
+        ControlPolicial unControl = new ControlPolicial();
+
+        Posicion pos1 = new Posicion(0, 2);
+        Posicion pos2 = new Posicion(0, 3);
+
+        mapa.posicionarObjeto(unControl, pos1, pos2);
+
+        for (int i = 0; i < 2; i++) {
+            mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        }
+
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
+
+        assert (unVehiculo.obtenerCantidadMovimientos() == 5 || unVehiculo.obtenerCantidadMovimientos() == 8);
+    }
 }
 
 

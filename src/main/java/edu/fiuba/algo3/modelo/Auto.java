@@ -20,4 +20,8 @@ public class Auto extends TipoVehiculo{
         unMovimiento.noPuedeAvanzar();
         return cantidadDeMovimientos;
     }
+
+    public int reaccionarAControlPolicial(int movimientos, Movimiento unMovimiento) {
+        return (new Probabilidad()).aplicarPenalizacionConProbabilidad(0.5f, movimientos);
+    }
 }

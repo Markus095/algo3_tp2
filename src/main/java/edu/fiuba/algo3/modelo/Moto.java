@@ -17,6 +17,10 @@ public class Moto extends TipoVehiculo{
         return cantidadDeMovimientos + 2;
     }
 
+    public int reaccionarAControlPolicial(int movimientos, Movimiento unMovimiento) {
+        return (new Probabilidad()).aplicarPenalizacionConProbabilidad(0.8f, movimientos);
+    }
+
 
 }
 

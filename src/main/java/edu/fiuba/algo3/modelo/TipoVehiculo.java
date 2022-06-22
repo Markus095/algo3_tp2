@@ -19,4 +19,5 @@ public abstract class TipoVehiculo {
     public abstract int reaccionarAPiquete(int cantidadDeMovimientos, Movimiento movimiento);
 
 
+    public abstract int reaccionarAControlPolicial(int movimientos, Movimiento unMovimiento);
 }

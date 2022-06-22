@@ -24,4 +24,8 @@ public class CuatroPorCuatro extends TipoVehiculo {
         unMovimiento.noPuedeAvanzar();
         return cantidadDeMovimientos;
     }
+
+    public int reaccionarAControlPolicial(int movimientos, Movimiento unMovimiento) {
+        return (new Probabilidad()).aplicarPenalizacionConProbabilidad(0.3f, movimientos);
+    }
 }
