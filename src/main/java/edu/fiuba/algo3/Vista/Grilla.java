@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.Vista;
 
-import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -9,23 +8,22 @@ import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
 
 public class Grilla {
-
     private ArrayList<Line> lineas;
     private ArrayList<Rectangle> calles;
     private Pane contenedor;
-    private Rectangle relleno;
+    private Rectangle colorFondo;
 
     public Grilla(Pane contenedor, int PosX, int PosY, Color ColorRelleno, Color ColorLinea, int TAM_CELDA, int Ancho, int Alto, double Opacidad, double StrokeWudth){
         this.lineas = new ArrayList<Line>();
         this.calles = new ArrayList<Rectangle>();
         this.contenedor = contenedor;
 
-        Rectangle relleno = new Rectangle(TAM_CELDA * (Ancho+1), TAM_CELDA *(Alto+1));
-        relleno.setLayoutX(PosX);
-        relleno.setLayoutY(PosY);
-        relleno.setFill(ColorRelleno);
-        relleno.setOpacity(Opacidad);
-        this.relleno = relleno;
+        Rectangle colorFondo = new Rectangle(TAM_CELDA * (Ancho+1), TAM_CELDA *(Alto+1));
+        colorFondo.setLayoutX(PosX);
+        colorFondo.setLayoutY(PosY);
+        colorFondo.setFill(ColorRelleno);
+        colorFondo.setOpacity(Opacidad);
+        this.colorFondo = colorFondo;
 
         for (int j = 0; j <= Ancho + 1; j+=4) {
             Rectangle rectangulo = new Rectangle(PosX + j * TAM_CELDA, 0, TAM_CELDA, TAM_CELDA*(Alto + 1));
@@ -39,12 +37,14 @@ public class Grilla {
             rectangulo.setStrokeWidth(StrokeWudth);
             calles.add(rectangulo);
         }
-
         actualizar();
     }
 
     public void actualizar() {
-        contenedor.getChildren().add(relleno);
-        for (Rectangle rectangulo : calles) { contenedor.getChildren().add(rectangulo); }
+        contenedor.getChildren().add(colorFondo);
+
+        for (Rectangle rectangulo : calles) {
+            contenedor.getChildren().add(rectangulo);
+        }
     }
 }

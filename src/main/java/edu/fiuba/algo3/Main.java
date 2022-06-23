@@ -9,22 +9,10 @@ import edu.fiuba.algo3.Vista.VistaJuego;
 import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.controlador.ControladorComenzarJuego;
 import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 
@@ -38,7 +26,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(grilla, 1920, 1080));
 
 
-        BotonGenerico botonDeInicio = new BotonPlay();
+        BotonGenerico botonDeInicio = new BotonComenzarJuego();
         contenedorMenu.getChildren().add(botonDeInicio);
 
         Scene scene = new Scene(contenedorMenu);

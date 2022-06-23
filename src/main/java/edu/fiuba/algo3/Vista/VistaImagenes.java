@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.Vista;
 
 import edu.fiuba.algo3.modelo.Posicion;
-
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
-
 import java.io.File;
 import java.util.HashMap;
 import javafx.scene.image.ImageView;

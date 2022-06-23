@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Vehiculo {
     private Posicion posicionVehiculo;
-    private Posicion posicionDestino;
     protected int cantidadDeMovimientos;
     private TipoVehiculo tipo;
 

@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import edu.fiuba.algo3.Vista.VistaJuego;
 
 public class ControladorComenzarJuego implements EventHandler<ActionEvent>{
-
     private Pane controlador;
     private Stage stage;
 

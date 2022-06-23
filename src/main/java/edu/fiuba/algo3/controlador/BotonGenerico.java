@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.controlador;
-
 import javafx.scene.control.Button;
 
 public class BotonGenerico extends Button{
-
     public BotonGenerico() {
         this.setMaxSize(300, 200);
         this.setLayoutX(900);

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Mapa {
     private int cantidadFilas;
@@ -32,7 +33,23 @@ public class Mapa {
         this.posicionDestino = unaPosicion;
         return 0;
     }
+    public void inicializar(){
+        ArrayList<ObjetoCalle> objetosCalle = new ArrayList<>();
 
+        objetosCalle.add(new Pozo());
+        objetosCalle.add(new SorpresaFavorable());
+        objetosCalle.add(new SorpresaDesfavorable());
+        objetosCalle.add(new Piquete());
+        objetosCalle.add(new ControlPolicial());
+        objetosCalle.add(new SorpresaCambioVehiculo());
+
+        for(int i = 0; i < calles.size();i+=(Math.random()*100)%4){
+            ObjetoCalle objeto = objetosCalle.remove(0);
+            calles.get(i).guardarObjeto(objeto);
+            objetosCalle.add(objeto);
+            Collections.shuffle(objetosCalle);
+        }
+    }
     public boolean verificarFinDeJuego() {
         return(this.vehiculo.verificarPosicionFinDeJuego(this.posicionDestino));
     }
