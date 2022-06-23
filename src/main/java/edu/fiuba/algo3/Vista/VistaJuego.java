@@ -15,6 +15,7 @@ public class VistaJuego {
     private Stage stage;
     private Vehiculo unVehiculo;
     private Mapa unMapa;
+    private VistaImagenes vistaImagenes;
 
     private Grilla grillaMapa;
     public void empezarJuego(Stage stage, Pane controlador) {
@@ -26,7 +27,7 @@ public class VistaJuego {
 
         unMapa.posicionarVehiculo(unVehiculo);
         unMapa.asignarDestinoFinal(new Posicion(1, 3));
-
+        this.vistaImagenes = new VistaImagenes(contenedorJuego);
         this.grillaMapa = new Grilla(contenedorJuego, 0 ,0, Color.LIMEGREEN, Color.BLACK, 40, 50,50, 0.8,0.5);
 
         contenedorJuego.getChildren().clear();
@@ -36,7 +37,7 @@ public class VistaJuego {
     private void actualizarMapaVista() {
         grillaMapa.actualizar();
         Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
-        /*VistaImagenes.agregarImagen(unVehiculo, "", posicionrelativa, 960, 560,80,true);*/
+        vistaImagenes.agregarImagen("auto", posicionVehiculo, 40);
 
 
 
