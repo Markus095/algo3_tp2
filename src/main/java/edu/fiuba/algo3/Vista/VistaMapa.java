@@ -15,7 +15,7 @@ public class VistaMapa {
     }
 
     public void mostrar(){
-        VistaPosicion vistaPosicion = new VistaPosicion(10,10);
+       /*VistaPosicion vistaPosicion = new VistaPosicion(10,10);*/
 
     }
 }
