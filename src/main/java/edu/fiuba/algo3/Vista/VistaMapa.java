@@ -14,8 +14,4 @@ public class VistaMapa {
         this.canvas = unCanvas;
     }
 
-    public void mostrar(){
-        VistaPosicion vistaPosicion = new VistaPosicion(10,10);
-
-    }
 }

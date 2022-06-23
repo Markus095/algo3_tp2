@@ -6,23 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VehiculoTest {
-    @Test
-    //ENTREGA 0:
-    // Una moto atraviesa la grilla sin obstáculos y la cantidad de movimientos es X = 3
-    public void unaMotoCruzaLaCiudadYLlegaADestino() {
-        Mapa mapa = new Mapa(10, 10);
-        Vehiculo unaMoto = new Vehiculo( new Moto(), new Posicion(1, 0));
-        mapa.posicionarVehiculo(unaMoto);
-        mapa.asignarDestinoFinal(new Posicion(1, 3));
-
-        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
-        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
-        mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
-        System.out.println(unaMoto.obtenerPosicion().obtenerColumna());
-
-        assert(mapa.verificarFinDeJuego());
-    }
-
 
     @Test
     //ENTREGA 1:

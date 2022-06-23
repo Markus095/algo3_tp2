@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Vehiculo {
     private Posicion posicionVehiculo;
-    private Posicion posicionDestino;
     protected int cantidadDeMovimientos;
     private TipoVehiculo tipo;
 
@@ -49,5 +48,8 @@ public class Vehiculo {
 
     public boolean verificarPosicionFinDeJuego(Posicion posicionDestino) {
         return(this.posicionVehiculo.esIgual(posicionDestino));
+    }
+    public void setMovimientos(int mov){
+        this.cantidadDeMovimientos = mov; // metodo solo para pruebas de calle
     }
 }

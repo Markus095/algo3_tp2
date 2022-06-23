@@ -4,7 +4,6 @@ public class SorpresaCambioVehiculo extends ObjetoCalle {
     public SorpresaCambioVehiculo(){
     }
 
-    @Override
     public int reaccionar(int movimientos, TipoVehiculo unTipo, Movimiento unMovimiento) {
         return movimientos;
     }
