@@ -4,11 +4,10 @@ public class SorpresaDesfavorable extends ObjetoCalle {
     private float valor;
 
     public SorpresaDesfavorable() {
-        this.valor = 0.25f;
+        this.valor = 1.25f;
     }
 
-    @Override
     public int reaccionar(int movimientos, TipoVehiculo unTipo, Movimiento unMovimiento) {
-        return unTipo.reaccionarASorpresaDesfavorable(movimientos);
+        return Math.round(this.valor * movimientos);
     }
 }

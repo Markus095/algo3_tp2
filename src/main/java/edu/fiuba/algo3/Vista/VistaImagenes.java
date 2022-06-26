@@ -43,9 +43,9 @@ public class VistaImagenes {
         return imageView;
     }
 
-    public void agregarImagenes(ArrayList<Calle> calles) {
+    /*public void agregarImagenes(ArrayList<Calle> calles) {
         for (Calle calle : calles) {
             for (ObjetoCalle objeto : calle.ob)
         }
-    }
+    }*/
 }

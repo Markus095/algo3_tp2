@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-public abstract class Direccion {
-    public abstract void mover(Posicion posicion);
+public interface Direccion {
 
-    public abstract Posicion obtenerPosicion(Posicion posicion);
+    void mover(Posicion posicion);
+
+    Posicion obtenerPosicion(Posicion posicion);
 
 }
 

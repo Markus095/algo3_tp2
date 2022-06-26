@@ -61,7 +61,7 @@ public class VistaJuego {
     private void actualizarVistaMapa() {
         grillaMapa.actualizar();
         Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
-        vistaImagenes.agregarImagenes(unMapa.obtenerCalles());
+        //vistaImagenes.agregarImagenes(unMapa.obtenerCalles());
         vistaImagenes.agregarImagen("auto", posicionVehiculo, 40);
     }
     public void actualizarTeclas(){

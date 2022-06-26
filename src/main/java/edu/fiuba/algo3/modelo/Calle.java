@@ -34,7 +34,7 @@ public class Calle {
         unObjetoCalle.verificarTipo(unVehiculo);
     }
 
-    public ArrayList<ObjetoCalle>
+    //public ArrayList<ObjetoCalle>
 
 }
 

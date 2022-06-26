@@ -1,13 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
-public class DireccionDerecha extends Direccion {
+public class DireccionDerecha implements Direccion {
     static private DireccionDerecha direccionDerecha = new DireccionDerecha();
     private DireccionDerecha(){}
 
     static public DireccionDerecha getDireccionDerecha() {
         return direccionDerecha;
     }
-    @Override
+
     public void mover(Posicion posicion) {
         posicion.moverDerecha();
     }

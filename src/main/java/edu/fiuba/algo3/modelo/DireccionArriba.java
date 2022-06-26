@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class DireccionArriba extends Direccion {
+public class DireccionArriba implements Direccion {
 
     static private DireccionArriba direccionArriba = new DireccionArriba();
     private DireccionArriba(){}
@@ -8,7 +8,7 @@ public class DireccionArriba extends Direccion {
     static public DireccionArriba getDireccionArriba() {
         return direccionArriba;
     }
-    @Override
+
     public void mover(Posicion posicion) {
         posicion.moverArriba();
     }
