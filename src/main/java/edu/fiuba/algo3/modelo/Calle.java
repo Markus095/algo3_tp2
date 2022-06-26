@@ -34,7 +34,16 @@ public class Calle {
         unObjetoCalle.verificarTipo(unVehiculo);
     }
 
-    //public ArrayList<ObjetoCalle>
+    public ArrayList<ObjetoCalle> obtenerObjetos() {
+        return this.objetoCalles;
+    }
+
+    public Posicion obtenerPosicion1() {
+        return this.pos1;
+    }
+    public Posicion obtenerPosicion2() {
+        return this.pos2;
+    }
 
 }
 

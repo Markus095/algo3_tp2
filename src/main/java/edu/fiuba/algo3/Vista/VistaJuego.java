@@ -32,6 +32,7 @@ public class VistaJuego {
         this.botones = new Botones(this);
         this.unVehiculo = new Vehiculo(new Auto(new Probabilidad(0.5f)), new Posicion(0, 0));
         this.unMapa = new Mapa(100, 100);
+        unMapa.inicializar();
         unMapa.posicionarVehiculo(unVehiculo);
         unMapa.asignarDestinoFinal(new Posicion(1, 3));
 
@@ -58,7 +59,7 @@ public class VistaJuego {
     private void actualizarVistaMapa() {
         grillaMapa.actualizar();
         Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
-        //vistaImagenes.agregarImagenes(unMapa.obtenerCalles());
+        vistaImagenes.agregarImagenes(unMapa.obtenerCalles(), 40);
         vistaImagenes.agregarImagen("auto", posicionVehiculo, 40);
     }
     public void actualizarTeclas(){

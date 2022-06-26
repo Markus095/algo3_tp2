@@ -6,7 +6,8 @@ public class SorpresaFavorable extends ObjetoCalle {
     public SorpresaFavorable() {
         this.valor = 0.8f;
     }
-
+    public String getNombre() {return "sorpresa";}
+    @Override
     public int reaccionar(int movimientos, TipoVehiculo unTipo, Movimiento unMovimiento) {
         return Math.round(this.valor * movimientos );
     }

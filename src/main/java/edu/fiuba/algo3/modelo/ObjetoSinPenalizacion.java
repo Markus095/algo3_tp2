@@ -7,6 +7,8 @@ public class ObjetoSinPenalizacion extends ObjetoCalle {
         this.penalizacion = 0;
     }
 
+    public String getNombre() {return "objetoSinPenalizacion";}
+    @Override
     public int reaccionar(int movimientos, TipoVehiculo unTipo, Movimiento unMovimiento) {
         movimientos += this.penalizacion;
         return movimientos;

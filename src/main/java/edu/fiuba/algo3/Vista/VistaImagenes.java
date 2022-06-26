@@ -23,6 +23,19 @@ public class VistaImagenes {
         File file = new File("src/main/Imagenes/auto.jpeg");
         Image imagen = new Image(file.toURI().toString(), 40, 40, true, false);
         imagenes.put("auto", imagen);
+
+        file = new File("src/main/Imagenes/piquete.png");
+        Image imagen1 = new Image(file.toURI().toString(), 40, 40, true, false);
+        imagenes.put("piquete", imagen1);
+
+        file = new File("src/main/Imagenes/sorpresa.jpeg");
+        Image imagen2 = new Image(file.toURI().toString(), 40, 40, true, false);
+        imagenes.put("sorpresa", imagen2);
+
+        file = new File("src/main/Imagenes/controlPolicial.png");
+        Image imagen3 = new Image(file.toURI().toString(), 40, 40, true, false);
+        imagenes.put("controlPolicial", imagen3);
+
     }
     private Image obtenerImagen(String nombre) {
         return imagenes.getOrDefault(nombre,null);
@@ -36,6 +49,15 @@ public class VistaImagenes {
         imageView.setFitHeight(tam);
         return imageView;
     }
+    private ImageView crearImageView2(Image imagen, Posicion posicion,int tam) {
+        ImageView imageView = new ImageView();
+        imageView.setImage(imagen);
+        imageView.setLayoutX(posicion.obtenerColumna() * tam);
+        imageView.setLayoutY(posicion.obtenerFila() * tam);
+        imageView.setFitWidth(tam);
+        imageView.setFitHeight(tam);
+        return imageView;
+    }
     public ImageView agregarImagen(String nombre, Posicion posicion, int tam) {
         Image imagen = obtenerImagen(nombre);
         ImageView imageView = crearImageView(imagen,posicion,tam);
@@ -43,9 +65,25 @@ public class VistaImagenes {
         return imageView;
     }
 
-    /*public void agregarImagenes(ArrayList<Calle> calles) {
+    public void agregarImagenes(ArrayList<Calle> calles, int tam) {
         for (Calle calle : calles) {
-            for (ObjetoCalle objeto : calle.ob)
+            int i = 1;
+            for (ObjetoCalle objeto : calle.obtenerObjetos()) {
+                if (objeto.getNombre() != "objetoSinPenalizacion" && i < 3) {
+                    Posicion posicionIntermedia = obtenerPosicionesIntermedias(calle, tam, i);
+                    Image imagen = obtenerImagen(objeto.getNombre());
+                    ImageView imageView = crearImageView2(imagen, posicionIntermedia, tam);
+                    contenedor.getChildren().add(imageView);
+                    i++;
+                }
+            }
         }
-    }*/
+    }
+
+    private Posicion obtenerPosicionesIntermedias(Calle unaCalle, int tam, int i) {
+        if (unaCalle.obtenerPosicion1().obtenerFila() == unaCalle.obtenerPosicion2().obtenerFila()) {
+            return (new Posicion(unaCalle.obtenerPosicion1().obtenerFila() * (tam/10), unaCalle.obtenerPosicion1().obtenerColumna() * (tam/10) + i));
+        }
+        return (new Posicion(unaCalle.obtenerPosicion1().obtenerColumna() * (tam/10) + i, unaCalle.obtenerPosicion1().obtenerColumna() * (tam/10)));
+    }
 }

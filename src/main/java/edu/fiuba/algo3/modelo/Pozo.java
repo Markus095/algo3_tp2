@@ -6,7 +6,7 @@ public class Pozo extends ObjetoCalle {
     public Pozo() {
         this.penalizacion = 3;
     }
-
+    public String getNombre() {return "pozo";}
     public int reaccionar(int movimientos, TipoVehiculo unTipo, Movimiento unMovimiento) {
         return unTipo.reaccionarAPozo(movimientos, unMovimiento);
     }
