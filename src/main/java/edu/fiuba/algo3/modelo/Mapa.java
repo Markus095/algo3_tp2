@@ -71,4 +71,8 @@ public class Mapa {
         this.vehiculo.moverseEn(this.calles, unaDireccion);
     }
 
+    public ArrayList<Calle> obtenerCalles() {
+        return this.calles;
+    }
+
 }

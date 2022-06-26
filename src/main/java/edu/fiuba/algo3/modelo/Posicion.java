@@ -25,7 +25,7 @@ public class Posicion {
 
 
     public boolean esIgual(Posicion otraPosicion){
-        return (otraPosicion.obtenerFila() == this.x && otraPosicion.obtenerColumna() == this.y);
+        return (otraPosicion.x == this.x && otraPosicion.y == this.y);
     }
 
     public int obtenerFila() {

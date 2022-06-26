@@ -1,9 +1,12 @@
 package edu.fiuba.algo3.Vista;
 
+import edu.fiuba.algo3.modelo.Calle;
+import edu.fiuba.algo3.modelo.ObjetoCalle;
 import edu.fiuba.algo3.modelo.Posicion;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.scene.image.ImageView;
 
@@ -27,8 +30,8 @@ public class VistaImagenes {
     private ImageView crearImageView(Image imagen, Posicion posicion,int tam) {
         ImageView imageView = new ImageView();
         imageView.setImage(imagen);
-        imageView.setLayoutX(posicion.obtenerColumna() * tam);
-        imageView.setLayoutY(posicion.obtenerFila() * tam);
+        imageView.setLayoutX(posicion.obtenerColumna() * tam * (tam/10));
+        imageView.setLayoutY(posicion.obtenerFila() * tam * (tam/10));
         imageView.setFitWidth(tam);
         imageView.setFitHeight(tam);
         return imageView;
@@ -38,5 +41,11 @@ public class VistaImagenes {
         ImageView imageView = crearImageView(imagen,posicion,tam);
         contenedor.getChildren().add(imageView);
         return imageView;
+    }
+
+    public void agregarImagenes(ArrayList<Calle> calles) {
+        for (Calle calle : calles) {
+            for (ObjetoCalle objeto : calle.ob)
+        }
     }
 }
