@@ -12,7 +12,8 @@ public class VehiculoTest {
     //Una moto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada en tres movimientos.
     public void unaMotoCruzaLaCiudaYAlEncontrarseConUnPozoEsPenalizada() {
         Mapa mapa = new Mapa(10, 10);
-        Vehiculo unaMoto = new Vehiculo(new Moto(), new Posicion(1, 0));
+        TipoVehiculo tipoMoto = new Moto(new Probabilidad(0.8f));
+        Vehiculo unaMoto = new Vehiculo(tipoMoto, new Posicion(1, 0));
         mapa.posicionarVehiculo(unaMoto);
 
         Pozo unPozo = new Pozo();
@@ -33,7 +34,8 @@ public class VehiculoTest {
     //Una Auto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada en tres movimientos.
     public void unAutoCruzaLaCiudaYAlEncontrarseConUnPozoEsPenalizado() {
         Mapa mapa = new Mapa(10, 10);
-        Vehiculo unAuto = new Vehiculo(new Auto(), new Posicion(1, 0));
+        TipoVehiculo tipoVehiculo = new Auto(new Probabilidad(0.5f));
+        Vehiculo unAuto = new Vehiculo(tipoVehiculo, new Posicion(1, 0));
         mapa.posicionarVehiculo(unAuto);
 
         Pozo unPozo = new Pozo();
@@ -55,7 +57,8 @@ public class VehiculoTest {
     //Una 4x4 atraviesa la ciudad y se encuentra con un Pozo. No es penalizada.
     public void unaCuatroPorCuatroCruzaLaCiudaYAlEncontrarseConUnPozoNoEsPenalizada() {
         Mapa mapa = new Mapa(10, 10);
-        Vehiculo una4x4 = new Vehiculo(new CuatroPorCuatro(), new Posicion(1, 0));
+        TipoVehiculo tipoVehiculo = new CuatroPorCuatro(new Probabilidad(0.3f));
+        Vehiculo una4x4 = new Vehiculo(tipoVehiculo, new Posicion(1, 0));
         mapa.posicionarVehiculo(una4x4);
 
         Pozo unPozo = new Pozo();
@@ -77,7 +80,8 @@ public class VehiculoTest {
     //Una 4x4 atraviesa la ciudad y se encuentra con tres pozos, es penalizada.
     public void unCuatroPorCuatroCruzaLaCiudaYAlEncontrarceConTresPozoEsPenalizada() {
         Mapa mapa = new Mapa(10, 10);
-        Vehiculo una4x4 = new Vehiculo(new CuatroPorCuatro(), new Posicion(1, 1));
+        TipoVehiculo tipoVehiculo = new CuatroPorCuatro(new Probabilidad(0.3f));
+        Vehiculo una4x4 = new Vehiculo(tipoVehiculo, new Posicion(1, 1));
         mapa.posicionarVehiculo(una4x4);
 
         Pozo unPozo = new Pozo();
@@ -109,7 +113,8 @@ public class VehiculoTest {
     //Un Auto atraviesa la ciudad y se encuentra con tres Pozos. Es penalizada con tres movimientos en cada pozo.
     public void unAutoCruzaLaCiudaYAlEncontrarseConVariosPozosEsPenalizadaEnTodosLosEncuentros() {
         Mapa mapa = new Mapa(10, 10);
-        Vehiculo unAuto = new Vehiculo(new Auto(), new Posicion(1, 1));
+        TipoVehiculo tipoVehiculo = new Auto(new Probabilidad(0.5f));
+        Vehiculo unAuto = new Vehiculo(tipoVehiculo, new Posicion(1, 1));
         mapa.posicionarVehiculo(unAuto);
 
         Pozo unPozo = new Pozo();
@@ -141,7 +146,8 @@ public class VehiculoTest {
     //Un vehículo atraviesa la ciudad y encuentra una sorpresa favorable.
     public void UnVehiculoAtraviesaLaCiudadSeEncuentraConSorpresaFavorable() {
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo vehiculo = new Vehiculo(new Auto(), new Posicion(1, 0));
+        TipoVehiculo tipoVehiculo = new Auto(new Probabilidad(0.5f));
+        Vehiculo vehiculo = new Vehiculo(tipoVehiculo, new Posicion(1, 0));
         mapa.posicionarVehiculo(vehiculo);
 
         SorpresaFavorable sorpresa = new SorpresaFavorable();
@@ -166,7 +172,8 @@ public class VehiculoTest {
     //Un vehículo atraviesa la ciudad y encuentra una sorpresa desfavorable.
     public void UnVehiculoAtraviesaLaCiudadSeEncuentraConSorpresaDesfavorable() {
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo vehiculo = new Vehiculo(new Auto(), new Posicion(1, 0));
+        TipoVehiculo tipoVehiculo = new Auto(new Probabilidad(0.5f));
+        Vehiculo vehiculo = new Vehiculo(tipoVehiculo, new Posicion(1, 0));
         mapa.posicionarVehiculo(vehiculo);
 
         SorpresaDesfavorable sorpresa = new SorpresaDesfavorable();
@@ -191,7 +198,8 @@ public class VehiculoTest {
     @Test
     public void unMotoAtraviesaLaCiudadYSeEncuentraConUnaSorpresaCambioDeVehiculo(){
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo unVehiculo = new Vehiculo(new Moto(), new Posicion(9, 9));
+        TipoVehiculo tipoVehiculo = new Moto(new Probabilidad(0.8f));
+        Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(9, 9));
         mapa.posicionarVehiculo(unVehiculo);
 
         SorpresaCambioVehiculo unaSorpresa = new SorpresaCambioVehiculo();
@@ -215,8 +223,9 @@ public class VehiculoTest {
     @Test
     public void AutoAtraviesaLaCiudadYSeEncuentraUnPiquete() {
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo unVehiculo = new Vehiculo(new Auto(), new Posicion(0, 0));
-        mapa.posicionarVehiculo(unVehiculo); //TODO: pasarle la posicion del vehiculo y que mapa la tenga como atributo
+        TipoVehiculo tipoVehiculo = new Auto(new Probabilidad(0.5f));
+        Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
+        mapa.posicionarVehiculo(unVehiculo);
 
         Piquete unPiquete = new Piquete();
 
@@ -242,8 +251,9 @@ public class VehiculoTest {
     @Test
     public void CuatroPorCuatroAtraviesaLaCiudadYSeEncuentraUnPiquete() {
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo unVehiculo = new Vehiculo(new CuatroPorCuatro(), new Posicion(0, 0));
-        mapa.posicionarVehiculo(unVehiculo); //TODO: pasarle la posicion del vehiculo y que mapa la tenga como atributo
+        TipoVehiculo tipoVehiculo = new CuatroPorCuatro(new Probabilidad(0.3f));
+        Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
+        mapa.posicionarVehiculo(unVehiculo);
 
         Piquete unPiquete = new Piquete();
 
@@ -268,7 +278,8 @@ public class VehiculoTest {
     @Test
     public void MotoAtraviesaLaCiudadYSeEncuentraUnPiquete() {
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo unVehiculo = new Vehiculo(new Moto(), new Posicion(0, 0));
+        TipoVehiculo tipoVehiculo = new Moto(new Probabilidad(0.8f));
+        Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo);
 
         Piquete unPiquete = new Piquete();
@@ -295,7 +306,8 @@ public class VehiculoTest {
     @Test
     public void MotoAtraviesaLaCiudadYSeEncuentraUnControlPolicial() {
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo unVehiculo = new Vehiculo(new Moto(), new Posicion(0, 0));
+        TipoVehiculo tipoVehiculo = new Moto(new Probabilidad(0.8f));
+        Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo);
 
         ControlPolicial unControl = new ControlPolicial();
@@ -319,7 +331,8 @@ public class VehiculoTest {
     @Test
     public void AutoAtraviesaLaCiudadYSeEncuentraUnControlPolicial() {
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo unVehiculo = new Vehiculo(new Auto(), new Posicion(0, 0));
+        TipoVehiculo tipoVehiculo = new Auto(new Probabilidad(0.5f));
+        Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo);
 
         ControlPolicial unControl = new ControlPolicial();
@@ -343,7 +356,8 @@ public class VehiculoTest {
     @Test
     public void CuatroPorCuatroAtraviesaLaCiudadYSeEncuentraUnControlPolicial() {
         Mapa mapa = new Mapa(14, 14);
-        Vehiculo unVehiculo = new Vehiculo(new CuatroPorCuatro(), new Posicion(0, 0));
+        TipoVehiculo tipoVehiculo = new CuatroPorCuatro(new Probabilidad(0.3f));
+        Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo);
 
         ControlPolicial unControl = new ControlPolicial();

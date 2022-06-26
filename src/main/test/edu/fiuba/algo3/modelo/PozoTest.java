@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PozoTest {
     @Test
     public void reaccionarAUnPozoConTipoDeVehiculoMotoAumentaTresMovimientos(){
-        TipoVehiculo moto = new Moto();
+        TipoVehiculo moto = new Moto(new Probabilidad(0.8f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
@@ -18,7 +18,7 @@ public class PozoTest {
 
     @Test
     public void reaccionarAUnPozoConTipoDeVehiculoAutoAumentaTresMovimientos(){
-        TipoVehiculo auto = new Auto();
+        TipoVehiculo auto = new Auto(new Probabilidad(0.5f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
@@ -29,7 +29,7 @@ public class PozoTest {
 
     @Test
     public void reaccionarAUnPozoConTipoDeVehiculo4x4NoAumentaLosMovimientos(){
-        TipoVehiculo camioneta = new CuatroPorCuatro();
+        TipoVehiculo camioneta = new CuatroPorCuatro(new Probabilidad(0.3f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
@@ -40,7 +40,7 @@ public class PozoTest {
 
     @Test
     public void reaccionarATresPozosConTipoDeVehiculo4x4AumentaDosMovimientos(){
-        TipoVehiculo camioneta = new CuatroPorCuatro();
+        TipoVehiculo camioneta = new CuatroPorCuatro(new Probabilidad(0.3f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
@@ -53,7 +53,7 @@ public class PozoTest {
 
     @Test
     public void reaccionarACincoPozosConTipoDeVehiculo4x4AumentaSeisMovimientos(){
-        TipoVehiculo camioneta = new CuatroPorCuatro();
+        TipoVehiculo camioneta = new CuatroPorCuatro(new Probabilidad(0.3f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);

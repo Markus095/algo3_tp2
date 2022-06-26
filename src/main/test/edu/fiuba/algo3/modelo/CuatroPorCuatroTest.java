@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class CuatroPorCuatroTest {
     @Test
     public void cuatroPorCuatroReaccionaAPozoSinAumentarLosMovimientos(){
-        TipoVehiculo cuatroPorCuatro = new CuatroPorCuatro();
+        TipoVehiculo cuatroPorCuatro = new CuatroPorCuatro(new Probabilidad(0.3f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
@@ -18,7 +18,7 @@ public class CuatroPorCuatroTest {
 
     @Test
     public void cuatroPorCuatroReaccionaATresPozosYAumentaLosMovimientosEnDos(){
-        TipoVehiculo cuatroPorCuatro = new CuatroPorCuatro();
+        TipoVehiculo cuatroPorCuatro = new CuatroPorCuatro(new Probabilidad(0.3f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
@@ -31,7 +31,7 @@ public class CuatroPorCuatroTest {
 
     @Test
     public void cuatroPorCuatroReaccionaAPiqueteSinDejarloPasar(){
-        TipoVehiculo cuatroPorCuatro = new CuatroPorCuatro();
+        TipoVehiculo cuatroPorCuatro = new CuatroPorCuatro(new Probabilidad(0.3f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
@@ -42,7 +42,7 @@ public class CuatroPorCuatroTest {
 
     @Test
     public void cuatroPorCuatroReaccionaAPiqueteSinAumentarCantidadDeMovimientos(){
-        TipoVehiculo cuatroPorCuatro = new CuatroPorCuatro();
+        TipoVehiculo cuatroPorCuatro = new CuatroPorCuatro(new Probabilidad(0.3f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
@@ -53,10 +53,10 @@ public class CuatroPorCuatroTest {
 
     @Test
     public void cuatroPorCuatroReaccionaASorpresaCambioDeVehiculoYCambiaAMoto(){
-        TipoVehiculo cuatroPorCuatro = new CuatroPorCuatro();
+        TipoVehiculo cuatroPorCuatro = new CuatroPorCuatro(new Probabilidad(0.3f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
-        assert(cuatroPorCuatro.cambioVehiculo().getClass().isInstance(new Moto()));
+        assert(cuatroPorCuatro.cambioVehiculo().getClass().isInstance(new Moto(new Probabilidad(0.8f))));
     }
 }

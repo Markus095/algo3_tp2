@@ -2,8 +2,10 @@ package edu.fiuba.algo3.modelo;
 
 public class CuatroPorCuatro implements TipoVehiculo {
     private int cantidadPozos;
-    public CuatroPorCuatro() {
+    private Probabilidad probaControlPolicial;
+    public CuatroPorCuatro(Probabilidad unaProba) {
         this.cantidadPozos = 0;
+        this.probaControlPolicial = unaProba;
     }
 
     public int reaccionarAPozo(int cantidadDeMovimientos, Movimiento unMovimiento) {
@@ -14,9 +16,7 @@ public class CuatroPorCuatro implements TipoVehiculo {
         return cantidadDeMovimientos;
     }
 
-    public TipoVehiculo cambioVehiculo(){
-        return new Moto();
-    }
+    public TipoVehiculo cambioVehiculo(){ return new Moto(new Probabilidad(0.8f)); }
 
     public int reaccionarAPiquete(int cantidadDeMovimientos, Movimiento unMovimiento) {
         unMovimiento.noPuedeAvanzar();
@@ -24,6 +24,6 @@ public class CuatroPorCuatro implements TipoVehiculo {
     }
 
     public int reaccionarAControlPolicial(int movimientos, Movimiento unMovimiento) {
-        return (new Probabilidad()).aplicarPenalizacionConProbabilidad(0.3f, movimientos);
+        return this.probaControlPolicial.aplicarPenalizacion(movimientos);
     }
 }

@@ -1,15 +1,12 @@
 package edu.fiuba.algo3.Vista;
 
+import edu.fiuba.algo3.modelo.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import edu.fiuba.algo3.modelo.Mapa;
-import edu.fiuba.algo3.modelo.Vehiculo;
-import edu.fiuba.algo3.modelo.Auto;
-import edu.fiuba.algo3.modelo.Posicion;
 import javafx.scene.input.KeyCode;
 
 public class VistaJuego {
@@ -33,7 +30,7 @@ public class VistaJuego {
         this.contenedorJuego = controlador;
         this.stage = stage;
         this.botones = new Botones(this);
-        this.unVehiculo = new Vehiculo(new Auto(), new Posicion(0, 0));
+        this.unVehiculo = new Vehiculo(new Auto(new Probabilidad(0.5f)), new Posicion(0, 0));
         this.unMapa = new Mapa(100, 100);
         unMapa.posicionarVehiculo(unVehiculo);
         unMapa.asignarDestinoFinal(new Posicion(1, 3));

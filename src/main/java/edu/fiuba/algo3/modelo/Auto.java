@@ -1,8 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
 public class Auto implements TipoVehiculo{
-
-    public Auto(){};
+    private Probabilidad probaControlPolicial;
+    public Auto(Probabilidad unaProbabilidad){
+        this.probaControlPolicial = unaProbabilidad;
+    };
 
     public int reaccionarAPozo(int cantidadDeMovimientos, Movimiento unMovimiento) {
         unMovimiento.puedeAvanzar();
@@ -10,7 +12,7 @@ public class Auto implements TipoVehiculo{
     }
 
     public TipoVehiculo cambioVehiculo(){
-        return new CuatroPorCuatro();
+        return new CuatroPorCuatro(new Probabilidad(0.3f));
     }
 
     public int reaccionarAPiquete(int cantidadDeMovimientos, Movimiento unMovimiento) {
@@ -19,6 +21,6 @@ public class Auto implements TipoVehiculo{
     }
 
     public int reaccionarAControlPolicial(int movimientos, Movimiento unMovimiento) {
-        return (new Probabilidad()).aplicarPenalizacionConProbabilidad(0.5f, movimientos);
+        return this.probaControlPolicial.aplicarPenalizacion(movimientos);
     }
 }

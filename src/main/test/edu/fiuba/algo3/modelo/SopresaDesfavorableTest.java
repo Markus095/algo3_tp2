@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SopresaDesfavorableTest {
     @Test
     public void reaccionarAUnaSorpresaDesfavorableConTipoDeVehiculoMotoAumentaLosMovimientosEnUn25Porciento(){
-        TipoVehiculo moto = new Moto();
+        TipoVehiculo moto = new Moto(new Probabilidad(0.8f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
@@ -18,7 +18,7 @@ public class SopresaDesfavorableTest {
 
     @Test
     public void reaccionarAUnaSorpresaDesfavorableConTipoDeVehiculoAutoAumentaLosMovimientosEnUn25Porciento(){
-        TipoVehiculo auto = new Auto();
+        TipoVehiculo auto = new Auto(new Probabilidad(0.5f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
@@ -29,7 +29,7 @@ public class SopresaDesfavorableTest {
 
     @Test
     public void reaccionarAUnaSorpresaDesfavorableConTipoDeVehiculo4x4AumentaLosMovimientosEnUn25Porciento(){
-        TipoVehiculo camioneta = new CuatroPorCuatro();
+        TipoVehiculo camioneta = new CuatroPorCuatro(new Probabilidad(0.3f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);

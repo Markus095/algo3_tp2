@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class AutoTest {
     @Test
     public void autoReaccionaAPozoAumentandoEnTresLosMovimientos(){
-        TipoVehiculo auto = new Auto();
+        TipoVehiculo auto = new Auto(new Probabilidad(0.5f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
@@ -18,7 +18,7 @@ public class AutoTest {
 
     @Test
     public void autoReaccionaAPiqueteSinDejarloPasar(){
-        TipoVehiculo auto = new Auto();
+        TipoVehiculo auto = new Auto(new Probabilidad(0.5f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
@@ -29,7 +29,7 @@ public class AutoTest {
 
     @Test
     public void autoReaccionaAPiqueteSinAumentarCantidadDeMovimientos(){
-        TipoVehiculo auto = new Auto();
+        TipoVehiculo auto = new Auto(new Probabilidad(0.5f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
@@ -40,10 +40,10 @@ public class AutoTest {
 
     @Test
     public void autoReaccionaASorpresaCambioDeVehiculoYCambiaA4x4(){
-        TipoVehiculo auto = new Auto();
+        TipoVehiculo auto = new Auto(new Probabilidad(0.5f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
         Movimiento mov = new Movimiento(pos,der);
-        assert(auto.cambioVehiculo().getClass().isInstance(new CuatroPorCuatro()));
+        assert(auto.cambioVehiculo().getClass().isInstance(new CuatroPorCuatro(new Probabilidad(0.3f))));
     }
 }
