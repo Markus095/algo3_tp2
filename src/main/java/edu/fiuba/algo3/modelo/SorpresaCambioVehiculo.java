@@ -5,7 +5,7 @@ public class SorpresaCambioVehiculo extends ObjetoCalle {
     }
     public String getNombre() {return "sorpresa";}
 
-    public int reaccionar(int movimientos, TipoVehiculo unTipo, Movimiento unMovimiento) {
+    public int reaccionar(int movimientos, TipoVehiculo unTipo) {
         return movimientos;
     }
 

@@ -28,7 +28,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
 
-        stage.setTitle("GPS CHALENGE");
+        stage.setTitle("GPS CHALLENGE");
         StackPane layout = new StackPane();
         Button botonDeInicio = new Button();
         botonDeInicio.setText("INICIO");

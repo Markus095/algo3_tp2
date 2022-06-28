@@ -2,12 +2,14 @@ package edu.fiuba.algo3.modelo;
 
 public interface TipoVehiculo {
 
-    int reaccionarAPozo( int cantidadDeMovimientos, Movimiento unMovimiento); //sacar movimiento?
+    int reaccionarAPozo( int cantidadDeMovimientos);
 
     TipoVehiculo cambioVehiculo();
 
-    int reaccionarAPiquete(int cantidadDeMovimientos, Movimiento movimiento);
+    int reaccionarAPiquete(int cantidadDeMovimientos);
 
 
-    int reaccionarAControlPolicial(int movimientos, Movimiento unMovimiento);
+    int reaccionarAControlPolicial(int movimientos);
+
+    Posicion posicionSiguiente(Posicion unaPosicion, Direccion unaDireccion);
 }

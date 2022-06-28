@@ -6,7 +6,7 @@ public class Moto implements TipoVehiculo{
         this.probaControlPolicial = unaProbabilidad;
     };
 
-    public int reaccionarAPozo(int cantidadDeMovimientos, Movimiento unMovimiento) {
+    public int reaccionarAPozo(int cantidadDeMovimientos) {
         return cantidadDeMovimientos + 3;
     }
 
@@ -14,14 +14,17 @@ public class Moto implements TipoVehiculo{
         return new Auto(new Probabilidad(0.5f));
     }
 
-    public int reaccionarAPiquete(int cantidadDeMovimientos, Movimiento movimiento) {
+    public int reaccionarAPiquete(int cantidadDeMovimientos) {
         return cantidadDeMovimientos + 2;
     }
 
-    public int reaccionarAControlPolicial(int movimientos, Movimiento unMovimiento) {
+    public int reaccionarAControlPolicial(int movimientos) {
         return this.probaControlPolicial.aplicarPenalizacion(movimientos);
     }
 
+    public Posicion posicionSiguiente(Posicion unaPosicion, Direccion unaDireccion) {
+        return unaDireccion.obtenerPosicion(unaPosicion);
+    }
 
 }
 

@@ -17,8 +17,10 @@ public class Vehiculo {
         return this.posicionVehiculo;
     }
 
-    public void modificarMovimientos(ObjetoCalle unObjetoCalle, Direccion unaDireccion, Movimiento movimiento) {
-        this.cantidadDeMovimientos = unObjetoCalle.reaccionar(this.cantidadDeMovimientos, this.tipo, movimiento);
+    public void modificarMovimientos(ObjetoCalle unObjetoCalle) {
+        this.cantidadDeMovimientos = unObjetoCalle.reaccionar(this.cantidadDeMovimientos, this.tipo);
+        //Los objetos devuelven una posicion "siguiente" pero no mueven el auto.
+        //Al auto hay que moverlo con la última posicion que devuelve la lista objeto.
     }
 
     public float obtenerCantidadMovimientos() {
@@ -34,7 +36,7 @@ public class Vehiculo {
 
     public void moverseEn(ArrayList<Calle> calles, Direccion unaDireccion) {
         Calle calle = buscarCalle(this.posicionVehiculo, unaDireccion.obtenerPosicion(this.posicionVehiculo), calles);
-        calle.aplicarPenalizacion(this, unaDireccion, this.posicionVehiculo);
+        this.posicionVehiculo = calle.aplicarPenalizacion(this, unaDireccion, this.posicionVehiculo);
         this.cantidadDeMovimientos++;
     }
 
@@ -52,5 +54,10 @@ public class Vehiculo {
 
     public void setMovimientos(int movimientos) {
         this.cantidadDeMovimientos = movimientos;
+    }
+
+    public Posicion modificarPosicion(ObjetoCalle unObjeto, Posicion unaPosicion, Direccion unaDireccion) {
+        Posicion posicionSiguiente = unObjeto.posicionSiguiente(unaPosicion, unaDireccion, this.tipo);
+        return posicionSiguiente;
     }
 }

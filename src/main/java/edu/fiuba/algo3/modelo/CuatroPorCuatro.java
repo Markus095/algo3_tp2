@@ -8,7 +8,7 @@ public class CuatroPorCuatro implements TipoVehiculo {
         this.probaControlPolicial = unaProba;
     }
 
-    public int reaccionarAPozo(int cantidadDeMovimientos, Movimiento unMovimiento) {
+    public int reaccionarAPozo(int cantidadDeMovimientos) {
         this.cantidadPozos ++;
         if (this.cantidadPozos >=  3) {
             return cantidadDeMovimientos + 2;
@@ -18,12 +18,15 @@ public class CuatroPorCuatro implements TipoVehiculo {
 
     public TipoVehiculo cambioVehiculo(){ return new Moto(new Probabilidad(0.8f)); }
 
-    public int reaccionarAPiquete(int cantidadDeMovimientos, Movimiento unMovimiento) {
-        unMovimiento.noPuedeAvanzar();
+    public int reaccionarAPiquete(int cantidadDeMovimientos) {
         return cantidadDeMovimientos;
     }
 
-    public int reaccionarAControlPolicial(int movimientos, Movimiento unMovimiento) {
+    public int reaccionarAControlPolicial(int movimientos) {
         return this.probaControlPolicial.aplicarPenalizacion(movimientos);
+    }
+
+    public Posicion posicionSiguiente(Posicion unaPosicion, Direccion unaDireccion) {
+        return unaPosicion;
     }
 }

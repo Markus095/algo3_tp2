@@ -20,18 +20,21 @@ public class Calle {
         objetoCalles.add(unObjetoCalle);
     }
 
-    public void aplicarPenalizacion(Vehiculo unVehiculo, Direccion unaDireccion, Posicion posicionVehiculo) {
-        Movimiento movimiento = new Movimiento(posicionVehiculo, unaDireccion);
+    public Posicion aplicarPenalizacion(Vehiculo unVehiculo, Direccion unaDireccion, Posicion posicionVehiculo) {
+        Posicion posicionSiguiente = new Posicion(0, 0);
         for (ObjetoCalle unObjetoCalle : this.objetoCalles){
-            reaccionarAObjeto(unVehiculo, unObjetoCalle, unaDireccion, movimiento);
+            posicionSiguiente = reaccionarAObjeto(unVehiculo, unObjetoCalle, unaDireccion, posicionVehiculo);
+            if (posicionVehiculo.esIgual(posicionSiguiente)) {
+                return posicionVehiculo;
+            }
         }
-        movimiento.moverVehiculo();
+        return posicionSiguiente;
     }
 
-
-    private void reaccionarAObjeto(Vehiculo unVehiculo, ObjetoCalle unObjetoCalle, Direccion unaDireccion, Movimiento movimiento) {
-        unVehiculo.modificarMovimientos(unObjetoCalle, unaDireccion, movimiento);
+    private Posicion reaccionarAObjeto(Vehiculo unVehiculo, ObjetoCalle unObjetoCalle, Direccion unaDireccion, Posicion posicionVehiculo) {
+        unVehiculo.modificarMovimientos(unObjetoCalle);
         unObjetoCalle.verificarTipo(unVehiculo);
+        return unVehiculo.modificarPosicion(unObjetoCalle, posicionVehiculo, unaDireccion);
     }
 
     public ArrayList<ObjetoCalle> obtenerObjetos() {
