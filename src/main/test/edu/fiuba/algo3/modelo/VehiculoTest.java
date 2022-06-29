@@ -9,9 +9,10 @@ import edu.fiuba.algo3.modelo.jugador.*;
 import edu.fiuba.algo3.modelo.tablero.Mapa;
 import edu.fiuba.algo3.modelo.tablero.Posicion;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 public class VehiculoTest {
 
@@ -347,7 +348,11 @@ public class VehiculoTest {
     @Test
     public void MotoAtraviesaLaCiudadYSeEncuentraUnControlPolicial() {
         Mapa mapa = new Mapa(14, 14);
-        TipoVehiculo tipoVehiculo = new Moto(new Probabilidad(0.8f));
+
+        Probabilidad unaProbabilidad = Mockito.mock(Probabilidad.class);
+        when(unaProbabilidad.aplicarPenalizacion(2)).thenReturn(5);
+
+        TipoVehiculo tipoVehiculo = new Moto(unaProbabilidad);
         Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo);
 
@@ -369,13 +374,17 @@ public class VehiculoTest {
         mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
         mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
 
-        assert (unVehiculo.obtenerCantidadMovimientos() == 5 || unVehiculo.obtenerCantidadMovimientos() == 8);
+        assertEquals(unVehiculo.obtenerCantidadMovimientos(), 8);
     }
 
     @Test
     public void AutoAtraviesaLaCiudadYSeEncuentraUnControlPolicial() {
         Mapa mapa = new Mapa(14, 14);
-        TipoVehiculo tipoVehiculo = new Auto(new Probabilidad(0.5f));
+
+        Probabilidad unaProbabilidad = Mockito.mock(Probabilidad.class);
+        when(unaProbabilidad.aplicarPenalizacion(2)).thenReturn(2);// no penaliza
+
+        TipoVehiculo tipoVehiculo = new Auto(unaProbabilidad);
         Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo);
 
@@ -397,13 +406,17 @@ public class VehiculoTest {
         mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
         mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
 
-        assert (unVehiculo.obtenerCantidadMovimientos() == 5 || unVehiculo.obtenerCantidadMovimientos() == 8);
+        assertEquals(unVehiculo.obtenerCantidadMovimientos(), 5);
     }
 
     @Test
     public void CuatroPorCuatroAtraviesaLaCiudadYSeEncuentraUnControlPolicial() {
         Mapa mapa = new Mapa(14, 14);
-        TipoVehiculo tipoVehiculo = new CuatroPorCuatro(new Probabilidad(0.3f));
+
+        Probabilidad unaProbabilidad = Mockito.mock(Probabilidad.class);
+        when(unaProbabilidad.aplicarPenalizacion(2)).thenReturn(5);
+
+        TipoVehiculo tipoVehiculo = new CuatroPorCuatro(unaProbabilidad);
         Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo);
 
@@ -425,7 +438,7 @@ public class VehiculoTest {
         mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
         mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
 
-        assert (unVehiculo.obtenerCantidadMovimientos() == 5 || unVehiculo.obtenerCantidadMovimientos() == 8);
+        assertEquals(unVehiculo.obtenerCantidadMovimientos(), 8);
     }
 
 
