@@ -156,7 +156,7 @@ public class VehiculoTest {
         Posicion pos2 = new Posicion(6, 4);
 
         mapa.posicionarObjeto(sorpresa,pos1, pos2);
-//revisar
+
         for (int i = 0; i < 4; i++) {
             mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
         }

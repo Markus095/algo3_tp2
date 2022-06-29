@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SorpresaCambioVehiculoTest {
+    /*
     @Test
     public void reaccionarAUnaSorpresaCambioVehiculoConTipoDeVehiculoMotoYNoModificaLosMovimientos(){
         TipoVehiculo tipoVehiculo = new Moto(new Probabilidad(0.8f));
@@ -73,5 +74,7 @@ public class SorpresaCambioVehiculoTest {
         sorpresa.verificarTipo(vehiculo);
         assert(vehiculo.obtenerTipo().getClass().isInstance(new Moto(new Probabilidad(0.8f))));
     }
+
+     */
 
 }

@@ -5,6 +5,7 @@ import org.mockito.Mock;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SorpresaFavorableTest {
+    /*
     @Test
     public void reaccionarAUnaSorpresaFavorableConTipoDeVehiculoMotoReduceLosMovimientosEnUn20Porciento(){
         TipoVehiculo tipoVehiculo = new Moto(new Probabilidad(0.8f));
@@ -40,4 +41,6 @@ public class SorpresaFavorableTest {
 
         assertEquals(sorpresa.reaccionar(movimientosPrevios, tipoVehiculo,mov), 8);
     }
+
+     */
 }

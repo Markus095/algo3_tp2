@@ -19,25 +19,24 @@ public class Vehiculo {
 
     public void modificarMovimientos(ObjetoCalle unObjetoCalle) {
         this.cantidadDeMovimientos = unObjetoCalle.reaccionar(this.cantidadDeMovimientos, this.tipo);
-        //Los objetos devuelven una posicion "siguiente" pero no mueven el auto.
-        //Al auto hay que moverlo con la última posicion que devuelve la lista objeto.
     }
 
     public float obtenerCantidadMovimientos() {
         return this.cantidadDeMovimientos;
     }
-    private Calle buscarCalle(Posicion pos1, Posicion pos2, ArrayList<Calle> calles) {
+    private Calle buscarCalle(Posicion pos1, Posicion pos2, ArrayList<Calle> calles, Calle calleNoPermitida) {
         // este metodo se puede implementar bien con streams
         for (Calle calle : calles) {
             if (calle.vaDesdeHasta(pos1, pos2) || calle.vaDesdeHasta(pos2,pos1)) return calle;
         }
-        return new Calle(pos1,pos2);//a corregir
+        return calleNoPermitida;//a corregir
     }
 
-    public void moverseEn(ArrayList<Calle> calles, Direccion unaDireccion) {
-        Calle calle = buscarCalle(this.posicionVehiculo, unaDireccion.obtenerPosicion(this.posicionVehiculo), calles);
+    public Posicion moverseEn(ArrayList<Calle> calles, Direccion unaDireccion, Calle calleNoPermitida) {
+        Calle calle = buscarCalle(this.posicionVehiculo, unaDireccion.obtenerPosicion(this.posicionVehiculo), calles, calleNoPermitida);
         this.posicionVehiculo = calle.aplicarPenalizacion(this, unaDireccion, this.posicionVehiculo);
         this.cantidadDeMovimientos++;
+        return this.posicionVehiculo;
     }
 
     public TipoVehiculo obtenerTipo() {
@@ -52,9 +51,9 @@ public class Vehiculo {
         return(this.posicionVehiculo.esIgual(posicionDestino));
     }
 
-    public void setMovimientos(int movimientos) {
+    /*public void setMovimientos(int movimientos) {
         this.cantidadDeMovimientos = movimientos;
-    }
+    }*/
 
     public Posicion modificarPosicion(ObjetoCalle unObjeto, Posicion unaPosicion, Direccion unaDireccion) {
         Posicion posicionSiguiente = unObjeto.posicionSiguiente(unaPosicion, unaDireccion, this.tipo);

@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class PiqueteTest {
+    /*
     @Test
     public void reaccionarAUnPiqueteConTipoDeVehiculoMotoPermiteAvanzar(){
         TipoVehiculo tipoVehiculo = new Moto(new Probabilidad(0.8f));
@@ -74,4 +75,6 @@ public class PiqueteTest {
         int movimientosPrevios = 10;
         assertEquals(piquete.reaccionar(movimientosPrevios, tipoVehiculo,mov), 10);
     }
+
+     */
 }

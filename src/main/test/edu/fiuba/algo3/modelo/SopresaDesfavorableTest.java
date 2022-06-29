@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SopresaDesfavorableTest {
+    /*
     @Test
     public void reaccionarAUnaSorpresaDesfavorableConTipoDeVehiculoMotoAumentaLosMovimientosEnUn25Porciento(){
         TipoVehiculo moto = new Moto(new Probabilidad(0.8f));
@@ -37,4 +38,6 @@ public class SopresaDesfavorableTest {
         int movimientosPrevios = 10;
         assertEquals(sorpresa.reaccionar(movimientosPrevios, camioneta,mov), 13); // Redondea para arriba
     }
+
+     */
 }

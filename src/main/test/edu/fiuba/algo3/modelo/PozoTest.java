@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PozoTest {
+    /*
     @Test
     public void reaccionarAUnPozoConTipoDeVehiculoMotoAumentaTresMovimientos(){
         TipoVehiculo moto = new Moto(new Probabilidad(0.8f));
@@ -65,4 +66,6 @@ public class PozoTest {
         movimientosPrevios = pozo.reaccionar(movimientosPrevios, camioneta,mov);
         assertEquals(pozo.reaccionar(movimientosPrevios, camioneta,mov), 16);
     }
+
+     */
 }

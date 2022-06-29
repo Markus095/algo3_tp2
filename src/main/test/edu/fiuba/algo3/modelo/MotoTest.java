@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MotoTest {
-    @Test
+    /*@Test
     public void motoReaccionaAPozoAumentandoEnTresLosMovimientos(){
         TipoVehiculo tipoVehiculo = new Moto(new Probabilidad(0.8f));
         Posicion pos = new Posicion(0,0);
@@ -30,4 +30,6 @@ public class MotoTest {
         TipoVehiculo tipoVehiculo = new Moto(new Probabilidad(0.8f));
         assert(tipoVehiculo.cambioVehiculo().getClass().isInstance(new Auto(new Probabilidad(0.5f))));
     }
+
+     */
 }

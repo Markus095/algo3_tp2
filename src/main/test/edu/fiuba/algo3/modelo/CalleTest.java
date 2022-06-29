@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalleTest {
-    @Test
+    /*@Test
     public void unaCallePorDefectoNoAplicaPenalizacion(){
         Posicion pos1 = new Posicion(0,0);
         Posicion pos2 = new Posicion(0,1);
@@ -162,6 +162,6 @@ public class CalleTest {
 
 
 
-
+*/
 
 }

@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class CuatroPorCuatroTest {
+    /*
     @Test
     public void cuatroPorCuatroReaccionaAPozoSinAumentarLosMovimientos(){
         TipoVehiculo cuatroPorCuatro = new CuatroPorCuatro(new Probabilidad(0.3f));
@@ -59,4 +60,5 @@ public class CuatroPorCuatroTest {
         Movimiento mov = new Movimiento(pos,der);
         assert(cuatroPorCuatro.cambioVehiculo().getClass().isInstance(new Moto(new Probabilidad(0.8f))));
     }
+     */
 }

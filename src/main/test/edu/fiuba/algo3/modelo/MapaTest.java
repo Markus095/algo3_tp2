@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Test;
 
 public class MapaTest {
+    /*
     @Test
     //ENTREGA 0:
     // Una moto atraviesa la grilla sin obstáculos y la cantidad de movimientos es X = 3
@@ -49,4 +50,5 @@ public class MapaTest {
 
         assert(mapa.verificarFinDeJuego());
     }
+     */
 }

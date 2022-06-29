@@ -47,6 +47,13 @@ public class Calle {
     public Posicion obtenerPosicion2() {
         return this.pos2;
     }
+    public Calle buscarCalle(Posicion pos1, Posicion pos2, ArrayList<Calle> calles) {
+        // este metodo se puede implementar bien con streams
+        for (Calle calle : calles) {
+            if (calle.vaDesdeHasta(pos1, pos2) || calle.vaDesdeHasta(pos2,pos1)) return calle;
+        }
+        return new Calle(pos1,pos2);//a corregir
+    }
 
 }
 
