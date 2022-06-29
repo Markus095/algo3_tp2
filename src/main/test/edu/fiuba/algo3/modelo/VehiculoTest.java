@@ -1,5 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.direccion.DireccionAbajo;
+import edu.fiuba.algo3.modelo.direccion.DireccionArriba;
+import edu.fiuba.algo3.modelo.direccion.DireccionDerecha;
+import edu.fiuba.algo3.modelo.direccion.DireccionIzquierda;
+import edu.fiuba.algo3.modelo.entidadesCalle.*;
+import edu.fiuba.algo3.modelo.jugador.*;
+import edu.fiuba.algo3.modelo.tablero.Mapa;
+import edu.fiuba.algo3.modelo.tablero.Posicion;
 import org.junit.jupiter.api.Test;
 
 
@@ -15,6 +23,9 @@ public class VehiculoTest {
         TipoVehiculo tipoMoto = new Moto(new Probabilidad(0.8f));
         Vehiculo unaMoto = new Vehiculo(tipoMoto, new Posicion(1, 0));
         mapa.posicionarVehiculo(unaMoto);
+
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
 
         Pozo unPozo = new Pozo();
         Posicion pos1 = new Posicion(1,1);
@@ -37,6 +48,9 @@ public class VehiculoTest {
         TipoVehiculo tipoVehiculo = new Auto(new Probabilidad(0.5f));
         Vehiculo unAuto = new Vehiculo(tipoVehiculo, new Posicion(1, 0));
         mapa.posicionarVehiculo(unAuto);
+
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
 
         Pozo unPozo = new Pozo();
         Posicion pos1 = new Posicion(1,1);
@@ -61,6 +75,9 @@ public class VehiculoTest {
         Vehiculo una4x4 = new Vehiculo(tipoVehiculo, new Posicion(1, 0));
         mapa.posicionarVehiculo(una4x4);
 
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
+
         Pozo unPozo = new Pozo();
         Posicion pos1 = new Posicion(1,1);
         Posicion pos2 = new Posicion(1, 2);
@@ -83,6 +100,9 @@ public class VehiculoTest {
         TipoVehiculo tipoVehiculo = new CuatroPorCuatro(new Probabilidad(0.3f));
         Vehiculo una4x4 = new Vehiculo(tipoVehiculo, new Posicion(1, 1));
         mapa.posicionarVehiculo(una4x4);
+
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
 
         Pozo unPozo = new Pozo();
         Posicion pos1 = new Posicion(1,1);
@@ -117,6 +137,9 @@ public class VehiculoTest {
         Vehiculo unAuto = new Vehiculo(tipoVehiculo, new Posicion(1, 1));
         mapa.posicionarVehiculo(unAuto);
 
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
+
         Pozo unPozo = new Pozo();
         Posicion pos1 = new Posicion(1,1);
         Posicion pos2 = new Posicion(1, 2);
@@ -150,6 +173,9 @@ public class VehiculoTest {
         Vehiculo vehiculo = new Vehiculo(tipoVehiculo, new Posicion(1, 0));
         mapa.posicionarVehiculo(vehiculo);
 
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
+
         SorpresaFavorable sorpresa = new SorpresaFavorable();
 
         Posicion pos1 = new Posicion(5,4);
@@ -175,6 +201,9 @@ public class VehiculoTest {
         TipoVehiculo tipoVehiculo = new Auto(new Probabilidad(0.5f));
         Vehiculo vehiculo = new Vehiculo(tipoVehiculo, new Posicion(1, 0));
         mapa.posicionarVehiculo(vehiculo);
+
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
 
         SorpresaDesfavorable sorpresa = new SorpresaDesfavorable();
 
@@ -202,6 +231,9 @@ public class VehiculoTest {
         Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(9, 9));
         mapa.posicionarVehiculo(unVehiculo);
 
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
+
         SorpresaCambioVehiculo unaSorpresa = new SorpresaCambioVehiculo();
 
         Posicion pos1 = new Posicion(6,5);
@@ -226,6 +258,9 @@ public class VehiculoTest {
         TipoVehiculo tipoVehiculo = new Auto(new Probabilidad(0.5f));
         Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo);
+
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
 
         Piquete unPiquete = new Piquete();
 
@@ -255,6 +290,9 @@ public class VehiculoTest {
         Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo);
 
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
+
         Piquete unPiquete = new Piquete();
 
         Posicion pos1 = new Posicion(0,2);
@@ -281,6 +319,9 @@ public class VehiculoTest {
         TipoVehiculo tipoVehiculo = new Moto(new Probabilidad(0.8f));
         Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo);
+
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
 
         Piquete unPiquete = new Piquete();
 
@@ -310,6 +351,9 @@ public class VehiculoTest {
         Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo);
 
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
+
         ControlPolicial unControl = new ControlPolicial();
 
         Posicion pos1 = new Posicion(0, 2);
@@ -334,6 +378,9 @@ public class VehiculoTest {
         TipoVehiculo tipoVehiculo = new Auto(new Probabilidad(0.5f));
         Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo);
+
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
 
         ControlPolicial unControl = new ControlPolicial();
 
@@ -360,6 +407,9 @@ public class VehiculoTest {
         Vehiculo unVehiculo = new Vehiculo(tipoVehiculo, new Posicion(0, 0));
         mapa.posicionarVehiculo(unVehiculo);
 
+        Posicion posicionDestino = new Posicion(10, 10);
+        mapa.asignarDestinoFinal(posicionDestino);
+
         ControlPolicial unControl = new ControlPolicial();
 
         Posicion pos1 = new Posicion(0, 2);
@@ -377,6 +427,8 @@ public class VehiculoTest {
 
         assert (unVehiculo.obtenerCantidadMovimientos() == 5 || unVehiculo.obtenerCantidadMovimientos() == 8);
     }
+
+
 }
 
 

@@ -1,4 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.direccion;
+
+import edu.fiuba.algo3.modelo.tablero.Posicion;
 
 public class DireccionIzquierda implements Direccion {
     static private DireccionIzquierda direccionIzquierda = new DireccionIzquierda();

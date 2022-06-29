@@ -1,4 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.entidadesCalle;
+
+import edu.fiuba.algo3.modelo.jugador.TipoVehiculo;
+import edu.fiuba.algo3.modelo.jugador.Vehiculo;
+import edu.fiuba.algo3.modelo.direccion.Direccion;
+import edu.fiuba.algo3.modelo.tablero.Posicion;
 
 public abstract class ObjetoCalle {
 

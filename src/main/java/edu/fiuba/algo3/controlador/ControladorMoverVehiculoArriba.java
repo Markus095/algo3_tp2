@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.Vista.VistaJuego;
-import edu.fiuba.algo3.modelo.DireccionArriba;
+import edu.fiuba.algo3.modelo.direccion.DireccionArriba;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 

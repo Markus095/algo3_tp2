@@ -1,4 +1,7 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.entidadesCalle;
+
+import edu.fiuba.algo3.modelo.jugador.TipoVehiculo;
+import edu.fiuba.algo3.modelo.jugador.Vehiculo;
 
 public class SorpresaCambioVehiculo extends ObjetoCalle {
     public SorpresaCambioVehiculo(){

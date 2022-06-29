@@ -1,4 +1,10 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.jugador;
+
+import edu.fiuba.algo3.modelo.direccion.Direccion;
+import edu.fiuba.algo3.modelo.entidadesCalle.ObjetoCalle;
+import edu.fiuba.algo3.modelo.tablero.BuscadorCalle;
+import edu.fiuba.algo3.modelo.tablero.Calle;
+import edu.fiuba.algo3.modelo.tablero.Posicion;
 
 import java.util.ArrayList;
 

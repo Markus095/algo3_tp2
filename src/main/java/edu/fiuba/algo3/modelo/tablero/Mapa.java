@@ -1,4 +1,8 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.tablero;
+
+import edu.fiuba.algo3.modelo.direccion.Direccion;
+import edu.fiuba.algo3.modelo.entidadesCalle.*;
+import edu.fiuba.algo3.modelo.jugador.Vehiculo;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +10,8 @@ import java.util.Collections;
 public class Mapa {
     private int cantidadFilas;
     private  int cantidadColumnas;
-    private  Vehiculo vehiculo;
+    private Vehiculo vehiculo;
+    private boolean finDeJuego;
     private Posicion posicionDestino;
     private Posicion [][] mapa;
     private ArrayList<Calle> calles = new ArrayList<>();
@@ -14,6 +19,7 @@ public class Mapa {
     public Mapa(int unaCantidadFilas, int unaCantidadColumnas) {
         this.cantidadFilas = unaCantidadFilas;
         this.cantidadColumnas = unaCantidadColumnas;
+        this.finDeJuego = false;
         this.mapa = new Posicion[unaCantidadFilas][unaCantidadColumnas];
         for (int i = 0; i < unaCantidadFilas; i ++) {
             for (int j = 0; j < unaCantidadColumnas; j++) {
@@ -28,9 +34,8 @@ public class Mapa {
         this.vehiculo = unVehiculo;
     }
 
-    public int asignarDestinoFinal(Posicion unaPosicion) {
+    public void asignarDestinoFinal(Posicion unaPosicion) {
         this.posicionDestino = unaPosicion;
-        return 0;
     }
     public void inicializar(){
         ArrayList<ObjetoCalle> objetosCalle = new ArrayList<>();
@@ -63,7 +68,7 @@ public class Mapa {
 
     public void moverVehiculoEn(Direccion unaDireccion) {
         Posicion posicionVehiculo = this.vehiculo.moverseEn(this.calles, unaDireccion);
-        verificarFinDeJuego(posicionVehiculo);
+        this.finDeJuego = verificarFinDeJuego(posicionVehiculo);
     }
 
     public ArrayList<Calle> obtenerCalles() {

@@ -1,11 +1,12 @@
 package edu.fiuba.algo3.Vista;
 
-import edu.fiuba.algo3.modelo.*;
-import javafx.scene.layout.BorderPane;
+import edu.fiuba.algo3.modelo.entidadesCalle.Probabilidad;
+import edu.fiuba.algo3.modelo.jugador.Auto;
+import edu.fiuba.algo3.modelo.jugador.Vehiculo;
+import edu.fiuba.algo3.modelo.tablero.Mapa;
+import edu.fiuba.algo3.modelo.tablero.Posicion;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.input.KeyCode;
 

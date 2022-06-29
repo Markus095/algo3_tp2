@@ -1,4 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.tablero;
+import edu.fiuba.algo3.modelo.entidadesCalle.ObjetoCalle;
+import edu.fiuba.algo3.modelo.entidadesCalle.ObjetoSinPenalizacion;
+import edu.fiuba.algo3.modelo.jugador.Vehiculo;
+import edu.fiuba.algo3.modelo.direccion.Direccion;
+
 import java.util.ArrayList;
 
 public class Calle {

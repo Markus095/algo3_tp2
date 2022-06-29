@@ -1,8 +1,12 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.jugador;
 
-public class Moto implements TipoVehiculo{
+import edu.fiuba.algo3.modelo.direccion.Direccion;
+import edu.fiuba.algo3.modelo.entidadesCalle.Probabilidad;
+import edu.fiuba.algo3.modelo.tablero.Posicion;
+
+public class Auto implements TipoVehiculo{
     private Probabilidad probaControlPolicial;
-    public Moto(Probabilidad unaProbabilidad) {
+    public Auto(Probabilidad unaProbabilidad){
         this.probaControlPolicial = unaProbabilidad;
     };
 
@@ -11,11 +15,11 @@ public class Moto implements TipoVehiculo{
     }
 
     public TipoVehiculo cambioVehiculo(){
-        return new Auto(new Probabilidad(0.5f));
+        return new CuatroPorCuatro(new Probabilidad(0.3f));
     }
 
     public int reaccionarAPiquete(int cantidadDeMovimientos) {
-        return cantidadDeMovimientos + 2;
+        return cantidadDeMovimientos;
     }
 
     public int reaccionarAControlPolicial(int movimientos) {
@@ -23,8 +27,6 @@ public class Moto implements TipoVehiculo{
     }
 
     public Posicion posicionSiguiente(Posicion unaPosicion, Direccion unaDireccion) {
-        return unaDireccion.obtenerPosicion(unaPosicion);
+        return unaPosicion;
     }
-
 }
-

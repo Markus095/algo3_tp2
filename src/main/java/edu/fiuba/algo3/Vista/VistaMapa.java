@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.Vista;
 
-import edu.fiuba.algo3.modelo.Mapa;
+import edu.fiuba.algo3.modelo.tablero.Mapa;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Pane;
 
