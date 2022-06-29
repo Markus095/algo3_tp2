@@ -1,12 +1,17 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.direccion.DireccionDerecha;
+import edu.fiuba.algo3.modelo.entidadesCalle.Probabilidad;
+import edu.fiuba.algo3.modelo.jugador.Auto;
+import edu.fiuba.algo3.modelo.jugador.CuatroPorCuatro;
+import edu.fiuba.algo3.modelo.jugador.TipoVehiculo;
+import edu.fiuba.algo3.modelo.tablero.Posicion;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class AutoTest {
-    /*
     @Test
     public void autoReaccionaAPozoAumentandoEnTresLosMovimientos(){
         TipoVehiculo auto = new Auto(new Probabilidad(0.5f));
@@ -19,7 +24,7 @@ public class AutoTest {
         TipoVehiculo auto = new Auto(new Probabilidad(0.5f));
         Posicion posicionAuto = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
-        assertEquals(posicionAuto, auto.posicionSiguiente(posicionAuto, der));
+        assertEquals(posicionAuto, auto.posicionSiguientePostPiquete(posicionAuto, der));
     }
 
     @Test
@@ -27,20 +32,14 @@ public class AutoTest {
         TipoVehiculo auto = new Auto(new Probabilidad(0.5f));
         Posicion pos = new Posicion(0,0);
         DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
-        Movimiento mov = new Movimiento(pos,der);
         int cantMovimientos = 0;
-        cantMovimientos = auto.reaccionarAPiquete(cantMovimientos, mov);
+        cantMovimientos = auto.reaccionarAPiquete(cantMovimientos);
         assertEquals(cantMovimientos, 0);
     }
 
     @Test
     public void autoReaccionaASorpresaCambioDeVehiculoYCambiaA4x4(){
         TipoVehiculo auto = new Auto(new Probabilidad(0.5f));
-        Posicion pos = new Posicion(0,0);
-        DireccionDerecha der = DireccionDerecha.getDireccionDerecha();
-        Movimiento mov = new Movimiento(pos,der);
         assert(auto.cambioVehiculo().getClass().isInstance(new CuatroPorCuatro(new Probabilidad(0.3f))));
     }
-
-*/
 }

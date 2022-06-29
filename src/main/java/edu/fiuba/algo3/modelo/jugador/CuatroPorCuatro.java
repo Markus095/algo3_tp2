@@ -30,7 +30,7 @@ public class CuatroPorCuatro implements TipoVehiculo {
         return this.probaControlPolicial.aplicarPenalizacion(movimientos);
     }
 
-    public Posicion posicionSiguiente(Posicion unaPosicion, Direccion unaDireccion) {
+    public Posicion posicionSiguientePostPiquete(Posicion unaPosicion, Direccion unaDireccion) {
         return unaPosicion;
     }
 }

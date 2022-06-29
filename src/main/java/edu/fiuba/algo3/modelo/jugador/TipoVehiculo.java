@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.jugador;
 
 import edu.fiuba.algo3.modelo.direccion.Direccion;
+import edu.fiuba.algo3.modelo.direccion.DireccionDerecha;
 import edu.fiuba.algo3.modelo.tablero.Posicion;
 
 public interface TipoVehiculo {
@@ -14,5 +15,6 @@ public interface TipoVehiculo {
 
     int reaccionarAControlPolicial(int movimientos);
 
-    Posicion posicionSiguiente(Posicion unaPosicion, Direccion unaDireccion);
+    Posicion posicionSiguientePostPiquete(Posicion unaPosicion, Direccion unaDireccion);
+
 }

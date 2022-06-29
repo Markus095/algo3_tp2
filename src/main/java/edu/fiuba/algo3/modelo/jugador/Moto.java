@@ -26,9 +26,8 @@ public class Moto implements TipoVehiculo{
         return this.probaControlPolicial.aplicarPenalizacion(movimientos);
     }
 
-    public Posicion posicionSiguiente(Posicion unaPosicion, Direccion unaDireccion) {
+    public Posicion posicionSiguientePostPiquete(Posicion unaPosicion, Direccion unaDireccion) {
         return unaDireccion.obtenerPosicion(unaPosicion);
     }
-
 }
 

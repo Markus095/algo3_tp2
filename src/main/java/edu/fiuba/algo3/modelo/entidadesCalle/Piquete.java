@@ -17,7 +17,7 @@ public class Piquete extends ObjetoCalle {
 
     @Override
     public Posicion posicionSiguiente(Posicion unaPosicion, Direccion unaDireccion, TipoVehiculo unTipo) {
-        return unTipo.posicionSiguiente(unaPosicion, unaDireccion);
+        return unTipo.posicionSiguientePostPiquete(unaPosicion, unaDireccion);
     }
 
 }

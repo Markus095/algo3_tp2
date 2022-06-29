@@ -57,7 +57,7 @@ public class Mapa {
         }
     }
     public boolean verificarFinDeJuego(Posicion unaPosicion) {
-        return this.posicionDestino.esIgual(unaPosicion);
+        return this.posicionDestino.esIgual(vehiculo.obtenerPosicion());
     }
 
     public void posicionarObjeto(ObjetoCalle unObjetoCalle, Posicion pos1, Posicion pos2) {
@@ -66,9 +66,10 @@ public class Mapa {
         calle.guardarObjeto(unObjetoCalle);
     }
 
-    public void moverVehiculoEn(Direccion unaDireccion) {
+    public Posicion moverVehiculoEn(Direccion unaDireccion) {
         Posicion posicionVehiculo = this.vehiculo.moverseEn(this.calles, unaDireccion);
         this.finDeJuego = verificarFinDeJuego(posicionVehiculo);
+        return posicionVehiculo;
     }
 
     public ArrayList<Calle> obtenerCalles() {
