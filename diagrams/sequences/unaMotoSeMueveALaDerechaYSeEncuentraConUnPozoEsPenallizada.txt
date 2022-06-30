@@ -1,0 +1,25 @@
+title unaMotoCruzaLaCiudaYAlEncontrarseConUnPozoEsPenalizada
+
+actor Actor
+activate Actor
+
+Actor->Mapa: moverVehiculoEn(DireccionDerecha)
+activate Mapa
+
+Mapa->Vehiculo: moverseEn(calles, DireccionDerecha)
+activate Vehiculo
+Vehiculo->Calle: aplicarPenalizacion(this, DireccionDerecha, posVehiculo)
+activate Calle
+Calle->Calle: ReaccionarAObjeto(Vehiculo, unPozo, DireccionDerecha, posVehiculo)
+Calle->Vehiculo: modificarMovimientos(unPozo)
+Vehiculo->Pozo: reaccionar(cantMovimientos, unaMoto)
+activate Pozo
+Pozo->unaMoto: reaccionarAPozo(cantMovimientos)
+activate unaMoto
+unaMoto-->Pozo: cantMovimientos
+deactivate unaMoto
+Pozo-->Vehiculo: cantMovimientos
+deactivate Pozo
+Vehiculo->Vehiculo: obtenerCantidadMovimientos()
+Vehiculo-->Actor: cantMovimientos
+deactivate Vehiculo
