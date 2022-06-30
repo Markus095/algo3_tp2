@@ -1,0 +1,25 @@
+title  UnaMotoAtraviesaLaGrillaSinObstáculosYLaCantidadDeMovimientosEsX. 
+
+
+actor Actor
+activate Actor
+
+loop i < X
+Actor->Mapa: moverVehiculoEn(unaDireccion)
+activate Mapa
+Mapa->Vehiculo: moverseEn(calles, unaDireccion)
+activate Vehiculo
+Vehiculo->Calle: aplicarPenalizacion(this, unaDireccion, 		posVehiculo)
+activate Calle
+Calle->Calle: ReaccionarAObjeto(Vehiculo, ObjetoSinPenalizacion, unaDireccion, posVehiculo)
+Calle->Vehiculo: modificarMovimientos(ObjetoSinPenalizacion)
+Vehiculo->ObjetoSinPenalizacion: reaccionar(cantMovimientos, unaMoto)
+activate ObjetoSinPenalizacion
+ObjetoSinPenalizacion-->Vehiculo: cantMovimientos
+deactivate ObjetoSinPenalizacion
+Vehiculo->Vehiculo: obtenerCantidadMovimientos()
+Vehiculo-->Actor: cantMovimientos
+deactivate Vehiculo
+end
+
+
