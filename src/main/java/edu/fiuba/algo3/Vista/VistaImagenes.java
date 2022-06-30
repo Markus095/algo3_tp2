@@ -1,75 +1,94 @@
 package edu.fiuba.algo3.Vista;
 
-import edu.fiuba.algo3.modelo.tablero.Calle;
-import edu.fiuba.algo3.modelo.entidadesCalle.ObjetoCalle;
-import edu.fiuba.algo3.modelo.tablero.Posicion;
+import edu.fiuba.algo3.modelo.entidadesCalle.*;
+import edu.fiuba.algo3.modelo.jugador.*;
+import edu.fiuba.algo3.modelo.tablero.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
+
 import javafx.scene.image.ImageView;
 
 public class VistaImagenes {
     private Pane contenedor;
     private HashMap<String, Image> imagenes;
-
-    public VistaImagenes(Pane contenedor) {
+    private int tamanioVereda;
+    public VistaImagenes(Pane contenedor, double tam, int tamanioVereda) {
         this.contenedor = contenedor;
         this.imagenes = new HashMap<>();
-        this.crearImagen();
+        this.tamanioVereda = tamanioVereda;
+        this.crearImagen(tam);
     }
-    private void crearImagen() {
-        File file = new File("src/main/Imagenes/auto.jpeg");
-        Image imagen = new Image(file.toURI().toString(), 40, 40, true, false);
-        imagenes.put("auto", imagen);
+    private void crearImagen(double tam) {
+        File file = new File("src/main/Imagenes/auto.png");
+        Image imagen = new Image(file.toURI().toString(), tam, tam, true, false);
+        imagenes.put((new Auto(new Probabilidad(0)).getClass().getSimpleName()), imagen);
 
         file = new File("src/main/Imagenes/piquete.png");
-        Image imagen1 = new Image(file.toURI().toString(), 40, 40, true, false);
+        Image imagen1 = new Image(file.toURI().toString(), tam, tam, true, false);
         imagenes.put("piquete", imagen1);
 
-        file = new File("src/main/Imagenes/sorpresa.jpeg");
-        Image imagen2 = new Image(file.toURI().toString(), 40, 40, true, false);
+        file = new File("src/main/Imagenes/sorpresa.png");
+        Image imagen2 = new Image(file.toURI().toString(), tam, tam, true, false);
         imagenes.put("sorpresa", imagen2);
 
-        file = new File("src/main/Imagenes/controlPolicial.png");
-        Image imagen3 = new Image(file.toURI().toString(), 40, 40, true, false);
+        file = new File("src/main/Imagenes/policia.png");
+        Image imagen3 = new Image(file.toURI().toString(), tam, tam, true, false);
         imagenes.put("controlPolicial", imagen3);
+
+        file = new File("src/main/Imagenes/meta.png");
+        Image imagen4 = new Image(file.toURI().toString(), tam, tam, true, false);
+        imagenes.put("meta", imagen4);
+
+        file = new File("src/main/Imagenes/moto.png");
+        Image imagen5 = new Image(file.toURI().toString(), tam, tam, true, false);
+        imagenes.put((new Moto(new Probabilidad(0)).getClass().getSimpleName()), imagen5);
+
+        file = new File("src/main/Imagenes/4x4.png");
+        Image imagen6 = new Image(file.toURI().toString(), tam, tam, true, false);
+        imagenes.put((new CuatroPorCuatro(new Probabilidad(0)).getClass().getSimpleName()), imagen6);
+
+        file = new File("src/main/Imagenes/pozo.png");
+        Image imagen7 = new Image(file.toURI().toString(), tam, tam, true, false);
+        imagenes.put("pozo", imagen7);
 
     }
     private Image obtenerImagen(String nombre) {
         return imagenes.getOrDefault(nombre,null);
     }
-    private ImageView crearImageView(Image imagen, Posicion posicion,int tam) {
+    private ImageView crearImageView(Image imagen, Posicion posicion,double tam) {
         ImageView imageView = new ImageView();
         imageView.setImage(imagen);
-        imageView.setLayoutX(posicion.obtenerColumna() * tam * (tam/10));
-        imageView.setLayoutY(posicion.obtenerFila() * tam * (tam/10));
+        imageView.setLayoutX(posicion.obtenerColumna() * tam * tamanioVereda);
+        imageView.setLayoutY(posicion.obtenerFila() * tam * tamanioVereda);
         imageView.setFitWidth(tam);
         imageView.setFitHeight(tam);
         return imageView;
     }
-    private ImageView crearImageView2(Image imagen, Posicion posicion,int tam) {
+    private ImageView crearImageView2(Image imagen, Posicion posicion,double tam) {
         ImageView imageView = new ImageView();
         imageView.setImage(imagen);
-        imageView.setLayoutX(posicion.obtenerColumna() * tam);
-        imageView.setLayoutY(posicion.obtenerFila() * tam);
+        imageView.setLayoutX(posicion.obtenerColumna());
+        imageView.setLayoutY(posicion.obtenerFila());
         imageView.setFitWidth(tam);
         imageView.setFitHeight(tam);
         return imageView;
     }
-    public ImageView agregarImagen(String nombre, Posicion posicion, int tam) {
+    public ImageView agregarImagen(String nombre, Posicion posicion, double tam) {
         Image imagen = obtenerImagen(nombre);
         ImageView imageView = crearImageView(imagen,posicion,tam);
         contenedor.getChildren().add(imageView);
         return imageView;
     }
 
-    public void agregarImagenes(ArrayList<Calle> calles, int tam) {
+    public void agregarImagenes(ArrayList<Calle> calles, double tam) {
         for (Calle calle : calles) {
             int i = 1;
             for (ObjetoCalle objeto : calle.obtenerObjetos()) {
-                if (objeto.getNombre() != "objetoSinPenalizacion" && i < 3) {
+                if (objeto.getNombre() != "objetoSinPenalizacion" && i < 4) {
                     Posicion posicionIntermedia = obtenerPosicionesIntermedias(calle, tam, i);
                     Image imagen = obtenerImagen(objeto.getNombre());
                     ImageView imageView = crearImageView2(imagen, posicionIntermedia, tam);
@@ -80,10 +99,10 @@ public class VistaImagenes {
         }
     }
 
-    private Posicion obtenerPosicionesIntermedias(Calle unaCalle, int tam, int i) {
+    private Posicion obtenerPosicionesIntermedias(Calle unaCalle, double tam, int i) {
         if (unaCalle.obtenerPosicion1().obtenerFila() == unaCalle.obtenerPosicion2().obtenerFila()) {
-            return (new Posicion(unaCalle.obtenerPosicion1().obtenerFila() * (tam/10), unaCalle.obtenerPosicion1().obtenerColumna() * (tam/10) + i));
+            return (new Posicion((int)(unaCalle.obtenerPosicion1().obtenerFila() * tam * tamanioVereda), (int)(unaCalle.obtenerPosicion1().obtenerColumna() * tam * tamanioVereda+ i * tam)));
         }
-        return (new Posicion(unaCalle.obtenerPosicion1().obtenerColumna() * (tam/10) + i, unaCalle.obtenerPosicion1().obtenerColumna() * (tam/10)));
+        return (new Posicion((int)(unaCalle.obtenerPosicion1().obtenerFila() * tam * tamanioVereda+ i * tam), (int)(unaCalle.obtenerPosicion1().obtenerColumna() * tam * tamanioVereda)));
     }
 }

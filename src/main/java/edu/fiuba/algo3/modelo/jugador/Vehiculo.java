@@ -50,6 +50,9 @@ public class Vehiculo {
     public boolean verificarPosicionFinDeJuego(Posicion posicionDestino) {
         return(this.posicionVehiculo.esIgual(posicionDestino));
     }
+    public void cambioTipoDeVehiculoA(TipoVehiculo unTipo) {
+        this.tipo = unTipo;
+    }
 
     /*public void setMovimientos(int movimientos) {
         this.cantidadDeMovimientos = movimientos;

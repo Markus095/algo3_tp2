@@ -6,6 +6,13 @@ import edu.fiuba.algo3.modelo.jugador.Vehiculo;
 import edu.fiuba.algo3.modelo.tablero.Mapa;
 import edu.fiuba.algo3.modelo.tablero.Posicion;
 import javafx.scene.layout.Pane;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.input.KeyCode;
@@ -20,6 +27,10 @@ public class VistaJuego {
 
     private ContadorMovimientos contadorMovimientos;
     private Grilla grillaMapa;
+    private Posicion destinoFinal;
+    private float tamanio;
+
+    private RangoVision rangoVision;
 
     public Mapa getMapa() {
         return unMapa;
@@ -27,19 +38,29 @@ public class VistaJuego {
     public Pane obtenerContenedor() {
         return contenedorJuego;
     }
-    public void empezarJuego(Stage stage, Pane controlador) {
+    public void empezarJuego(Stage stage, Pane controlador, Vehiculo unVehiculo, double tamPantalla) {
+        int cantidadColumnas = 15;
+        int cantidadFilas = 15;
+        int tamanioVereda = 4;
         this.contenedorJuego = controlador;
+
+        this.tamanio = (float)tamPantalla/(float)(cantidadColumnas * tamanioVereda + 1);
+        System.out.println("tamanio"+ tamanio);
         this.stage = stage;
         this.botones = new Botones(this);
-        this.unVehiculo = new Vehiculo(new Auto(new Probabilidad(0.5f)), new Posicion(0, 0));
-        this.unMapa = new Mapa(100, 100);
+        //this.unVehiculo = new Vehiculo(new Auto(new Probabilidad(0.5f)), new Posicion(0, 0));
+        this.unVehiculo = unVehiculo;
+        this.unMapa = new Mapa(cantidadFilas + 1, cantidadColumnas + 1);
         unMapa.inicializar();
         unMapa.posicionarVehiculo(unVehiculo);
-        unMapa.asignarDestinoFinal(new Posicion(1, 3));
+        this.destinoFinal = new Posicion(3, 5);
+        unMapa.asignarDestinoFinal(this.destinoFinal);
 
+
+        this.rangoVision = new RangoVision(contenedorJuego, tamPantalla, tamanio, unVehiculo.obtenerPosicion());
         this.contadorMovimientos = new ContadorMovimientos(contenedorJuego, (int)this.unVehiculo.obtenerCantidadMovimientos());
-        this.vistaImagenes = new VistaImagenes(contenedorJuego);
-        this.grillaMapa = new Grilla(contenedorJuego, 0 ,0, Color.LIMEGREEN, Color.BLACK, 40, 50,50, 0.8,0.5);
+        this.vistaImagenes = new VistaImagenes(contenedorJuego, tamanio, tamanioVereda);
+        this.grillaMapa = new Grilla(contenedorJuego, Color.LIMEGREEN, Color.BLACK, tamPantalla, cantidadColumnas * tamanioVereda + 1, cantidadFilas * tamanioVereda + 1, 0.8,0.5, tamanioVereda);
 
 
         actualizar();
@@ -51,6 +72,7 @@ public class VistaJuego {
         actualizarVistaMapa();
         actualizarTeclas();
         actualizarVistaBotones();
+        rangoVision.actualizarRangoVision(unVehiculo.obtenerPosicion());
         actualizarContadorMovimientos();
     }
 
@@ -60,8 +82,9 @@ public class VistaJuego {
     private void actualizarVistaMapa() {
         grillaMapa.actualizar();
         Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
-        vistaImagenes.agregarImagenes(unMapa.obtenerCalles(), 40);
-        vistaImagenes.agregarImagen("auto", posicionVehiculo, 40);
+        vistaImagenes.agregarImagenes(unMapa.obtenerCalles(), tamanio);
+        vistaImagenes.agregarImagen(unVehiculo.obtenerTipo().getClass().getSimpleName(), posicionVehiculo, tamanio);
+        vistaImagenes.agregarImagen("meta", destinoFinal, tamanio);
     }
     public void actualizarTeclas(){
         stage.getScene().setOnKeyPressed(e -> {

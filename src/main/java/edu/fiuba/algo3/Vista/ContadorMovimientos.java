@@ -27,7 +27,7 @@ public class ContadorMovimientos {
         contenedor = contenedorJuego;
         rectangle = new Rectangle(280,30, Color.WHITE);
         movimientos = new Label("Cantidad de movimientos:" + cantidadMovimientos);
-        movimientos.setFont(new Font("serif", 16));
+        movimientos.setFont(new Font("serif", 17));
         movimientos.setTextFill(Color.BLACK);
         movimientos.setLayoutX((contenedorJuego.getWidth()) - (rectangle.getWidth())*0.98);
         movimientos.setLayoutY((contenedorJuego.getHeight()) - (rectangle.getHeight())*0.98);
@@ -41,15 +41,7 @@ public class ContadorMovimientos {
     }
 
     public void actualizar(int cantidadMovimientos) {
-        movimientos = new Label("Cantidad de movimientos:" + cantidadMovimientos);
-        movimientos.setLayoutX((contenedor.getWidth()) - (rectangle.getWidth())*0.98);
-        movimientos.setLayoutY((contenedor.getHeight()) - (rectangle.getHeight())*0.98);
-
-        rectangle.setX((contenedor.getWidth()) - (rectangle.getWidth()));
-        rectangle.setY((contenedor.getHeight()) - (rectangle.getHeight()));
-        rectangle.setArcWidth(20);
-        rectangle.setArcHeight(20);
-        rectangle.setOpacity(0.4);
+        movimientos.setText("Cantidad de movimientos:" + cantidadMovimientos);
         contenedor.getChildren().addAll(rectangle, movimientos);
     }
 }
