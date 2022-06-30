@@ -9,13 +9,19 @@ import edu.fiuba.algo3.controlador.ControladorComenzarJuego;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -52,7 +58,6 @@ public class Main extends Application {
 
         Vehiculo vehiculo = new Vehiculo(new Auto(new Probabilidad(0.5f)), new Posicion(0, 0));
         contenedorMenu.getChildren().add(contenedorHorizontal);
-
 
         ControladorElegirAuto controladorbotonAuto = new ControladorElegirAuto(vehiculo);
         botonDeAuto.setOnAction(controladorbotonAuto);

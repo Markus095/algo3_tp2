@@ -30,6 +30,8 @@ public class VistaJuego {
     private Posicion destinoFinal;
     private float tamanio;
 
+    private VerificadorFinDeJuego verificadorFinDeJuego;
+
     private RangoVision rangoVision;
 
     public Mapa getMapa() {
@@ -57,11 +59,11 @@ public class VistaJuego {
         unMapa.asignarDestinoFinal(this.destinoFinal);
 
 
-        this.rangoVision = new RangoVision(contenedorJuego, tamPantalla, tamanio, unVehiculo.obtenerPosicion());
+        this.rangoVision = new RangoVision(contenedorJuego, tamPantalla, tamanio, unVehiculo.obtenerPosicion(), destinoFinal);
         this.contadorMovimientos = new ContadorMovimientos(contenedorJuego, (int)this.unVehiculo.obtenerCantidadMovimientos());
         this.vistaImagenes = new VistaImagenes(contenedorJuego, tamanio, tamanioVereda);
-        this.grillaMapa = new Grilla(contenedorJuego, Color.LIMEGREEN, Color.BLACK, tamPantalla, cantidadColumnas * tamanioVereda + 1, cantidadFilas * tamanioVereda + 1, 0.8,0.5, tamanioVereda);
-
+        this.grillaMapa = new Grilla(contenedorJuego, Color.LIMEGREEN, Color.DARKGRAY, tamPantalla, cantidadColumnas * tamanioVereda + 1, cantidadFilas * tamanioVereda + 1, 0.8,0.5, tamanioVereda);
+        this.verificadorFinDeJuego = new VerificadorFinDeJuego(contenedorJuego, unMapa);
 
         actualizar();
     }
@@ -74,6 +76,7 @@ public class VistaJuego {
         actualizarVistaBotones();
         rangoVision.actualizarRangoVision(unVehiculo.obtenerPosicion());
         actualizarContadorMovimientos();
+        verificadorFinDeJuego.verificarFinJuego(unVehiculo.obtenerPosicion(), (int)unVehiculo.obtenerCantidadMovimientos());
     }
 
     private void actualizarContadorMovimientos() { contadorMovimientos.actualizar((int)this.unVehiculo.obtenerCantidadMovimientos());}
