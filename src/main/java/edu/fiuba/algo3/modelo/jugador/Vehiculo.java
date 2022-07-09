@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.jugador;
 
 import edu.fiuba.algo3.modelo.direccion.Direccion;
 import edu.fiuba.algo3.modelo.entidadesCalle.ObjetoCalle;
+import edu.fiuba.algo3.modelo.entidadesCalle.Probabilidad;
 import edu.fiuba.algo3.modelo.tablero.BuscadorCalle;
 import edu.fiuba.algo3.modelo.tablero.Calle;
 import edu.fiuba.algo3.modelo.tablero.Posicion;
@@ -61,5 +62,11 @@ public class Vehiculo {
     public Posicion modificarPosicion(ObjetoCalle unObjeto, Posicion unaPosicion, Direccion unaDireccion) {
         Posicion posicionSiguiente = unObjeto.posicionSiguiente(unaPosicion, unaDireccion, this.tipo);
         return posicionSiguiente;
+    }
+
+    public void reiniciar() {
+        this.posicionVehiculo = new Posicion(0,0);
+        this.cambioTipoDeVehiculoA(new Auto(new Probabilidad(0.5f)));
+        this.cantidadDeMovimientos = 0;
     }
 }

@@ -10,6 +10,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import edu.fiuba.algo3.Vista.VistaJuego;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ControladorComenzarJuego implements EventHandler<ActionEvent>{
     private Pane controlador;
     private Stage stage;
@@ -18,7 +21,7 @@ public class ControladorComenzarJuego implements EventHandler<ActionEvent>{
 
     private double tamPantalla;
 
-    public ControladorComenzarJuego(Pane controlador, Stage stage, Vehiculo unVehiculo, double tamPantalla) {
+    public ControladorComenzarJuego(Pane controlador, Stage stage, Vehiculo unVehiculo, double tamPantalla, Map<String, Integer> ranking, String nombreJugador) {
         this.stage = stage;
         this.controlador = controlador;
         this.vehiculo = unVehiculo;

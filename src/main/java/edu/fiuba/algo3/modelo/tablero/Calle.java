@@ -22,7 +22,8 @@ public class Calle {
     }
 
     public void guardarObjeto(ObjetoCalle unObjetoCalle) {
-        objetoCalles.add(unObjetoCalle);
+        if (objetoCalles.size() < 3) {
+            objetoCalles.add(unObjetoCalle);}
     }
 
     public Posicion aplicarPenalizacion(Vehiculo unVehiculo, Direccion unaDireccion, Posicion posicionVehiculo) {

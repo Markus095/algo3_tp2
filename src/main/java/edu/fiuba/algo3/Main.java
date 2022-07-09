@@ -16,6 +16,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.*;
@@ -26,10 +27,15 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.Map;
+import java.util.HashMap;
+
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Map<String, Integer>  ranking = new HashMap<String, Integer>();
+
         Pane contenedorMenu = new Pane();
         //primaryStage.setResizable(false);
         primaryStage.initStyle(StageStyle.UNDECORATED);
@@ -69,7 +75,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(contenedorMenu, 1000, 1000);
 
-        ControladorComenzarJuego controladorbotonjugar = new ControladorComenzarJuego(contenedorMenu, primaryStage, vehiculo, 1000);
+        ControladorComenzarJuego controladorbotonjugar = new ControladorComenzarJuego(contenedorMenu, primaryStage, vehiculo, 1000, ranking, nombreJugador.getText());
         botonDeInicio.setOnAction(controladorbotonjugar);
 
 

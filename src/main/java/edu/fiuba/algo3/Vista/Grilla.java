@@ -24,7 +24,6 @@ public class Grilla {
 
         double tamanio_hor = Tam_pantalla/Ancho;
         double tamanio_ver = Tam_pantalla/Alto;
-        System.out.println("tamaniohor"+ tamanio_hor);
 
         colorFondo.setLayoutX(0);
         colorFondo.setLayoutY(0);
@@ -37,7 +36,6 @@ public class Grilla {
             rectangulo.setStroke(ColorLinea);
             rectangulo.setStrokeWidth(StrokeWudth);
             calles.add(rectangulo);
-            System.out.println("rectangulo"+ j * tamanio_hor);
         }
         for (int i = 0; i <= Alto; i+= tamVereda) {
             Rectangle rectangulo = new Rectangle(0 , i * tamanio_ver, Tam_pantalla, tamanio_ver);

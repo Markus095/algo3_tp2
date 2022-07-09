@@ -54,4 +54,11 @@ public class Botones{
         contenedor.getChildren().add(boton);
         return boton;
     }
+
+    public void deshabilitarBotones(boolean habilitar) {
+        this.botonAbajo.setDisable(habilitar);
+        this.botonArriba.setDisable(habilitar);
+        this.botonIzquierda.setDisable(habilitar);
+        this.botonDerecha.setDisable(habilitar);
+    }
 }

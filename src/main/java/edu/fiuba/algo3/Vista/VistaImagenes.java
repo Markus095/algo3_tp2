@@ -20,7 +20,7 @@ public class VistaImagenes {
         this.contenedor = contenedor;
         this.imagenes = new HashMap<>();
         this.tamanioVereda = tamanioVereda;
-        this.crearImagen(tam);
+        this.crearImagen(tam * 2);
     }
     private void crearImagen(double tam) {
         File file = new File("src/main/Imagenes/auto.png");

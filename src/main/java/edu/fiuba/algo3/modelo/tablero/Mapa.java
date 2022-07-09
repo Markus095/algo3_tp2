@@ -38,7 +38,7 @@ public class Mapa {
         this.posicionDestino = unaPosicion;
     }
     public void inicializar(){
-        ArrayList<ObjetoCalle> objetosCalle = new ArrayList<>();
+        ArrayList<ObjetoCalle> objetosCalle = new ArrayList<>(2);
 
         objetosCalle.add(new Pozo());
         objetosCalle.add(new SorpresaFavorable());
