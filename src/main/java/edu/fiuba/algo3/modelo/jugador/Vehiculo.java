@@ -64,9 +64,4 @@ public class Vehiculo {
         return posicionSiguiente;
     }
 
-    public void reiniciar() {
-        this.posicionVehiculo = new Posicion(0,0);
-        this.cambioTipoDeVehiculoA(new Auto(new Probabilidad(0.5f)));
-        this.cantidadDeMovimientos = 0;
-    }
 }

@@ -19,6 +19,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.input.KeyCode;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
+
 public class VistaJuego {
     private Pane contenedorJuego;
     private Stage stage;
@@ -35,6 +37,7 @@ public class VistaJuego {
     private VerificadorFinDeJuego verificadorFinDeJuego;
 
     private RangoVision rangoVision;
+    private VistaInicio vistaInicio;
 
     public Mapa getMapa() {
         return unMapa;
@@ -42,12 +45,13 @@ public class VistaJuego {
     public Pane obtenerContenedor() {
         return contenedorJuego;
     }
-    public void empezarJuego(Stage stage, Pane controlador, Vehiculo unVehiculo, double tamPantalla) {
+    public void empezarJuego(Stage stage, Pane controlador, Vehiculo unVehiculo, double tamPantalla, VistaInicio vistaInicio) throws IOException {
         int cantidadColumnas = 10;
         int cantidadFilas = 10;
         int tamanioVereda = 3;
         //this.contenedorJuego = controlador;
         this.contenedorJuego = new Pane();
+        this.vistaInicio = vistaInicio;
 
         this.tamanio = (float)tamPantalla/(float)(cantidadColumnas * tamanioVereda + 1);
         //this.stage = stage;
@@ -72,7 +76,7 @@ public class VistaJuego {
         this.contadorMovimientos = new ContadorMovimientos(contenedorJuego, (int)this.unVehiculo.obtenerCantidadMovimientos());
         this.vistaImagenes = new VistaImagenes(contenedorJuego, tamanio, tamanioVereda);
         this.grillaMapa = new Grilla(contenedorJuego, Color.LIMEGREEN, Color.DARKGRAY, tamPantalla, cantidadColumnas * tamanioVereda + 1, cantidadFilas * tamanioVereda + 1, 0.8,0.5, tamanioVereda);
-        this.verificadorFinDeJuego = new VerificadorFinDeJuego(this.stage, contenedorJuego, unMapa, botones);
+        this.verificadorFinDeJuego = new VerificadorFinDeJuego(this.stage, contenedorJuego, unMapa, botones, this.vistaInicio);
 
         //botones.deshabilitarBotones(false);
         this.stage.setScene(scene);
@@ -81,7 +85,7 @@ public class VistaJuego {
 
     }
 
-    public void actualizar() {
+    public void actualizar() throws IOException {
         contenedorJuego.getChildren().clear();
         System.gc();
         actualizarVistaMapa();
@@ -105,7 +109,7 @@ public class VistaJuego {
     public void actualizarTeclas(){
         stage.getScene().setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ESCAPE) {
-                unVehiculo.reiniciar();
+                vistaInicio.reiniciar();
                 stage.close();
             }
             if (e.getCode() == KeyCode.W) {
