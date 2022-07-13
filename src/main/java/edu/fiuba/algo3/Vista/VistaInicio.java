@@ -37,11 +37,10 @@ public class VistaInicio {
     private Stage primaryStage;
     private TextField nombreJugador;
     private Pane contenedorMenu;
-    private HashMap<String, Integer> ranking;
-    private ObservableList<InfoJugada> rankingList;
+    private Ranking ranking;
+    private Vehiculo vehiculo;
 
     public VistaInicio(Stage primaryStage) throws IOException {
-        this.inicializarRanking();
         this.primaryStage = primaryStage;
         this.primaryStage.setResizable(false);
         //primaryStage.initStyle(StageStyle.UNDECORATED);
@@ -51,7 +50,6 @@ public class VistaInicio {
 
         contenedorMenu = new Pane();
         this.reiniciar();
-
         this.scene = new Scene(contenedorMenu, 1000, 1000);
 
         scene.setOnKeyPressed(e -> {
@@ -59,55 +57,36 @@ public class VistaInicio {
                 this.primaryStage.close();
             }
         });
-
     }
     public Scene getScene() {
         return this.scene;
     }
+
     public void reiniciar() {
         contenedorMenu.getChildren().clear();
         System.gc();
+        this.nombreJugador = new TextField();
+        this.nombreJugador.setFont(Font.font("Verdana", FontWeight.BOLD,20));
+        this.vehiculo = new Vehiculo(new Auto(new Probabilidad(0.5f)), new Posicion(0, 0));
 
-        File file1 = new File("src/main/Imagenes/4x4boton.jpeg");
-        Image img = new Image(file1.toURI().toString(), 70, 70, true, false);
-        ImageView view = new ImageView();
-        view.setImage(img);
-
-        File file2 = new File("src/main/Imagenes/autoboton.jpeg");
-        Image img2 = new Image(file2.toURI().toString(), 70, 70, true, false);
-        ImageView view2 = new ImageView();
-        view2.setImage(img2);
-
-        File file3 = new File("src/main/Imagenes/motoboton.jpeg");
-        Image img3 = new Image(file3.toURI().toString(), 70, 70, true, false);
-        ImageView view3 = new ImageView();
-        view3.setImage(img3);
-
-        File file4 = new File("src/main/Imagenes/startboton2.jpeg");
-        Image img4 = new Image(file4.toURI().toString(), 140, 70, true, false);
-        ImageView view4 = new ImageView();
-        view4.setImage(img4);
-
-        File file5 = new File("src/main/Imagenes/instruccion.jpeg");
-        Image img5 = new Image(file5.toURI().toString(), 320, 70, true, false);
-        ImageView view5 = new ImageView();
-        view5.setImage(img5);
-
+        ImageView view4x4boton = crearView("src/main/Imagenes/4x4boton.jpeg", 70, 70);
+        ImageView view2autoboton = crearView("src/main/Imagenes/autoboton.jpeg", 70, 70);
+        ImageView view3motoboton = crearView("src/main/Imagenes/motoboton.jpeg", 70, 70);
+        ImageView view4startboton = crearView("src/main/Imagenes/startboton2.jpeg", 140, 70);
+        ImageView view5instruccion = crearView("src/main/Imagenes/instruccion.jpeg", 320, 70);
+        ImageView viewFondoInicio = crearView("src/main/Imagenes/fondoInicio.jpeg", 1000, 1000);
 
         Button botonDeInicio = new Button();
-        botonDeInicio.setGraphic(view4);
-
+        botonDeInicio.setGraphic(view4startboton);
         Button botonDeMoto = new Button();
-        botonDeMoto.setGraphic(view3);
+        botonDeMoto.setGraphic(view3motoboton);
         Button botonDeAuto = new Button();
-        botonDeAuto.setGraphic(view2);
+        botonDeAuto.setGraphic(view2autoboton);
         Button botonDe4x4 = new Button();
-        botonDe4x4.setGraphic(view);
+        botonDe4x4.setGraphic(view4x4boton);
 
-        this.nombreJugador = new TextField();
         Label instruccion = new Label();
-        instruccion.setGraphic(view5);
-        this.nombreJugador.setFont(Font.font("Verdana", FontWeight.BOLD,20));
+        instruccion.setGraphic(view5instruccion);
         VBox contenedorVertical = new VBox(instruccion, nombreJugador, botonDeInicio);
         contenedorVertical.setPadding(new Insets(100));
         contenedorVertical.setSpacing(15);
@@ -118,18 +97,8 @@ public class VistaInicio {
         contenedorHorizontal.setLayoutX(10);
         contenedorHorizontal.setLayoutY(500);
 
-        File file = new File("src/main/Imagenes/fondoInicio.jpeg");
-        Image imagen = new Image(file.toURI().toString(), 1000, 1000, true, false);
-        ImageView imageView = new ImageView();
-        imageView.setImage(imagen);
-        imageView.setFitWidth(1000);
-        imageView.setFitHeight(1000);
-        contenedorMenu.getChildren().add(imageView);
-
+        contenedorMenu.getChildren().add(viewFondoInicio);
         contenedorMenu.getChildren().add(contenedorHorizontal);
-
-        Vehiculo vehiculo = new Vehiculo(new Auto(new Probabilidad(0.5f)), new Posicion(0, 0));
-
 
         ControladorElegirAuto controladorbotonAuto = new ControladorElegirAuto(vehiculo);
         botonDeAuto.setOnAction(controladorbotonAuto);
@@ -141,63 +110,15 @@ public class VistaInicio {
         botonDeInicio.setOnAction(controladorbotonjugar);
     }
 
-    public void agregarPartida(int obtenerCantidadMovimientos) throws IOException {
-        this.ranking.put(this.nombreJugador.getText(), obtenerCantidadMovimientos);
-        this.crear_archivo();
-    }
-    private void inicializarRanking() throws IOException {
-        this.ranking = new HashMap<String, Integer>();
-        BufferedReader csvReader = new BufferedReader(new FileReader("/home/azul/Documents/GitHub/algo3_tp2/src/main/java/edu/fiuba/algo3/Vista/ranking.csv"));
-        String row = csvReader.readLine();
-        while (row != null) {
-            String[] data = row.split(",");
-            ranking.put(data[0], Integer.valueOf(data[1]));
-            row = csvReader.readLine();
-        }
-        csvReader.close();
-    }
-    private void crear_archivo() throws IOException {
-        FileWriter csvWriter = new FileWriter("/home/azul/Documents/GitHub/algo3_tp2/src/main/java/edu/fiuba/algo3/Vista/ranking.csv");
-        ranking = sortByValue(ranking);
-        this.rankingList = FXCollections.observableArrayList();
-
-        int i = 0; // todo arreglar esto feo
-        for(Map.Entry<String, Integer> entry: ranking.entrySet()) {
-            csvWriter.append(entry.getKey() + ',' + entry.getValue());
-            csvWriter.append("\n");
-            this.rankingList.add(new InfoJugada(entry.getKey(), entry.getValue(), i));
-            i++;
-        }
-
-        csvWriter.flush();
-        csvWriter.close();
-    }
-    public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm)
-    {
-        // Create a list from elements of HashMap
-        List<Map.Entry<String, Integer> > list =
-                new LinkedList<Map.Entry<String, Integer> >(hm.entrySet());
-
-        // Sort the list
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer> >() {
-            public int compare(Map.Entry<String, Integer> o1,
-                               Map.Entry<String, Integer> o2)
-            {
-                return (o1.getValue()).compareTo(o2.getValue());
-            }
-        }.reversed());
-
-        // put data from sorted list to hashmap
-        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
-
-        for (Map.Entry<String, Integer> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
-
-        }
-        return temp;
+    public String obtenerNombreJugador() {
+        return this.nombreJugador.getText();
     }
 
-    public ObservableList<InfoJugada> getRankingList() {
-        return rankingList;
+    private ImageView crearView(String path, int tamHorizontal, int tamVertical) {
+        File file = new File(path);
+        Image img = new Image(file.toURI().toString(), tamHorizontal, tamVertical, true, false);
+        ImageView view = new ImageView();
+        view.setImage(img);
+        return view;
     }
 }

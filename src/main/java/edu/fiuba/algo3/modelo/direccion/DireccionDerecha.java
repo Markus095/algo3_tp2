@@ -13,6 +13,7 @@ public class DireccionDerecha implements Direccion {
     public void mover(Posicion posicion) {
         posicion.moverDerecha();
     }
+    public double obtenerRotacion() {return 90;}
 
     public Posicion obtenerPosicion(Posicion posicion) {
         return posicion.obtenerPosicionDerecha();

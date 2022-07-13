@@ -32,7 +32,6 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Main extends Application {
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         VistaInicio vistaInicio = new VistaInicio(primaryStage);

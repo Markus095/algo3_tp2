@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.Vista;
 
+import edu.fiuba.algo3.modelo.direccion.Direccion;
 import edu.fiuba.algo3.modelo.entidadesCalle.*;
 import edu.fiuba.algo3.modelo.jugador.*;
 import edu.fiuba.algo3.modelo.tablero.*;
@@ -22,64 +23,39 @@ public class VistaImagenes {
         this.tamanioVereda = tamanioVereda;
         this.crearImagen(tam * 2);
     }
-    private void crearImagen(double tam) {
-        File file = new File("src/main/Imagenes/auto.png");
+
+    private void agregarImagenAImagenes(String path, String name, double tam) {
+        File file = new File(path);
         Image imagen = new Image(file.toURI().toString(), tam, tam, true, false);
-        imagenes.put((new Auto(new Probabilidad(0)).getClass().getSimpleName()), imagen);
-
-        file = new File("src/main/Imagenes/piquete.png");
-        Image imagen1 = new Image(file.toURI().toString(), tam, tam, true, false);
-        imagenes.put("piquete", imagen1);
-
-        file = new File("src/main/Imagenes/sorpresa.png");
-        Image imagen2 = new Image(file.toURI().toString(), tam, tam, true, false);
-        imagenes.put("sorpresa", imagen2);
-
-        file = new File("src/main/Imagenes/policia.png");
-        Image imagen3 = new Image(file.toURI().toString(), tam, tam, true, false);
-        imagenes.put("controlPolicial", imagen3);
-
-        file = new File("src/main/Imagenes/meta.png");
-        Image imagen4 = new Image(file.toURI().toString(), tam, tam, true, false);
-        imagenes.put("meta", imagen4);
-
-        file = new File("src/main/Imagenes/moto.png");
-        Image imagen5 = new Image(file.toURI().toString(), tam, tam, true, false);
-        imagenes.put((new Moto(new Probabilidad(0)).getClass().getSimpleName()), imagen5);
-
-        file = new File("src/main/Imagenes/4x4.png");
-        Image imagen6 = new Image(file.toURI().toString(), tam, tam, true, false);
-        imagenes.put((new CuatroPorCuatro(new Probabilidad(0)).getClass().getSimpleName()), imagen6);
-
-        file = new File("src/main/Imagenes/pozo.png");
-        Image imagen7 = new Image(file.toURI().toString(), tam, tam, true, false);
-        imagenes.put("pozo", imagen7);
-
+        imagenes.put(name, imagen);
     }
-    private Image obtenerImagen(String nombre) {
-        return imagenes.getOrDefault(nombre,null);
+
+    private void crearImagen(double tam) {
+        agregarImagenAImagenes("src/main/Imagenes/auto.png", (new Auto(new Probabilidad(0)).getClass().getSimpleName()), tam);
+        agregarImagenAImagenes("src/main/Imagenes/piquete.png", "piquete", tam);
+        agregarImagenAImagenes("src/main/Imagenes/sorpresa.png", "sorpresa", tam);
+        agregarImagenAImagenes("src/main/Imagenes/policia.png","controlPolicial" , tam);
+        agregarImagenAImagenes("src/main/Imagenes/meta.png", "meta", tam);
+        agregarImagenAImagenes("src/main/Imagenes/moto.png", (new Moto(new Probabilidad(0)).getClass().getSimpleName()), tam);
+        agregarImagenAImagenes("src/main/Imagenes/4x4.png", (new CuatroPorCuatro(new Probabilidad(0)).getClass().getSimpleName()), tam);
+        agregarImagenAImagenes("src/main/Imagenes/pozo.png", "pozo", tam);
     }
-    private ImageView crearImageView(Image imagen, Posicion posicion,double tam) {
+    private Image obtenerImagen(String nombre) { return imagenes.getOrDefault(nombre,null); }
+
+    private ImageView crearImageView(Image imagen, Posicion posicion,double tam, double factorMultiplicacion) {
         ImageView imageView = new ImageView();
         imageView.setImage(imagen);
-        imageView.setLayoutX(posicion.obtenerColumna() * tam * tamanioVereda);
-        imageView.setLayoutY(posicion.obtenerFila() * tam * tamanioVereda);
+        imageView.setLayoutX(posicion.obtenerColumna() * factorMultiplicacion);
+        imageView.setLayoutY(posicion.obtenerFila() * factorMultiplicacion);
         imageView.setFitWidth(tam);
         imageView.setFitHeight(tam);
+
         return imageView;
     }
-    private ImageView crearImageView2(Image imagen, Posicion posicion,double tam) {
-        ImageView imageView = new ImageView();
-        imageView.setImage(imagen);
-        imageView.setLayoutX(posicion.obtenerColumna());
-        imageView.setLayoutY(posicion.obtenerFila());
-        imageView.setFitWidth(tam);
-        imageView.setFitHeight(tam);
-        return imageView;
-    }
-    public ImageView agregarImagen(String nombre, Posicion posicion, double tam) {
+    public ImageView agregarImagen(String nombre, Posicion posicion, double tam, Direccion unaDireccion) {
         Image imagen = obtenerImagen(nombre);
-        ImageView imageView = crearImageView(imagen,posicion,tam);
+        ImageView imageView = crearImageView(imagen,posicion,tam, tam * tamanioVereda);
+        imageView.setRotate(unaDireccion.obtenerRotacion());
         contenedor.getChildren().add(imageView);
         return imageView;
     }
@@ -91,7 +67,7 @@ public class VistaImagenes {
                 if (objeto.getNombre() != "objetoSinPenalizacion" && i < 4) {
                     Posicion posicionIntermedia = obtenerPosicionesIntermedias(calle, tam, i);
                     Image imagen = obtenerImagen(objeto.getNombre());
-                    ImageView imageView = crearImageView2(imagen, posicionIntermedia, tam);
+                    ImageView imageView = crearImageView(imagen, posicionIntermedia, tam, 1);
                     contenedor.getChildren().add(imageView);
                     i++;
                 }

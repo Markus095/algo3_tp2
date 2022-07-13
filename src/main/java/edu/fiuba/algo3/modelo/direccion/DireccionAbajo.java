@@ -14,6 +14,8 @@ public class DireccionAbajo implements Direccion {
         posicion.moverAbajo();
     }
 
+    public double obtenerRotacion() {return 180;}
+
     public Posicion obtenerPosicion(Posicion posicion) {
         return posicion.obtenerPosicionAbajo();
     }

@@ -35,7 +35,7 @@ public class ControladorComenzarJuego implements EventHandler<ActionEvent>{
     @Override
     public void handle(ActionEvent actionEvent) {
         try {
-            new VistaJuego().empezarJuego(stage, controlador, vehiculo, tamPantalla, vistaInicio);
+            new VistaJuego().empezarJuego(vehiculo, tamPantalla, vistaInicio);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

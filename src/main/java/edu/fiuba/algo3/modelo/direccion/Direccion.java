@@ -6,6 +6,8 @@ public interface Direccion {
 
     void mover(Posicion posicion);
 
+    double obtenerRotacion();
+
     Posicion obtenerPosicion(Posicion posicion);
 
 }

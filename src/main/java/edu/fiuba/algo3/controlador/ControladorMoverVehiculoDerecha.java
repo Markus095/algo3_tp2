@@ -18,7 +18,7 @@ public class ControladorMoverVehiculoDerecha implements EventHandler<ActionEvent
 	public void handle(ActionEvent actionEvent) {
 		juego.getMapa().moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
 		try {
-			juego.actualizar();
+			juego.actualizar(DireccionDerecha.getDireccionDerecha());
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

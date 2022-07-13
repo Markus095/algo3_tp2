@@ -14,6 +14,7 @@ public class DireccionArriba implements Direccion {
     public void mover(Posicion posicion) {
         posicion.moverArriba();
     }
+    public double obtenerRotacion() {return 0;}
 
     public Posicion obtenerPosicion(Posicion posicion) {
         return posicion.obtenerPosicionArriba();
