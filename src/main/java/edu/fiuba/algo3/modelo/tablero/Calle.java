@@ -10,12 +10,15 @@ public class Calle {
     private ArrayList<ObjetoCalle> objetoCalles = new ArrayList();
     Posicion pos1;
     Posicion pos2;
+    boolean esHorizontal;
 
-    public Calle(Posicion pos1, Posicion pos2) {
+    public Calle(Posicion pos1, Posicion pos2, boolean esHorizontal) {
         this.objetoCalles.add(new ObjetoSinPenalizacion());// NULL PATERN
         this.pos1 = pos1;
         this.pos2 = pos2;
+        this.esHorizontal = esHorizontal;
     }
+
 
     public boolean vaDesdeHasta(Posicion unaPos1, Posicion unaPos2){
         return (unaPos1.esIgual(this.pos1) && unaPos2.esIgual(this.pos2));
@@ -26,17 +29,12 @@ public class Calle {
             objetoCalles.add(unObjetoCalle);
         }
     }
-    public int guardarObjetoInicializacion(ObjetoCalle unObjetoCalle, int cantidadTotalObjetos) {
-        if (objetoCalles.size() < 3) {
-            objetoCalles.add(unObjetoCalle);
-            return (cantidadTotalObjetos + 1);
-        }
-        return cantidadTotalObjetos;
-    }
+
 
     public Posicion aplicarPenalizacion(Vehiculo unVehiculo, Direccion unaDireccion, Posicion posicionVehiculo) {
         Posicion posicionSiguiente = new Posicion(0, 0);
         ArrayList<Integer> indices = new ArrayList<>();
+        ArrayList<ObjetoCalle> objetosLevantados = new ArrayList<>();
         for (ObjetoCalle unObjetoCalle : this.objetoCalles){
             posicionSiguiente = reaccionarAObjeto(unVehiculo, unObjetoCalle, unaDireccion, posicionVehiculo);
             unObjetoCalle.levantarDeCalle(unVehiculo, this.objetoCalles.indexOf(unObjetoCalle), indices);
@@ -45,6 +43,8 @@ public class Calle {
             }
         }
         for (Integer indice : indices) {
+            objetosLevantados.add(this.objetoCalles.get(indice));
+            unVehiculo.objetosLevantados = objetosLevantados;
             this.objetoCalles.remove(indice);
         }
         return posicionSiguiente;
@@ -65,6 +65,9 @@ public class Calle {
     }
     public Posicion obtenerPosicion2() {
         return this.pos2;
+    }
+    public boolean esHorizontal() {
+        return esHorizontal;
     }
 
 }

@@ -21,5 +21,4 @@ public abstract class ObjetoCalle {
 
     public void levantarDeCalle(Vehiculo unVehiculo, int indexOf, ArrayList<Integer> indices){};
 
-    public int modificarCantidadObjetos(int cantidadObjetos) { return cantidadObjetos; };
 }

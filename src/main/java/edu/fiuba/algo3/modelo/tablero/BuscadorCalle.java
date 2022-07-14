@@ -9,7 +9,7 @@ public class BuscadorCalle {
 
     public BuscadorCalle() {
         Posicion pos1 = new Posicion(-1, -1);
-        this.calleNoPermitida = new Calle(pos1, pos1);
+        this.calleNoPermitida = new Calle(pos1, pos1, true);
         NoPermitirPaso objeto = new NoPermitirPaso();
         this.calleNoPermitida.guardarObjeto(objeto);
     }

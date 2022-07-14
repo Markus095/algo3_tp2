@@ -20,6 +20,5 @@ public class SorpresaFavorable extends ObjetoCalle {
     @Override
     public void levantarDeCalle(Vehiculo unVehiculo, int indiceSorpresa, ArrayList<Integer> indices){
         indices.add(indiceSorpresa);
-        unVehiculo.modificarCantidadObjetos();
     };
 }

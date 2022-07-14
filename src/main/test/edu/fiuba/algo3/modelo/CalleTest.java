@@ -21,7 +21,7 @@ public class CalleTest {
         Direccion dir = DireccionDerecha.getDireccionDerecha();
         TipoVehiculo moto = new Moto(new Probabilidad(0.8f));
         Vehiculo vehiculo = new Vehiculo(moto, pos1);
-        Calle calle = new Calle(pos1, pos2);
+        Calle calle = new Calle(pos1, pos2, true);
         calle.aplicarPenalizacion(vehiculo,dir, pos1);
         assertEquals(vehiculo.obtenerCantidadMovimientos(), 0);
     }
@@ -33,7 +33,7 @@ public class CalleTest {
         Direccion dir = DireccionDerecha.getDireccionDerecha();
         TipoVehiculo moto = new Moto(new Probabilidad(0.8f));
         Vehiculo vehiculo = new Vehiculo(moto, pos1);
-        Calle calle = new Calle(pos1, pos2);
+        Calle calle = new Calle(pos1, pos2, true);
         calle.guardarObjeto(new Pozo());
         calle.aplicarPenalizacion(vehiculo,dir, pos1);
         assertEquals(vehiculo.obtenerCantidadMovimientos(), 3);
@@ -46,7 +46,7 @@ public class CalleTest {
         Direccion dir = DireccionDerecha.getDireccionDerecha();
         TipoVehiculo auto = new Auto(new Probabilidad(0.5f));
         Vehiculo vehiculo = new Vehiculo(auto, pos1);
-        Calle calle = new Calle(pos1, pos2);
+        Calle calle = new Calle(pos1, pos2, true);
         calle.guardarObjeto(new Piquete());
         calle.aplicarPenalizacion(vehiculo,dir, pos1);
         assertEquals(vehiculo.obtenerCantidadMovimientos(), 0);
@@ -59,7 +59,7 @@ public class CalleTest {
         Direccion dir = DireccionDerecha.getDireccionDerecha();
         TipoVehiculo camioneta = new CuatroPorCuatro(new Probabilidad(0.3f));
         Vehiculo vehiculo = new Vehiculo(camioneta, pos1);
-        Calle calle = new Calle(pos1, pos2);
+        Calle calle = new Calle(pos1, pos2, true);
         calle.guardarObjeto(new Piquete());
         calle.aplicarPenalizacion(vehiculo,dir, pos1);
         assertEquals(vehiculo.obtenerCantidadMovimientos(), 0);
@@ -72,7 +72,7 @@ public class CalleTest {
         Direccion dir = DireccionDerecha.getDireccionDerecha();
         TipoVehiculo moto = new Moto(new Probabilidad(0.8f));
         Vehiculo vehiculo = new Vehiculo(moto, pos1);
-        Calle calle = new Calle(pos1, pos2);
+        Calle calle = new Calle(pos1, pos2, true);
         calle.guardarObjeto(new Piquete());
         calle.aplicarPenalizacion(vehiculo,dir, pos1);
         assertEquals(vehiculo.obtenerCantidadMovimientos(), 2);
@@ -84,8 +84,8 @@ public class CalleTest {
         Posicion pos2 = new Posicion(0,1);
         Posicion pos3 = new Posicion(0,2);
 
-        Calle calleVacia = new Calle(pos1, pos2);
-        Calle calleSorpresa = new Calle(pos2, pos3);
+        Calle calleVacia = new Calle(pos1, pos2, true);
+        Calle calleSorpresa = new Calle(pos2, pos3, true);
 
         Direccion der = DireccionDerecha.getDireccionDerecha();
         Direccion izq = DireccionIzquierda.getDireccionIzquierda();
@@ -113,8 +113,8 @@ public class CalleTest {
         Posicion pos2 = new Posicion(0,1);
         Posicion pos3 = new Posicion(0,2);
 
-        Calle calleVacia = new Calle(pos1, pos2);
-        Calle calleSorpresa = new Calle(pos2, pos3);
+        Calle calleVacia = new Calle(pos1, pos2, true);
+        Calle calleSorpresa = new Calle(pos2, pos3, true);
 
         Direccion der = DireccionDerecha.getDireccionDerecha();
         Direccion izq = DireccionIzquierda.getDireccionIzquierda();
@@ -141,8 +141,8 @@ public class CalleTest {
         Posicion pos2 = new Posicion(0,1);
         Posicion pos3 = new Posicion(0,2);
 
-        Calle calleVacia = new Calle(pos1, pos2);
-        Calle calleSorpresa = new Calle(pos2, pos3);
+        Calle calleVacia = new Calle(pos1, pos2, true);
+        Calle calleSorpresa = new Calle(pos2, pos3, true);
 
         Direccion der = DireccionDerecha.getDireccionDerecha();
         Direccion izq = DireccionIzquierda.getDireccionIzquierda();
@@ -170,8 +170,8 @@ public class CalleTest {
         Posicion pos2 = new Posicion(0,1);
         Posicion pos3 = new Posicion(0,2);
 
-        Calle calleVacia = new Calle(pos1, pos2);
-        Calle calleSorpresa = new Calle(pos2, pos3);
+        Calle calleVacia = new Calle(pos1, pos2, true);
+        Calle calleSorpresa = new Calle(pos2, pos3, true);
 
         Direccion der = DireccionDerecha.getDireccionDerecha();
         Direccion izq = DireccionIzquierda.getDireccionIzquierda();
@@ -199,8 +199,8 @@ public class CalleTest {
         Posicion pos2 = new Posicion(0,1);
         Posicion pos3 = new Posicion(0,2);
 
-        Calle calleVacia = new Calle(pos1, pos2);
-        Calle calleSorpresa = new Calle(pos2, pos3);
+        Calle calleVacia = new Calle(pos1, pos2, true);
+        Calle calleSorpresa = new Calle(pos2, pos3, true);
 
         Direccion der = DireccionDerecha.getDireccionDerecha();
         Direccion izq = DireccionIzquierda.getDireccionIzquierda();
@@ -228,8 +228,8 @@ public class CalleTest {
         Posicion pos2 = new Posicion(0,1);
         Posicion pos3 = new Posicion(0,2);
 
-        Calle calleVacia = new Calle(pos1, pos2);
-        Calle calleSorpresa = new Calle(pos2, pos3);
+        Calle calleVacia = new Calle(pos1, pos2, true);
+        Calle calleSorpresa = new Calle(pos2, pos3, true);
 
         Direccion der = DireccionDerecha.getDireccionDerecha();
         Direccion izq = DireccionIzquierda.getDireccionIzquierda();

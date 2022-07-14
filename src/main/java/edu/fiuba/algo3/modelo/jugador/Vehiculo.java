@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Vehiculo implements Observable {
+    public ArrayList<ObjetoCalle> objetosLevantados;
     private Posicion posicionVehiculo;
     protected int cantidadDeMovimientos;
     private TipoVehiculo tipo;
@@ -20,6 +21,7 @@ public class Vehiculo implements Observable {
     private int cantidadObjetosMapa;
 
     public Vehiculo(TipoVehiculo unTipo, Posicion unaPosicion) {
+        this.objetosLevantados = new ArrayList<ObjetoCalle>();
         this.posicionVehiculo = unaPosicion;
         this.cantidadDeMovimientos = 0;
         this.tipo = unTipo;
@@ -62,18 +64,13 @@ public class Vehiculo implements Observable {
         this.tipo = unTipo;
     }
 
-    public void modificarCantidadObjetos() {
-        this.cantidadObjetosMapa--;
-    }
 
     public Posicion modificarPosicion(ObjetoCalle unObjeto, Posicion unaPosicion, Direccion unaDireccion) {
         Posicion posicionSiguiente = unObjeto.posicionSiguiente(unaPosicion, unaDireccion, this.tipo);
         return posicionSiguiente;
     }
 
-    public void inicializarCantidadObjetos(int cantidadTotalObjetos) {
-        this.cantidadObjetosMapa = cantidadTotalObjetos;
-    }
+
     @Override
     public void agregarObservador(Observer observador) {
         listaObservadores.add(observador);
@@ -83,7 +80,7 @@ public class Vehiculo implements Observable {
     public void notificarObservadores(Direccion unaDireccion) {
         listaObservadores.stream().forEach(observer -> {
             try {
-                observer.actualizar(posicionVehiculo, tipo, cantidadDeMovimientos, unaDireccion, cantidadObjetosMapa);
+                observer.actualizar(posicionVehiculo, tipo, cantidadDeMovimientos, unaDireccion, objetosLevantados);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

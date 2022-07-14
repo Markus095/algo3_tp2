@@ -14,10 +14,8 @@ public class Mapa {
     private Posicion posicionDestino;
     private Posicion [][] mapa;
     private ArrayList<Calle> calles = new ArrayList<>();
-    private int cantidadTotalObjetos;
 
     public Mapa(int unaCantidadFilas, int unaCantidadColumnas) {
-        this.cantidadTotalObjetos = 0;
         this.cantidadFilas = unaCantidadFilas;
         this.cantidadColumnas = unaCantidadColumnas;
         this.finDeJuego = false;
@@ -25,15 +23,14 @@ public class Mapa {
         for (int i = 0; i < unaCantidadFilas; i ++) {
             for (int j = 0; j < unaCantidadColumnas; j++) {
                 this.mapa[i][j] = new Posicion(i, j);
-                if(j != 0){ calles.add( new Calle(this.mapa[i][j-1], this.mapa[i][j])); }
-                if(i != 0){ calles.add( new Calle(this.mapa[i-1][j], this.mapa[i][j])); }
+                if(j != 0){ calles.add( new Calle(this.mapa[i][j-1], this.mapa[i][j], true)); }
+                if(i != 0){ calles.add( new Calle(this.mapa[i-1][j], this.mapa[i][j], false)); }
             }
         }
     }
 
     public void posicionarVehiculo(Vehiculo unVehiculo) {
         this.vehiculo = unVehiculo;
-        //vehiculo.inicializarCantidadObjetos(cantidadTotalObjetos);
     }
 
     public void asignarDestinoFinal(Posicion unaPosicion) {
@@ -52,7 +49,7 @@ public class Mapa {
         for (int j = 0; j < 2; j++) {
             for(int i = 0; i < calles.size(); i+=(Math.random()*100)%4){
                 ObjetoCalle objeto = objetosCalle.remove(0);
-                calles.get(i).guardarObjetoInicializacion(objeto, cantidadTotalObjetos);
+                calles.get(i).guardarObjeto(objeto);
                 objetosCalle.add(objeto);
                 Collections.shuffle(objetosCalle);
             }

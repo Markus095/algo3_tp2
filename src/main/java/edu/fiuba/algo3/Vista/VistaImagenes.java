@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.tablero.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -63,7 +64,7 @@ public class VistaImagenes {
         for (Calle calle : calles) {
             int i = 1;
             for (ObjetoCalle objeto : calle.obtenerObjetos()) {
-                if (objeto.getNombre() != "objetoSinPenalizacion" && i < 4) {
+                if (objeto.getNombre() != "objetoSinPenalizacion") {
                     Posicion posicionIntermedia = obtenerPosicionesIntermedias(calle, tam, i);
                     Image imagen = obtenerImagen(objeto.getNombre());
                     ImageView imageView = crearImageView(imagen, posicionIntermedia, tam, 1);
@@ -75,14 +76,18 @@ public class VistaImagenes {
     }
 
     private Posicion obtenerPosicionesIntermedias(Calle unaCalle, double tam, int i) {
-        if (unaCalle.obtenerPosicion1().obtenerFila() == unaCalle.obtenerPosicion2().obtenerFila()) {
-            return (new Posicion((int)(unaCalle.obtenerPosicion1().obtenerFila() * tam * tamanioVereda), (int)(unaCalle.obtenerPosicion1().obtenerColumna() * tam * tamanioVereda+ i * tam)));
+        double factorMultiplicacion = tam * tamanioVereda;
+
+        if (unaCalle.esHorizontal()) {
+            return (new Posicion((int)(unaCalle.obtenerPosicion1().obtenerFila() * factorMultiplicacion), (int)(unaCalle.obtenerPosicion1().obtenerColumna() * factorMultiplicacion + i * tam)));
         }
-        return (new Posicion((int)(unaCalle.obtenerPosicion1().obtenerFila() * tam * tamanioVereda+ i * tam), (int)(unaCalle.obtenerPosicion1().obtenerColumna() * tam * tamanioVereda)));
+        return (new Posicion((int)(unaCalle.obtenerPosicion1().obtenerFila() * factorMultiplicacion + i * tam), (int)(unaCalle.obtenerPosicion1().obtenerColumna() * factorMultiplicacion)));
     }
 
-    public void moverImagenVehiculo(ArrayList<Calle> calles, Posicion posicion, TipoVehiculo tipoVehiculo, Direccion direccion, float tamanio, int cantidadObjetosMapa) {
+    public void moverImagenVehiculo(ArrayList<Calle> calles, Posicion posicion, TipoVehiculo tipoVehiculo, Direccion direccion, float tamanio, ArrayList<ObjetoCalle> objetosLevantados) {
         removerImagenes(4);
+        for(ObjetoCalle objeto : objetosLevantados) {
+        }
         agregarImagen(tipoVehiculo.getClass().getSimpleName(), posicion, tamanio, direccion);
     }
 

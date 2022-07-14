@@ -5,29 +5,19 @@ import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.direccion.Direccion;
 import edu.fiuba.algo3.modelo.direccion.DireccionAbajo;
 import edu.fiuba.algo3.modelo.direccion.DireccionArriba;
-import edu.fiuba.algo3.modelo.direccion.DireccionIzquierda;
-import edu.fiuba.algo3.modelo.entidadesCalle.Probabilidad;
-import edu.fiuba.algo3.modelo.jugador.Auto;
+import edu.fiuba.algo3.modelo.entidadesCalle.ObjetoCalle;
 import edu.fiuba.algo3.modelo.jugador.TipoVehiculo;
 import edu.fiuba.algo3.modelo.jugador.Vehiculo;
 import edu.fiuba.algo3.modelo.tablero.Mapa;
 import edu.fiuba.algo3.modelo.tablero.Posicion;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
-import javafx.scene.input.KeyCode;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class VistaJuego implements Observer {
     private Pane contenedorJuego;
@@ -43,12 +33,6 @@ public class VistaJuego implements Observer {
     private RangoVision rangoVision;
     private Ranking ranking;
 
-    public Mapa getMapa() {
-        return unMapa;
-    }
-    public Pane obtenerContenedor() {
-        return contenedorJuego;
-    }
     public void empezarJuego(Vehiculo unVehiculo, double tamPantalla, VistaInicio vistaInicio) throws IOException {
         this.contenedorJuego = new Pane();
         Scene scene = new Scene(this.contenedorJuego , 1000, 1000);
@@ -85,25 +69,26 @@ public class VistaJuego implements Observer {
     }
 
     private void inicializarVistaJuego() {
-        actualizarVistaMapa(DireccionAbajo.getDireccionAbajo());
-        rangoVision.actualizarRangoVision(unVehiculo.obtenerPosicion());
+        Posicion posicionInicial = new Posicion(0,0);
+        actualizarVistaMapa(DireccionAbajo.getDireccionAbajo(), posicionInicial);
+        rangoVision.actualizarRangoVision(posicionInicial);
         actualizarContadorMovimientos();
     }
 
     private void actualizarContadorMovimientos() { contadorMovimientos.actualizar((int)this.unVehiculo.obtenerCantidadMovimientos());}
 
 
-    private void actualizarVistaMapa(Direccion unaDireccion) {
-        Posicion posicionVehiculo = unVehiculo.obtenerPosicion();
-        vistaImagenes.agregarImagenes(unMapa.obtenerCalles(), tamanio);
+    private void actualizarVistaMapa(Direccion unaDireccion, Posicion posicionInicial) {
+        Posicion posicionVehiculo = posicionInicial;
         vistaImagenes.agregarImagen("meta", destinoFinal, tamanio, DireccionArriba.getDireccionArriba());
+        vistaImagenes.agregarImagenes(unMapa.obtenerCalles(), tamanio);
         vistaImagenes.agregarImagen(unVehiculo.obtenerTipo().getClass().getSimpleName(), posicionVehiculo, tamanio, unaDireccion);
     }
 
     @Override
-    public void actualizar(Posicion posicion, TipoVehiculo tipoVehiculo, int cantidadMovimientos, Direccion direccion, int cantidadObjetosMapa) throws IOException {
-        vistaImagenes.moverImagenVehiculo(unMapa.obtenerCalles(), posicion, tipoVehiculo, direccion, tamanio, cantidadObjetosMapa);
-        rangoVision.actualizarRangoVision(unVehiculo.obtenerPosicion());
+    public void actualizar(Posicion posicion, TipoVehiculo tipoVehiculo, int cantidadMovimientos, Direccion direccion, ArrayList<ObjetoCalle> objetosLevantados) throws IOException {
+        vistaImagenes.moverImagenVehiculo(unMapa.obtenerCalles(), posicion, tipoVehiculo, direccion, tamanio, objetosLevantados);
+        rangoVision.actualizarRangoVision(posicion);
         actualizarContadorMovimientos();
         verificadorFinDeJuego.verificarFinJuego(unVehiculo, cantidadMovimientos);
     }
