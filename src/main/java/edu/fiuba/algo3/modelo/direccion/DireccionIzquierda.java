@@ -10,9 +10,6 @@ public class DireccionIzquierda implements Direccion {
         return direccionIzquierda;
     }
 
-    public void mover(Posicion posicion) {
-        posicion.moverIzquierda();
-    }
     public double obtenerRotacion() {return 270;}
 
     public Posicion obtenerPosicion(Posicion posicion) {

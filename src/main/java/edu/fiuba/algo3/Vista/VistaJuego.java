@@ -72,10 +72,10 @@ public class VistaJuego implements Observer {
         Posicion posicionInicial = new Posicion(0,0);
         actualizarVistaMapa(DireccionAbajo.getDireccionAbajo(), posicionInicial);
         rangoVision.actualizarRangoVision(posicionInicial);
-        actualizarContadorMovimientos();
+        actualizarContadorMovimientos(0);
     }
 
-    private void actualizarContadorMovimientos() { contadorMovimientos.actualizar((int)this.unVehiculo.obtenerCantidadMovimientos());}
+    private void actualizarContadorMovimientos(int cantidadDeMovimientos) { contadorMovimientos.actualizar(cantidadDeMovimientos);}
 
 
     private void actualizarVistaMapa(Direccion unaDireccion, Posicion posicionInicial) {
@@ -89,7 +89,7 @@ public class VistaJuego implements Observer {
     public void actualizar(Posicion posicion, TipoVehiculo tipoVehiculo, int cantidadMovimientos, Direccion direccion, ArrayList<ObjetoCalle> objetosLevantados) throws IOException {
         vistaImagenes.moverImagenVehiculo(unMapa.obtenerCalles(), posicion, tipoVehiculo, direccion, tamanio, objetosLevantados);
         rangoVision.actualizarRangoVision(posicion);
-        actualizarContadorMovimientos();
+        actualizarContadorMovimientos(cantidadMovimientos);
         verificadorFinDeJuego.verificarFinJuego(unVehiculo, cantidadMovimientos);
     }
 

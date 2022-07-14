@@ -36,7 +36,7 @@ public class Vehiculo implements Observable {
         this.cantidadDeMovimientos = unObjetoCalle.reaccionar(this.cantidadDeMovimientos, this.tipo);
     }
 
-    public float obtenerCantidadMovimientos() {
+    public int obtenerCantidadMovimientos() {
         return this.cantidadDeMovimientos;
     }
 
@@ -57,9 +57,6 @@ public class Vehiculo implements Observable {
         this.tipo = this.tipo.cambioVehiculo();
     }
 
-    public boolean verificarPosicionFinDeJuego(Posicion posicionDestino) {
-        return(this.posicionVehiculo.esIgual(posicionDestino));
-    }
     public void cambioTipoDeVehiculoA(TipoVehiculo unTipo) {
         this.tipo = unTipo;
     }

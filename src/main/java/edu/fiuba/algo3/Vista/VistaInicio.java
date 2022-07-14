@@ -40,10 +40,9 @@ public class VistaInicio {
     private Ranking ranking;
     private Vehiculo vehiculo;
 
-    public VistaInicio(Stage primaryStage) throws IOException {
+    public VistaInicio(Stage primaryStage){
         this.primaryStage = primaryStage;
         this.primaryStage.setResizable(false);
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
         this.primaryStage.setWidth(1000);
         this.primaryStage.setHeight(1000);
         this.primaryStage.setTitle("GPS");

@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.Vista;
 import edu.fiuba.algo3.controlador.ControladorBloqueoTeclas;
-import edu.fiuba.algo3.controlador.ControladorDeBotones;
 import edu.fiuba.algo3.controlador.ControladorSalir;
 import edu.fiuba.algo3.modelo.jugador.Vehiculo;
 import edu.fiuba.algo3.modelo.tablero.Mapa;
@@ -40,7 +39,7 @@ public class VerificadorFinDeJuego {
             scene.setOnKeyPressed(new ControladorBloqueoTeclas(stage));
             contenedor.getChildren().clear();
             System.gc();
-            ranking.agregarPartida((int)vehiculo.obtenerCantidadMovimientos(), this.nombreJugador);
+            ranking.agregarPartida(cantidadMovimientos, this.nombreJugador);
 
             File file = new File("src/main/Imagenes/fondoFin.jpeg");
             Image imagen = new Image(file.toURI().toString(), 1000, 1000, true, false);

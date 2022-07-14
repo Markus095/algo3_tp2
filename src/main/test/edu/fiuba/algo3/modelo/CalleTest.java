@@ -221,34 +221,4 @@ public class CalleTest {
         calleSorpresa.aplicarPenalizacion(vehiculo,der, pos2);
         assertEquals(vehiculo.obtenerCantidadMovimientos(), 10);
     }
-
-    @Test
-    public void unaCalleConTresPozosAplicaPenalizacion(){
-        Posicion pos1 = new Posicion(0,0);
-        Posicion pos2 = new Posicion(0,1);
-        Posicion pos3 = new Posicion(0,2);
-
-        Calle calleVacia = new Calle(pos1, pos2, true);
-        Calle calleSorpresa = new Calle(pos2, pos3, true);
-
-        Direccion der = DireccionDerecha.getDireccionDerecha();
-        Direccion izq = DireccionIzquierda.getDireccionIzquierda();
-        TipoVehiculo moto = new Moto(new Probabilidad(0.8f));
-        Vehiculo vehiculo = new Vehiculo(moto, pos1);
-        ArrayList<Calle> calles  = new ArrayList<>();
-        calles.add(calleVacia);
-        calles.add(calleSorpresa);
-
-        for(int i = 0; i<4; i++){
-            vehiculo.moverseEn(calles, der);
-            vehiculo.moverseEn(calles, izq);
-        }
-        vehiculo.moverseEn(calles, der);
-
-        calleSorpresa.guardarObjeto(new Pozo());
-        calleSorpresa.guardarObjeto(new Pozo());
-        calleSorpresa.guardarObjeto(new Pozo());
-        calleSorpresa.aplicarPenalizacion(vehiculo,der, pos2);
-        assertEquals(vehiculo.obtenerCantidadMovimientos(), 18);
-    }
 }
