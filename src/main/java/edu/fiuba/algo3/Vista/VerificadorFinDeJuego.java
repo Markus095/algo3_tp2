@@ -15,6 +15,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import java.io.File;
@@ -37,6 +39,16 @@ public class VerificadorFinDeJuego {
     }
     public void verificarFinJuego(Posicion posicionVehiculo, int cantidadMovimientos) throws IOException {
         if (mapa.verificarFinDeJuego(posicionVehiculo)) {
+            File fileSonidoGanar = new File("src/main/Sonidos/y2mate.com_-_Level_Up_Sound_Effect (1).mp3");
+            Media mediaSonidoGanar = new Media(fileSonidoGanar.toURI().toString());
+            MediaPlayer playerSonidoGanar = new MediaPlayer(mediaSonidoGanar);
+            playerSonidoGanar.play();
+
+            File fileAplausos = new File("src/main/Sonidos/y2mate.com_-_CROWD_CHEER_SOUND_EFFECT.mp3");
+            Media mediaAplausos = new Media(fileAplausos.toURI().toString());
+            MediaPlayer playerAplausos = new MediaPlayer(mediaAplausos);
+            playerAplausos.play();
+
             scene.setOnKeyPressed(new ControladorBloqueoTeclas(stage));
             contenedor.getChildren().clear();
             System.gc();

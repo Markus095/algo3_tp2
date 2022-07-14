@@ -76,4 +76,7 @@ public class Mapa {
     }
 
 
+    public Posicion inicializarDestinoFinal() {
+        return new Posicion((int)( Math.random()*9), 10);
+    }
 }

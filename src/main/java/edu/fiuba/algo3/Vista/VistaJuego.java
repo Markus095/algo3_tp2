@@ -59,8 +59,9 @@ public class VistaJuego implements Observer {
         this.unVehiculo = unVehiculo;
         this.unVehiculo.agregarObservador(this);
         this.unMapa = new Mapa(cantidadFilas + 1, cantidadColumnas + 1);
-        this.destinoFinal = new Posicion(3, 5);
+        this.destinoFinal = unMapa.inicializarDestinoFinal();
         this.ranking = new Ranking();
+
 
         unMapa.inicializar();
         unMapa.posicionarVehiculo(this.unVehiculo);

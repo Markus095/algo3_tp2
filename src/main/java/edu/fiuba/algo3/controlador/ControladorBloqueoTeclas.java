@@ -4,7 +4,11 @@ import edu.fiuba.algo3.modelo.tablero.Mapa;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 public class ControladorBloqueoTeclas implements EventHandler<KeyEvent> {
     private Stage stage;
