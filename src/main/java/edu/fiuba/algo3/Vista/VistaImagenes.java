@@ -9,7 +9,6 @@ import javafx.scene.layout.Pane;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Timer;
 
 import javafx.scene.image.ImageView;
 
@@ -81,4 +80,17 @@ public class VistaImagenes {
         }
         return (new Posicion((int)(unaCalle.obtenerPosicion1().obtenerFila() * tam * tamanioVereda+ i * tam), (int)(unaCalle.obtenerPosicion1().obtenerColumna() * tam * tamanioVereda)));
     }
+
+    public void moverImagenVehiculo(ArrayList<Calle> calles, Posicion posicion, TipoVehiculo tipoVehiculo, Direccion direccion, float tamanio, int cantidadObjetosMapa) {
+        removerImagenes(4);
+        agregarImagen(tipoVehiculo.getClass().getSimpleName(), posicion, tamanio, direccion);
+    }
+
+    private void removerImagenes(int cantidad) {
+        for (int i = 0; i < cantidad; i ++) {
+            contenedor.getChildren().remove(contenedor.getChildren().size()-1);
+        }
+    }
+
+
 }

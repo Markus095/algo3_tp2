@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.jugador;
 
+import edu.fiuba.algo3.modelo.Observable;
+import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.direccion.Direccion;
 import edu.fiuba.algo3.modelo.entidadesCalle.ObjetoCalle;
 import edu.fiuba.algo3.modelo.entidadesCalle.Probabilidad;
@@ -7,17 +9,21 @@ import edu.fiuba.algo3.modelo.tablero.BuscadorCalle;
 import edu.fiuba.algo3.modelo.tablero.Calle;
 import edu.fiuba.algo3.modelo.tablero.Posicion;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class Vehiculo {
+public class Vehiculo implements Observable {
     private Posicion posicionVehiculo;
     protected int cantidadDeMovimientos;
     private TipoVehiculo tipo;
+    private ArrayList<Observer> listaObservadores;
+    private int cantidadObjetosMapa;
 
     public Vehiculo(TipoVehiculo unTipo, Posicion unaPosicion) {
         this.posicionVehiculo = unaPosicion;
         this.cantidadDeMovimientos = 0;
         this.tipo = unTipo;
+        this.listaObservadores = new ArrayList<>();
     }
 
     public Posicion obtenerPosicion() {
@@ -37,6 +43,7 @@ public class Vehiculo {
         Calle calle = buscador.buscarCalle(calles, this.posicionVehiculo, unaDireccion.obtenerPosicion(this.posicionVehiculo));
         this.posicionVehiculo = calle.aplicarPenalizacion(this, unaDireccion, this.posicionVehiculo);
         this.cantidadDeMovimientos++;
+        notificarObservadores(unaDireccion);
         return this.posicionVehiculo;
     }
 
@@ -55,13 +62,32 @@ public class Vehiculo {
         this.tipo = unTipo;
     }
 
-    /*public void setMovimientos(int movimientos) {
-        this.cantidadDeMovimientos = movimientos;
-    }*/
+    public void modificarCantidadObjetos() {
+        this.cantidadObjetosMapa--;
+    }
 
     public Posicion modificarPosicion(ObjetoCalle unObjeto, Posicion unaPosicion, Direccion unaDireccion) {
         Posicion posicionSiguiente = unObjeto.posicionSiguiente(unaPosicion, unaDireccion, this.tipo);
         return posicionSiguiente;
+    }
+
+    public void inicializarCantidadObjetos(int cantidadTotalObjetos) {
+        this.cantidadObjetosMapa = cantidadTotalObjetos;
+    }
+    @Override
+    public void agregarObservador(Observer observador) {
+        listaObservadores.add(observador);
+    }
+
+    @Override
+    public void notificarObservadores(Direccion unaDireccion) {
+        listaObservadores.stream().forEach(observer -> {
+            try {
+                observer.actualizar(posicionVehiculo, tipo, cantidadDeMovimientos, unaDireccion, cantidadObjetosMapa);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
 }

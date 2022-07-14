@@ -1,9 +1,12 @@
 package edu.fiuba.algo3.Vista;
+import edu.fiuba.algo3.controlador.ControladorBloqueoTeclas;
+import edu.fiuba.algo3.controlador.ControladorDeBotones;
 import edu.fiuba.algo3.controlador.ControladorSalir;
 import edu.fiuba.algo3.modelo.jugador.Vehiculo;
 import edu.fiuba.algo3.modelo.tablero.Mapa;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,21 +23,21 @@ import java.io.IOException;
 public class VerificadorFinDeJuego {
     private Mapa mapa;
     private Pane contenedor;
-    private Botones botones;
     private Stage stage;
     private Ranking ranking;
     private String nombreJugador;
-    public VerificadorFinDeJuego(Stage stage, Pane contenedorJuego, Mapa unMapa, Botones botones, Ranking ranking, String nombreJugador) {
+    private Scene scene;
+    public VerificadorFinDeJuego(Scene scene, Stage stage, Pane contenedorJuego, Mapa unMapa, Ranking ranking, String nombreJugador) {
+        this.scene = scene;
         this.mapa = unMapa;
         this.contenedor = contenedorJuego;
-        this.botones = botones;
         this.stage = stage;
         this.ranking = ranking;
         this.nombreJugador = nombreJugador;
     }
     public void verificarFinJuego(Vehiculo vehiculo, int cantidadMovimientos) throws IOException {
         if (mapa.verificarFinDeJuego(vehiculo.obtenerPosicion())) {
-            botones.deshabilitarBotones(true);
+            scene.setOnKeyPressed(new ControladorBloqueoTeclas(stage));
             contenedor.getChildren().clear();
             System.gc();
             ranking.agregarPartida((int)vehiculo.obtenerCantidadMovimientos(), this.nombreJugador);

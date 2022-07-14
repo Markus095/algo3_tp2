@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo.tablero;
 import edu.fiuba.algo3.modelo.direccion.Direccion;
 import edu.fiuba.algo3.modelo.entidadesCalle.*;
 import edu.fiuba.algo3.modelo.jugador.Vehiculo;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -15,8 +14,10 @@ public class Mapa {
     private Posicion posicionDestino;
     private Posicion [][] mapa;
     private ArrayList<Calle> calles = new ArrayList<>();
+    private int cantidadTotalObjetos;
 
     public Mapa(int unaCantidadFilas, int unaCantidadColumnas) {
+        this.cantidadTotalObjetos = 0;
         this.cantidadFilas = unaCantidadFilas;
         this.cantidadColumnas = unaCantidadColumnas;
         this.finDeJuego = false;
@@ -32,6 +33,7 @@ public class Mapa {
 
     public void posicionarVehiculo(Vehiculo unVehiculo) {
         this.vehiculo = unVehiculo;
+        //vehiculo.inicializarCantidadObjetos(cantidadTotalObjetos);
     }
 
     public void asignarDestinoFinal(Posicion unaPosicion) {
@@ -50,7 +52,7 @@ public class Mapa {
         for (int j = 0; j < 2; j++) {
             for(int i = 0; i < calles.size(); i+=(Math.random()*100)%4){
                 ObjetoCalle objeto = objetosCalle.remove(0);
-                calles.get(i).guardarObjeto(objeto);
+                calles.get(i).guardarObjetoInicializacion(objeto, cantidadTotalObjetos);
                 objetosCalle.add(objeto);
                 Collections.shuffle(objetosCalle);
             }
@@ -75,5 +77,6 @@ public class Mapa {
     public ArrayList<Calle> obtenerCalles() {
         return this.calles;
     }
+
 
 }

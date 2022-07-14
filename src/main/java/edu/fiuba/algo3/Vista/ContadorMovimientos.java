@@ -37,7 +37,6 @@ public class ContadorMovimientos {
         rectangle.setArcWidth(20);
         rectangle.setArcHeight(20);
         rectangle.setOpacity(0.4);
-        contenedor.getChildren().addAll(rectangle, movimientos);
     }
 
     public void actualizar(int cantidadMovimientos) {

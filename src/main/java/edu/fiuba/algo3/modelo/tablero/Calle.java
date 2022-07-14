@@ -23,16 +23,29 @@ public class Calle {
 
     public void guardarObjeto(ObjetoCalle unObjetoCalle) {
         if (objetoCalles.size() < 3) {
-            objetoCalles.add(unObjetoCalle);}
+            objetoCalles.add(unObjetoCalle);
+        }
+    }
+    public int guardarObjetoInicializacion(ObjetoCalle unObjetoCalle, int cantidadTotalObjetos) {
+        if (objetoCalles.size() < 3) {
+            objetoCalles.add(unObjetoCalle);
+            return (cantidadTotalObjetos + 1);
+        }
+        return cantidadTotalObjetos;
     }
 
     public Posicion aplicarPenalizacion(Vehiculo unVehiculo, Direccion unaDireccion, Posicion posicionVehiculo) {
         Posicion posicionSiguiente = new Posicion(0, 0);
+        ArrayList<Integer> indices = new ArrayList<>();
         for (ObjetoCalle unObjetoCalle : this.objetoCalles){
             posicionSiguiente = reaccionarAObjeto(unVehiculo, unObjetoCalle, unaDireccion, posicionVehiculo);
+            unObjetoCalle.levantarDeCalle(unVehiculo, this.objetoCalles.indexOf(unObjetoCalle), indices);
             if (posicionVehiculo.esIgual(posicionSiguiente)) {
                 return posicionVehiculo;
             }
+        }
+        for (Integer indice : indices) {
+            this.objetoCalles.remove(indice);
         }
         return posicionSiguiente;
     }
@@ -52,13 +65,6 @@ public class Calle {
     }
     public Posicion obtenerPosicion2() {
         return this.pos2;
-    }
-    public Calle buscarCalle(Posicion pos1, Posicion pos2, ArrayList<Calle> calles) {
-        // este metodo se puede implementar bien con streams
-        for (Calle calle : calles) {
-            if (calle.vaDesdeHasta(pos1, pos2) || calle.vaDesdeHasta(pos2,pos1)) return calle;
-        }
-        return new Calle(pos1,pos2);//a corregir
     }
 
 }
