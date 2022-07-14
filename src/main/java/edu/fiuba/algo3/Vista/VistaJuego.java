@@ -12,10 +12,13 @@ import edu.fiuba.algo3.modelo.tablero.Mapa;
 import edu.fiuba.algo3.modelo.tablero.Posicion;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.stage.StageStyle;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -40,6 +43,13 @@ public class VistaJuego implements Observer {
         int cantidadColumnas = 10;
         int cantidadFilas = 10;
         int tamanioVereda = 3;
+
+        vistaInicio.reiniciar();
+
+        File file = new File("src/main/Sonidos/y2mate.com_-_The_Girl_from_Ipanema_Astrud_Gilberto_Joao_Gilberto_and_Stan_Getz.mp3");
+        Media media = new Media(file.toURI().toString());
+        MediaPlayer player = new MediaPlayer(media);
+        player.play();
 
         this.tamanio = (float)tamPantalla/(float)(cantidadColumnas * tamanioVereda + 1);
         this.stage = new Stage();

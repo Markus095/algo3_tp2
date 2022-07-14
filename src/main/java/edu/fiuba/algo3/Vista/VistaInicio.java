@@ -26,6 +26,8 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.StageStyle;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.AudioClip;
 
 import java.io.*;
 import java.util.*;
