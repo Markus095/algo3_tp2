@@ -51,11 +51,6 @@ public class VistaInicio {
         this.reiniciar();
         this.scene = new Scene(contenedorMenu, 1000, 1000);
 
-        scene.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.ESCAPE) {
-                this.primaryStage.close();
-            }
-        });
     }
     public Scene getScene() {
         return this.scene;

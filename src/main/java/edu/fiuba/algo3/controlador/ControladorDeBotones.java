@@ -10,38 +10,36 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
+
 public class ControladorDeBotones implements EventHandler<KeyEvent> {
 
     private Mapa mapa;
     private Stage stage;
+    private HashMap<KeyCode, ControladorTecla> mapaTeclas = new HashMap<>();
 
 
     public ControladorDeBotones(Mapa mapa, Stage stage) {
         this.stage = stage;
         this.mapa = mapa;
+        this.mapaTeclas.put(KeyCode.ESCAPE, new ControladorEscape());
+        this.mapaTeclas.put(KeyCode.W, new ControladorMoverArriba());
+        this.mapaTeclas.put(KeyCode.A, new ControladorMoverIzquierda());
+        this.mapaTeclas.put(KeyCode.S, new ControladorMoverAbajo());
+        this.mapaTeclas.put(KeyCode.D, new ControladorMoverDerecha());
+
+        this.mapaTeclas.put(KeyCode.UP, new ControladorMoverArriba());
+        this.mapaTeclas.put(KeyCode.LEFT, new ControladorMoverIzquierda());
+        this.mapaTeclas.put(KeyCode.DOWN, new ControladorMoverAbajo());
+        this.mapaTeclas.put(KeyCode.RIGHT, new ControladorMoverDerecha());
     }
 
     @Override
+
     public void handle(KeyEvent event) {
-        try {
-            if (event.getCode() == KeyCode.ESCAPE) {
-                this.stage.close();
-            }
-            if (event.getCode() == KeyCode.W) {
-                mapa.moverVehiculoEn(DireccionArriba.getDireccionArriba());
-            }
-            if (event.getCode() == KeyCode.S) {
-                mapa.moverVehiculoEn(DireccionAbajo.getDireccionAbajo());
-            }
-            if (event.getCode() == KeyCode.D) {
-                mapa.moverVehiculoEn(DireccionDerecha.getDireccionDerecha());
-            }
-            if (event.getCode() == KeyCode.A) {
-                mapa.moverVehiculoEn(DireccionIzquierda.getDireccionIzquierda());
-            }
-            event.consume();
-        } catch (Exception e) {
-            //Cant move exception
-        }
+        ControladorTecla controladorTecla = mapaTeclas.get(event.getCode());
+        controladorTecla.accionar(stage, mapa);
+
+        event.consume();
     }
 }

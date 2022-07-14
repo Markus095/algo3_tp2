@@ -17,4 +17,5 @@ public interface TipoVehiculo {
 
     Posicion posicionSiguientePostPiquete(Posicion unaPosicion, Direccion unaDireccion);
 
+    String getNombre();
 }

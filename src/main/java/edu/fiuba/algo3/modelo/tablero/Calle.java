@@ -60,6 +60,12 @@ public class Calle {
         return this.objetoCalles;
     }
 
+    public ArrayList<ObjetoCalle> obtenerObjetosPenalizadores() {
+        ArrayList<ObjetoCalle> listaObjetosPenalizadores = new ArrayList<>(this.objetoCalles);
+        listaObjetosPenalizadores.remove(0);
+        return listaObjetosPenalizadores;
+    }
+
     public Posicion obtenerPosicion1() {
         return this.pos1;
     }

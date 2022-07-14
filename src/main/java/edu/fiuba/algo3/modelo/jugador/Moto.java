@@ -29,5 +29,10 @@ public class Moto implements TipoVehiculo{
     public Posicion posicionSiguientePostPiquete(Posicion unaPosicion, Direccion unaDireccion) {
         return unaDireccion.obtenerPosicion(unaPosicion);
     }
+
+    @Override
+    public String getNombre() {
+        return "moto";
+    }
 }
 

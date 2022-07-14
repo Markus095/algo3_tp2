@@ -29,4 +29,9 @@ public class Auto implements TipoVehiculo{
     public Posicion posicionSiguientePostPiquete(Posicion unaPosicion, Direccion unaDireccion) {
         return unaPosicion;
     }
+
+    @Override
+    public String getNombre() {
+        return "auto";
+    }
 }

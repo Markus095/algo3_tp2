@@ -17,8 +17,8 @@ public class Ranking {
         this.inicializarRanking();
     }
     public void agregarPartida(int cantidadMovimientos, String nombreJugador) throws IOException {
-        if (ranking.containsKey(nombreJugador) & ranking.get(nombreJugador) > cantidadMovimientos) {
-            cantidadMovimientos = ranking.get(nombreJugador);
+        if (ranking.containsKey(nombreJugador) & ranking.get(nombreJugador) > cantidadMovimientos){
+                cantidadMovimientos = ranking.get(nombreJugador);
         }
         ranking.put(nombreJugador, cantidadMovimientos);
         this.crear_archivo();

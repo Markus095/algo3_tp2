@@ -18,7 +18,6 @@ public class Vehiculo implements Observable {
     protected int cantidadDeMovimientos;
     private TipoVehiculo tipo;
     private ArrayList<Observer> listaObservadores;
-    private int cantidadObjetosMapa;
 
     public Vehiculo(TipoVehiculo unTipo, Posicion unaPosicion) {
         this.objetosLevantados = new ArrayList<ObjetoCalle>();
@@ -66,7 +65,6 @@ public class Vehiculo implements Observable {
         Posicion posicionSiguiente = unObjeto.posicionSiguiente(unaPosicion, unaDireccion, this.tipo);
         return posicionSiguiente;
     }
-
 
     @Override
     public void agregarObservador(Observer observador) {

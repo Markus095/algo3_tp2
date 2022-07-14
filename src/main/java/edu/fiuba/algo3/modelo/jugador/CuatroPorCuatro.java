@@ -33,4 +33,9 @@ public class CuatroPorCuatro implements TipoVehiculo {
     public Posicion posicionSiguientePostPiquete(Posicion unaPosicion, Direccion unaDireccion) {
         return unaPosicion;
     }
+
+    @Override
+    public String getNombre() {
+        return "4x4";
+    }
 }

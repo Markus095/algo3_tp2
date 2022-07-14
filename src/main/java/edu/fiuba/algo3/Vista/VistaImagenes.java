@@ -31,13 +31,13 @@ public class VistaImagenes {
     }
 
     private void crearImagen(double tam) {
-        agregarImagenAImagenes("src/main/Imagenes/auto.png", (new Auto(new Probabilidad(0)).getClass().getSimpleName()), tam);
+        agregarImagenAImagenes("src/main/Imagenes/auto.png", (new Auto(new Probabilidad(0)).getNombre()), tam);
         agregarImagenAImagenes("src/main/Imagenes/piquete.png", "piquete", tam);
         agregarImagenAImagenes("src/main/Imagenes/sorpresa.png", "sorpresa", tam);
         agregarImagenAImagenes("src/main/Imagenes/policia.png","controlPolicial" , tam);
         agregarImagenAImagenes("src/main/Imagenes/meta.png", "meta", tam);
-        agregarImagenAImagenes("src/main/Imagenes/moto.png", (new Moto(new Probabilidad(0)).getClass().getSimpleName()), tam);
-        agregarImagenAImagenes("src/main/Imagenes/4x4.png", (new CuatroPorCuatro(new Probabilidad(0)).getClass().getSimpleName()), tam);
+        agregarImagenAImagenes("src/main/Imagenes/moto.png", (new Moto(new Probabilidad(0)).getNombre()), tam);
+        agregarImagenAImagenes("src/main/Imagenes/4x4.png", (new CuatroPorCuatro(new Probabilidad(0)).getNombre()), tam);
         agregarImagenAImagenes("src/main/Imagenes/pozo.png", "pozo", tam);
     }
     private Image obtenerImagen(String nombre) { return imagenes.getOrDefault(nombre,null); }
@@ -63,17 +63,16 @@ public class VistaImagenes {
     public void agregarImagenes(ArrayList<Calle> calles, double tam) {
         for (Calle calle : calles) {
             int i = 1;
-            for (ObjetoCalle objeto : calle.obtenerObjetos()) {
-                if (objeto.getNombre() != "objetoSinPenalizacion") {
-                    Posicion posicionIntermedia = obtenerPosicionesIntermedias(calle, tam, i);
-                    Image imagen = obtenerImagen(objeto.getNombre());
-                    ImageView imageView = crearImageView(imagen, posicionIntermedia, tam, 1);
-                    contenedor.getChildren().add(imageView);
-                    i++;
-                }
+            for (ObjetoCalle objeto : calle.obtenerObjetosPenalizadores()) {
+                Posicion posicionIntermedia = obtenerPosicionesIntermedias(calle, tam, i);
+                Image imagen = obtenerImagen(objeto.getNombre());
+                ImageView imageView = crearImageView(imagen, posicionIntermedia, tam, 1);
+                contenedor.getChildren().add(imageView);
+                i++;
             }
         }
     }
+
 
     private Posicion obtenerPosicionesIntermedias(Calle unaCalle, double tam, int i) {
         double factorMultiplicacion = tam * tamanioVereda;
@@ -88,7 +87,7 @@ public class VistaImagenes {
         removerImagenes(4);
         for(ObjetoCalle objeto : objetosLevantados) {
         }
-        agregarImagen(tipoVehiculo.getClass().getSimpleName(), posicion, tamanio, direccion);
+        agregarImagen(tipoVehiculo.getNombre(), posicion, tamanio, direccion);
     }
 
     private void removerImagenes(int cantidad) {

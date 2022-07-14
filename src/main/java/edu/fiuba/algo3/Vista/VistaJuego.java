@@ -40,7 +40,6 @@ public class VistaJuego implements Observer {
         int cantidadFilas = 10;
         int tamanioVereda = 3;
 
-        vistaInicio.reiniciar();
         this.tamanio = (float)tamPantalla/(float)(cantidadColumnas * tamanioVereda + 1);
         this.stage = new Stage();
         this.stage.initStyle(StageStyle.UNDECORATED);
@@ -65,7 +64,9 @@ public class VistaJuego implements Observer {
         scene.setOnKeyPressed(new ControladorDeBotones(unMapa, stage));
         this.stage.setScene(scene);
         this.stage.show();
+
         inicializarVistaJuego();
+        vistaInicio.reiniciar();
     }
 
     private void inicializarVistaJuego() {
@@ -75,14 +76,18 @@ public class VistaJuego implements Observer {
         actualizarContadorMovimientos(0);
     }
 
+<<<<<<< Updated upstream
     private void actualizarContadorMovimientos(int cantidadDeMovimientos) { contadorMovimientos.actualizar(cantidadDeMovimientos);}
+=======
+    private void actualizarContadorMovimientos(int cantidadMovimientos) { contadorMovimientos.actualizar(cantidadMovimientos);}
+>>>>>>> Stashed changes
 
 
     private void actualizarVistaMapa(Direccion unaDireccion, Posicion posicionInicial) {
         Posicion posicionVehiculo = posicionInicial;
         vistaImagenes.agregarImagen("meta", destinoFinal, tamanio, DireccionArriba.getDireccionArriba());
         vistaImagenes.agregarImagenes(unMapa.obtenerCalles(), tamanio);
-        vistaImagenes.agregarImagen(unVehiculo.obtenerTipo().getClass().getSimpleName(), posicionVehiculo, tamanio, unaDireccion);
+        vistaImagenes.agregarImagen(unVehiculo.obtenerTipo().getNombre(), posicionVehiculo, tamanio, unaDireccion);
     }
 
     @Override
