@@ -1,0 +1,53 @@
+
+@startuml
+abstract ObjetoCalle {
+}
+
+class ControlPolicial {
+    + reaccionar(int movimientos, TipoVehiculo unTipo): int
+}
+
+class NoPermitirPaso {
+    + reaccionar(int movimientos, TipoVehiculo unTipo): int
+    + posicionSiguiente(Posicion unaPosicion, Direccion unaDireccion, TipoVehiculo unTipo): Posicion
+}
+
+class ObjetoSinPenalizacion {
+    + reaccionar(int movimientos, TipoVehiculo unTipo): int
+}
+
+class Piquete {
+    + reaccionar(int movimientos, TipoVehiculo unTipo): int
+    + posicionSiguiente(Posicion unaPosicion, Direccion unaDireccion, TipoVehiculo unTipo): Posicion
+}
+
+class Pozo {
+    + reaccionar(int movimientos, TipoVehiculo unTipo): int
+}
+
+class SorpresaCambioVehiculo {
+    + reaccionar(int movimientos, TipoVehiculo unTipo): int
+    + verificarTipo(Vehiculo unVehiculo): void
+}
+
+class SorpresaDesfavorable {
+    + reaccionar(int movimientos, TipoVehiculo unTipo): int
+}
+
+class SorpresaFavorable {
+    + public int reaccionar(int movimientos, TipoVehiculo unTipo). int
+}
+
+ObjetoCalle <|- NoPermitirPaso
+ObjetoSinPenalizacion -|> ObjetoCalle
+
+ObjetoCalle <|-- ControlPolicial
+ObjetoCalle <|-- Piquete
+ObjetoCalle <|-- Pozo
+
+SorpresaCambioVehiculo --|> ObjetoCalle
+SorpresaFavorable --|> ObjetoCalle
+SorpresaDesfavorable --|> ObjetoCalle
+
+
+@enduml

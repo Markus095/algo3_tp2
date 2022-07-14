@@ -1,0 +1,42 @@
+@startuml
+
+class Vehiculo {
+    - cantidadDeMovimientos: int
+    ~ Vehiculo(TipoVehiculo unTipo, Posicion unaPosicion)
+    + modificarMovimientos(ObjetoCalle unObjeto): void
+    + moverseEn(ArrayList<Calle> calles, Direccion unaDireccion): Posicion
+    + cambioTipoDeVehiculo(): void
+    + modificarPosicion(ObjetoCalle unObjeto, Posicion unaPosicion, Direccion unaDireccion)
+    + agregarObservador(Observer observador): void
+    + notificarObservadores(Direccion unaDireccion): void
+}
+
+interface TipoVehiculo {
+    + reaccionarAPiquete(int cantidadDeMovimientos): int
+    + reaccionarAControlPolicial(int movimientos): int
+    + posicionSiguientePostPiquete(Posicion unaPosicion, Direccion unaDireccion): Posicion
+}
+
+class Posicion {
+    - x: int
+    - y: int
+    + obtenerPosicionArriba(): Posicion
+    + obtenerPosicionDerecha(): Posicion
+    + obtenerPosicionIzquierda(): Posicion
+    + obtenerPosicionAbajo(): Posicion
+    + esIgual(Posicion unaPosicion): boolean
+}
+
+class Probabilidad {
+    ~ Probabilidad(float unaProbabilidad)
+    + aplicarPenalizacion( int movimientos): int
+}
+Interface Direccion {
+}
+
+Direccion <. Vehiculo
+Vehiculo -> Posicion
+Vehiculo *-- TipoVehiculo
+TipoVehiculo -> Probabilidad
+
+@enduml

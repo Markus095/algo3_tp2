@@ -1,0 +1,41 @@
+@startuml
+
+interface TipoVehiculo {
+    + reaccionarAPozo( int cantidadDeMovimientos): int
+    + reaccionarAPiquete(int cantidadDeMovimientos): int
+    + reaccionarAControlPolicial(int movimientos): int
+    + cambioVehiculo(): TipoVehiculo
+    + posicionSiguientePostPiquete(Posicion unaPosicion, Direccion unaDireccion): Posicion
+}
+
+class Auto {
+    ~ Auto(Probabilidad unaProbabilidad)
+    + reaccionarAPozo( int cantidadDeMovimientos): int
+    + reaccionarAPiquete(int cantidadDeMovimientos): int
+    + reaccionarAControlPolicial(int movimientos): int
+    + cambioVehiculo(): TipoVehiculo
+    + posicionSiguientePostPiquete(Posicion unaPosicion, Direccion unaDireccion): Posicion
+}
+
+class Moto {
+    ~ Moto(Probabilidad unaProbabilidad)
+    + reaccionarAPozo( int cantidadDeMovimientos): int
+    + reaccionarAPiquete(int cantidadDeMovimientos): int
+    + reaccionarAControlPolicial(int movimientos): int
+    + cambioVehiculo(): TipoVehiculo
+    + posicionSiguientePostPiquete(Posicion unaPosicion, Direccion unaDireccion): Posicion
+}
+
+class CuatroPorCuatro {
+    ~ CuatroPorCuatro(Probabilidad unaProbabilidad)
+    + reaccionarAPozo( int cantidadDeMovimientos): int
+    + reaccionarAPiquete(int cantidadDeMovimientos): int
+    + reaccionarAControlPolicial(int movimientos): int
+    + cambioVehiculo(): TipoVehiculo
+    + posicionSiguientePostPiquete(Posicion unaPosicion, Direccion unaDireccion): Posicion
+}
+
+TipoVehiculo <|.. Auto
+TipoVehiculo <|.. Moto
+TipoVehiculo <|.. CuatroPorCuatro
+@enduml

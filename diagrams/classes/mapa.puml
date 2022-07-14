@@ -1,0 +1,38 @@
+@startuml
+
+class Mapa {
+    - cantidadFilas: int
+    - cantidadColumnas: int
+    - posicionDestino: Posicion
+    ~ Mapa(int unaCantidadFilas, int unaCantidadColumnas)
+    + posicionarVehiculo(Vehiculo unVehiculo): void
+    + asignarDestinoFinal(Posicion unaPosicion): void
+    + inicializar(): void
+    + verificarFinDeJuego(Posicion unaPosicion): boolean
+    + posicionarObjeto(ObjetoCalle unObjetoCalle, Posicion pos1, Posicion pos2): void
+    + moverVehiculoEn(Direccion unaDireccion): Posicion
+}
+
+class BuscadorCalle {
+    + buscarCalle(ArrayList<Calle> calles, Posicion pos1, Posicion pos2): Calle
+}
+
+class Posicion {
+    - x: int
+    - y: int
+    + obtenerPosicionArriba(): Posicion
+    + obtenerPosicionDerecha(): Posicion
+    + obtenerPosicionIzquierda(): Posicion
+    + obtenerPosicionAbajo(): Posicion
+    + esIgual(Posicion unaPosicion): boolean
+}
+
+interface Direccion {
+    + obtenerRotacion(): double
+    + obtenerPosicion(Posicion posicion): Posicion
+}
+
+Mapa -> "1..*" Posicion
+Mapa ..> BuscadorCalle
+Mapa ..> Direccion
+@enduml

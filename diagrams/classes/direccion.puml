@@ -1,0 +1,43 @@
+@startuml
+interface Direccion {
+    + obtenerRotacion(): double
+    + obtenerPosicion(Posicion posicion): Posicion
+}
+
+class DireccionAbajo {
+    - {static} direccionAbajo: DireccionAbajo
+    + obtenerRotacion(): double
+    + obtenerPosicion(Posicion posicion): Posicion
+    + {static}getDireccionAbajo(): DireccionAbajo
+}
+
+class DireccionArriba {
+    - {static}direccionArriba: DireccionArriba
+    + obtenerRotacion(): double
+    + obtenerPosicion(Posicion posicion): Posicion
+    + {static}getDireccionArriba(): DireccionArriba
+}
+
+class DireccionIzquierda {
+    - direccionIzquierda: DireccionIzquierda
+    + obtenerRotacion(): double
+    + obtenerPosicion(Posicion posicion): Posicion
+    + {static}getDireccionIzquierda(): DireccionIzquierda
+
+}
+
+class DireccionDerecha {
+    - direccionDerecha: DireccionDerecha
+    + obtenerRotacion(): double
+    + obtenerPosicion(Posicion posicion): Posicion
+    + {static}getDireccionDerecha(): DireccionDerecha
+
+}
+
+Direccion <|. DireccionArriba
+DireccionAbajo .|> Direccion
+
+Direccion <|.. DireccionDerecha
+Direccion <|.. DireccionIzquierda
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+
+
+class Calle {
+    - pos1 = Posicion
+    - pos2 = Posicion
+    - esHorizontal: boolean
+    ~ Calle(Posicion unaPosicion, Posicion otraPosicion, boolean esHorizontal)
+    + vaDesdeHasta(Posicion unaPosicion, Posicion otraPosicion): boolean
+    + guardarObjeto(ObjetoCalle unObjeto): void
+    + aplicarPenalizacion(Vehiculo unVehiculo, Direccion unaDireccion, Posicion posVehiculo): Posicion
+    + reaccionarAObjeto(Vehiculo unVehiculo, ObjetoCalle unObjetoCalle, Direccion unaDireccion, Posicion posicionVehiculo): Posicion
+
+}
+
+abstract ObjetoCalle {
+    + {abstract}reaccionar(int movimientos, TipoVehiculo unTipo): int
+    + verificarTipo(Vehiculo unVehiculo): void
+    + posicionSiguiente(Posicion unaPosicion, Direccion unaDireccion, TipoVehiculo unTipo): Posicion
+
+}
+
+
+
+Calle *--- "1..2"ObjetoCalle
+
+
+@enduml
