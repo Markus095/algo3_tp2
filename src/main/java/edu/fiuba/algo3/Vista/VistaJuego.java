@@ -34,6 +34,7 @@ public class VistaJuego implements Observer {
     private Ranking ranking;
 
     public void empezarJuego(Vehiculo unVehiculo, double tamPantalla, VistaInicio vistaInicio) throws IOException {
+
         this.contenedorJuego = new Pane();
         Scene scene = new Scene(this.contenedorJuego , 1000, 1000);
         int cantidadColumnas = 10;
@@ -59,8 +60,8 @@ public class VistaJuego implements Observer {
         this.contadorMovimientos = new ContadorMovimientos(contenedorJuego, (int)this.unVehiculo.obtenerCantidadMovimientos());
         this.vistaImagenes = new VistaImagenes(contenedorJuego, tamanio, tamanioVereda);
         this.grillaMapa = new Grilla(contenedorJuego, Color.LIMEGREEN, Color.DARKGRAY, tamPantalla, cantidadColumnas * tamanioVereda + 1, cantidadFilas * tamanioVereda + 1, 0.8,0.5, tamanioVereda);
-        this.verificadorFinDeJuego = new VerificadorFinDeJuego(scene, this.stage, contenedorJuego, unMapa, this.ranking, vistaInicio.obtenerNombreJugador());
 
+        this.verificadorFinDeJuego = new VerificadorFinDeJuego(scene, this.stage, contenedorJuego, unMapa, this.ranking, vistaInicio.obtenerNombreJugador());
         scene.setOnKeyPressed(new ControladorDeBotones(unMapa, stage));
         this.stage.setScene(scene);
         this.stage.show();
@@ -76,11 +77,7 @@ public class VistaJuego implements Observer {
         actualizarContadorMovimientos(0);
     }
 
-<<<<<<< Updated upstream
     private void actualizarContadorMovimientos(int cantidadDeMovimientos) { contadorMovimientos.actualizar(cantidadDeMovimientos);}
-=======
-    private void actualizarContadorMovimientos(int cantidadMovimientos) { contadorMovimientos.actualizar(cantidadMovimientos);}
->>>>>>> Stashed changes
 
 
     private void actualizarVistaMapa(Direccion unaDireccion, Posicion posicionInicial) {
@@ -95,7 +92,7 @@ public class VistaJuego implements Observer {
         vistaImagenes.moverImagenVehiculo(unMapa.obtenerCalles(), posicion, tipoVehiculo, direccion, tamanio, objetosLevantados);
         rangoVision.actualizarRangoVision(posicion);
         actualizarContadorMovimientos(cantidadMovimientos);
-        verificadorFinDeJuego.verificarFinJuego(unVehiculo, cantidadMovimientos);
+        verificadorFinDeJuego.verificarFinJuego(posicion, cantidadMovimientos);
     }
 
 }

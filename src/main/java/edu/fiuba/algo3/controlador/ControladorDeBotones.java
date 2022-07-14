@@ -38,7 +38,11 @@ public class ControladorDeBotones implements EventHandler<KeyEvent> {
 
     public void handle(KeyEvent event) {
         ControladorTecla controladorTecla = mapaTeclas.get(event.getCode());
-        controladorTecla.accionar(stage, mapa);
+        try {
+            controladorTecla.accionar(stage, mapa);
+        }catch (Exception e) {
+
+        }
 
         event.consume();
     }

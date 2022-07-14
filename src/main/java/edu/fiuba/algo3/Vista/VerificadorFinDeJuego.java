@@ -3,6 +3,7 @@ import edu.fiuba.algo3.controlador.ControladorBloqueoTeclas;
 import edu.fiuba.algo3.controlador.ControladorSalir;
 import edu.fiuba.algo3.modelo.jugador.Vehiculo;
 import edu.fiuba.algo3.modelo.tablero.Mapa;
+import edu.fiuba.algo3.modelo.tablero.Posicion;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -34,8 +35,8 @@ public class VerificadorFinDeJuego {
         this.ranking = ranking;
         this.nombreJugador = nombreJugador;
     }
-    public void verificarFinJuego(Vehiculo vehiculo, int cantidadMovimientos) throws IOException {
-        if (mapa.verificarFinDeJuego(vehiculo.obtenerPosicion())) {
+    public void verificarFinJuego(Posicion posicionVehiculo, int cantidadMovimientos) throws IOException {
+        if (mapa.verificarFinDeJuego(posicionVehiculo)) {
             scene.setOnKeyPressed(new ControladorBloqueoTeclas(stage));
             contenedor.getChildren().clear();
             System.gc();
